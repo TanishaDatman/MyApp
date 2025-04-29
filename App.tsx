@@ -1,20 +1,174 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "@/global.css";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "react-native";
+import { OverlayProvider } from "@gluestack-ui/overlay";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./app/screens/HomeScreen";
+import { StyledProvider } from "@gluestack-style/react";
+import { config } from "@gluestack-ui/config";
+import OnboardingScreen from "./app/screens/OnboardingScreen";
+import Address from "./app/screens/Address";
+import DetailsScreen from "./app/screens/DetailsScreen";
+
+import { Image } from "@gluestack-ui/themed";
+import TransactionsScreen from "./app/screens/TransactionsScreen";
+import SettingsScreen from "./app/screens/SettingsScreen";
+import OwnerDetailsScreen from "./app/screens/OwnerDetailsScreen";
+import { Provider } from "react-redux";
+import store, { persistor } from "./app/store/store";
+import { PersistGate } from "redux-persist/integration/react";
+import Contact from "./app/screens/Contact";
+import { HStack, Text, VStack } from "./components/ui";
+import DocumentsUpload from "./app/screens/DocumentsUpload";
+import Review from "./app/screens/Review";
+import BusinessDetailsScreen from "./app/screens/BusinessDetailsScreen";
+import OrganisationType from "./app/screens/OrganizationType";
+import CompanyDetails from "./app/screens/CompanyDetails";
+import ContactBusiness from "./app/screens/ContactBusiness";
+import AddressBusiness from "./app/screens/AddressBusiness";
+import DocumentsBusiness from "./app/screens/DocumentsBusiness";
+import TradingInfoScreen from "./app/screens/TradingInfoScreen";
+import BankDetailsScreen from "./app/screens/BankDetailsScreen";
+import ReviewBusiness from "./app/screens/ReviewBusiness";
+import DocumentsBank from "./app/screens/DocumentsBank";
+import CongoScreen from "./app/screens/CongoScreen";
+
+const PERSISTENCE_KEY = "NAVIGATION_STATE_V1";
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "transparent", // 👈 set background transparent
+  },
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <StyledProvider config={config}>
+        <GluestackUIProvider mode="light">
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <OverlayProvider>
+                <AppContent />
+              </OverlayProvider>
+            </PersistGate>
+          </Provider>
+        </GluestackUIProvider>
+      </StyledProvider>
+    </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function HomeStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeMain" component={HomeScreen} />
+       <Stack.Screen name="Onboarding" component={OnboardingScreen} /> 
+      <Stack.Screen name="Address" component={Address} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="OwnerDetails" component={OwnerDetailsScreen} /> 
+      <Stack.Screen name="BusinessDetails" component={BusinessDetailsScreen} />
+      <Stack.Screen name="TradingInfo" component={TradingInfoScreen} />
+      <Stack.Screen name="BankDetails" component={BankDetailsScreen} /> 
+      <Stack.Screen name="Contact" component={Contact} />
+      <Stack.Screen name="Documents" component={DocumentsUpload} />
+      <Stack.Screen name="Review" component={Review} />
+      <Stack.Screen name="Organization" component={OrganisationType} />
+      <Stack.Screen name="Company" component={CompanyDetails} />
+      <Stack.Screen name="ContactBusiness" component={ContactBusiness} />
+      <Stack.Screen name="DocumentsBusiness" component={DocumentsBusiness} />
+      <Stack.Screen name="ReviewBusiness" component={ReviewBusiness} />
+      <Stack.Screen name="DocumentsBank" component={DocumentsBank} />
+      <Stack.Screen name="Congo" component={CongoScreen} />
+      {/* <Stack.Screen name="HomeOnboard" component={HomeOnboard} /> */}
+      <Stack.Screen name="AddressBusiness" component={AddressBusiness} />
+    </Stack.Navigator>
+  );
+}
+
+function AppContent() {
+  const colorMode = "light";
+  return (
+    <>
+      <StatusBar
+        translucent={true}
+        animated={true}
+        hidden={false}
+        backgroundColor={colorMode === "light" ? "#FFFFFF" : "#151515"}
+        barStyle={colorMode === "light" ? "dark-content" : "light-content"}
+      />
+      <SafeAreaView
+        className={`${
+          colorMode === "light" ? "bg-[#ffffff]" : "bg-[#151515]"
+        } flex-1 overflow-hidden`}
+      >
+        <NavigationContainer
+          theme={MyTheme}
+          onStateChange={(state) => {
+            console.log("Saving Navigation State:", state);
+          }}
+        >
+           <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, focused }) => {
+                let iconSource;
+
+                if (route.name === "Home") {
+                  iconSource = require("./assets/images/home.png");
+                } else if (route.name === "Transactions") {
+                  iconSource = require("./assets/images/multiple_stop.png");
+                } else if (route.name === "Settings") {
+                  iconSource = require("./assets/images/settings.png");
+                }
+
+                return (
+                  <Image
+                    source={iconSource}
+                    alt={`${route.name} tab icon`}
+                    width={24}
+                    height={24}
+                    resizeMode="contain"
+                    style={{
+                      tintColor: focused ? "#199F65" : "#848484",
+                    }}
+                  />
+                );
+              },
+              tabBarActiveTintColor: "#199F65",
+              tabBarInactiveTintColor: "#848484",
+              headerShown: false,
+              tabBarStyle: {
+                paddingBottom: 4,
+                height: 60,
+              },
+            })}
+          >
+         <Tab.Screen name="Home" component={HomeStack} />
+         <Tab.Screen name="Transactions" component={TransactionsScreen} />
+          <Tab.Screen name="Settings" component={SettingsScreen} />
+
+          </Tab.Navigator>
+        </NavigationContainer>
+        {/* <Tab.Screen name="Home" component={HomeStack} /> */}
+            
+      </SafeAreaView>
+      {/* 
+      
+       
+        
+            <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="Transactions" component={TransactionsScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+
+      </SafeAreaView> */}
+    </>
+  );
+}
