@@ -35,6 +35,9 @@ import BankDetailsScreen from "./app/screens/BankDetailsScreen";
 import ReviewBusiness from "./app/screens/ReviewBusiness";
 import DocumentsBank from "./app/screens/DocumentsBank";
 import CongoScreen from "./app/screens/CongoScreen";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
+
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE_V1";
 
@@ -50,6 +53,8 @@ const MyTheme = {
 };
 
 export default function App() {
+
+
   return (
     <SafeAreaProvider>
       <StyledProvider config={config}>
@@ -96,6 +101,30 @@ function HomeStack() {
 
 function AppContent() {
   const colorMode = "light";
+
+  const [isReady, setIsReady] = useState(false);
+  const [navigationState, setNavigationState] = useState<any>(undefined);
+
+  useEffect(() => {
+    const loadNavigationState = async () => {
+      try {
+        const savedState = await AsyncStorage.getItem(PERSISTENCE_KEY);
+        if (savedState) {
+          setNavigationState(JSON.parse(savedState));
+        }
+      } catch (e) {
+        console.warn("Failed to load nav state", e);
+      } finally {
+        setIsReady(true);
+      }
+    };
+
+    loadNavigationState();
+  }, []);
+
+  if (!isReady) return null; // Or return a splash/loading component
+
+
   return (
     <>
       <StatusBar
@@ -112,8 +141,9 @@ function AppContent() {
       >
         <NavigationContainer
           theme={MyTheme}
+          initialState={navigationState}
           onStateChange={(state) => {
-            console.log("Saving Navigation State:", state);
+            AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state));
           }}
         >
            <Tab.Navigator
