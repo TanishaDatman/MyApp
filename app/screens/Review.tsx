@@ -13,6 +13,8 @@ export default function Review() {
   const ownerDetails = useSelector((state: any) => state.owner.owner);
   const ownerContact = useSelector((state: any) => state.owner.contact);
   const ownerAddress = useSelector((state: any) => state.owner.address);
+  const document = useSelector((state: any) => state.owner.document);
+
   // const image = useSelector((state: any) => state.owner.image);
   // console.log("Image details from redux:", image);
 
@@ -22,7 +24,7 @@ export default function Review() {
         ...ownerDetails,
         ...ownerContact,
         ...ownerAddress,
-        // image: image?.path
+         document
       };
 
       await postOwnerDetails(combinedDetails);

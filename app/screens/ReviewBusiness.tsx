@@ -19,6 +19,8 @@ export default function ReviewBusiness() {
   const phone = contact?.phone;
   const url = contact?.url;
   const address = useSelector((state: any) => state.business.address);
+  const document = useSelector((state: any) => state.business.document);
+
 
   const { postCompanyDetails } = useCompanyApi();
 
@@ -29,6 +31,7 @@ export default function ReviewBusiness() {
       ...address,
       companyWhat,
       orgType,
+      document,
     };
     try {
       await postCompanyDetails(details);

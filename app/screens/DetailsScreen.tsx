@@ -56,29 +56,6 @@ export default function DetailsScreen() {
   const [track, setTrack] = useState<number>(0); 
   const [progress, setProgress] = useState<number>(0);
 
-  // const ownerId = 7;
-  // const companyId=6;
-  // const tradeID=2;
-  // const bankID=3;
-
-
-
-  // useEffect(() => {
-  //   const fetchOwner = async () => {
-  //     try {
-  //       const data = await getOwnerDetails(ownerId);
-  //       // console.log('Fetched owner data:', data); 
-
-  //       if (data?.ok && data?.status===200) {
-  //         setOwnerStatus('inProgress');
-  //       }
-  //     } catch (error) {
-  //       // console.error('Error fetching owner details:', error);
-  //     }
-  //   };
-
-  //   fetchOwner();
-  // }, []);
 
 
   useEffect(() => {
@@ -187,6 +164,7 @@ export default function DetailsScreen() {
 
 
   return (
+    <>
     <Box className='flex-1 pt-8 px-4'>
       <ScrollView>
 
@@ -199,13 +177,13 @@ export default function DetailsScreen() {
                 alt="back button"
               />
             </Pressable>
-            <Text className="text-lg font-semibold">Onboarding</Text>
+            <Text className="text-md xs:text-base sm:text-md font-semibold">Onboarding</Text>
           </HStack>
 
-        <Text className='text-xl font-bold mb-2'>
+        <Text className="text-lg sm:text-xl font-bold mb-2">
           Complete Onboarding
         </Text>
-        <Text className='text-sm mb-6'>
+        <Text className="text-sm sm:text-base text-textgrey mb-4">
           Onboarding is an essential step to activate my Datman account for accepting payments and receiving payouts.
         </Text>
         {
@@ -267,7 +245,8 @@ export default function DetailsScreen() {
                   <Text className='text-md font-semibold mb-1'>
                     {item.title}
                   </Text>
-                  <Text className='text-sm'>
+                  {/* className="text-sm sm:text-base text-textgrey mb-4" */}
+                  <Text className='text-sm text-textgrey mb-1'>
                     {item.description}
                   </Text>
                  
@@ -283,7 +262,7 @@ export default function DetailsScreen() {
 
              <HStack className='items-center mb-2'>
                         <Badge className={`rounded-full px-3 bg-${getStatusBg(item.key)}`}>
-                          <BadgeText className={`text-xs text-${getStatusColor(item.key)}`}>{getStatusLabel(item.key)}</BadgeText>
+                          <BadgeText className={`text-[8px] sm:text-xs md:text-sm text-${getStatusColor(item.key)}`}>{getStatusLabel(item.key)}</BadgeText>
                         </Badge>
                       </HStack>
 
@@ -294,32 +273,30 @@ export default function DetailsScreen() {
         );
       })}
         </VStack>
+
+        <HStack className='mt-6 mb-4 justify-between' space="md">
+    <Button
+    className='flex-1 rounded-full'
+      variant="outline"
+      onPress={() => navigation.goBack()}
+    >
+      <Text className='text-md font-medium'>Later</Text>
+    </Button>
+    <Button
+    className='flex-1 rounded-full'
+      variant="outline"
+      onPress={() => console.log('Next')}
+    >
+      <Text className='text-md font-medium'>Next</Text>
+    </Button>
+  </HStack>
+
       </ScrollView>
 
       {/* Bottom Buttons */}
-      <HStack className='mt-6 mb-4 justify-between' space="md">
-        <Button
-        className='flex-1 rounded-full'
-          variant="outline"
-          // borderColor="$borderLight400"
-          // flex={1}
-          // borderRadius="$full"
-          onPress={() => navigation.goBack()}
-        >
-          <Text className='text-md font-medium'>Later</Text>
-        </Button>
-        <Button
-        className='flex-1 rounded-full'
-          variant="outline"
-          // borderColor="$black"
-          // bgColor="$black"
-          // flex={1}
-          // borderRadius="$full"
-          onPress={() => console.log('Next')}
-        >
-          <Text className='text-md font-medium'>Next</Text>
-        </Button>
-      </HStack>
+      
     </Box>
+   
+  </>
   );
 }

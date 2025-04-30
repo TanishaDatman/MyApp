@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as DocumentPicker from 'expo-document-picker';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBankStatement, setVoidCheque } from '../store/features/bank/bankSlice';
+import { setBankDocument } from '../store/features/bank/bankSlice';
 import { useBankApi } from '../hooks/useBankApi'; // adjust path if needed
 import { Box, Button, ButtonText, HStack, Image, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
 
 export default function DocumentsBank() {
   const navigation: any = useNavigation();
-  const statement = useSelector((state: any) => state.bank.statement);
-  const cheque = useSelector((state: any) => state.bank.cheque);
-  const dispatch = useDispatch();
+  // const cheque = useSelector((state: any) => state.bank.cheque);
+const [statement, setStatement]: any = useState(null);
+  const [cheque, setCheque]: any = useState(null);
+    const dispatch = useDispatch();
   const { postBankDetails, loading } = useBankApi();
 
   const pickDocument = async (type: any) => {
@@ -20,16 +21,24 @@ export default function DocumentsBank() {
         type: ['image/*', 'application/pdf'],
       });
 
-      if (!result.canceled && result.assets.length > 0) {
-        const file = result.assets[0];
-        type === 'statement'
-          ? dispatch(setBankStatement(file))
-          : dispatch(setVoidCheque(file));
-      }
+       if (!result.canceled) {
+              const selectedFile = result.assets[0];
+      
+              if (type === 'statement') {
+                setStatement(selectedFile);
+              } else {
+                setCheque(selectedFile);
+              }
+      console.log("selected file",selectedFile);
+              dispatch(setBankDocument({ name: selectedFile.name , type: selectedFile?.mimeType||"" }));
+            }
     } catch (err) {
       console.warn('Document pick error:', err);
     }
   };
+
+  const document = useSelector((state: any) => state.bank.document);
+
 
   const isNextEnabled = statement || cheque;
   const bankState = useSelector((state: any) => state.bank);
@@ -42,6 +51,7 @@ export default function DocumentsBank() {
         sortCode: bankState?.sortCode,
         accountNumber: bankState?.accountNumber,
         confirmAccountNumber: bankState?.confirmAccountNumber,
+        document:bankState?.document,
         flag: 1,
       };
 

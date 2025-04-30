@@ -17,7 +17,11 @@ export interface IncomingCompanyDetails {
   phone: string;
   postCode: string;
   town: string;
-  url: string;
+  document?: {
+    name: string;
+    type: string;
+  };
+  flag:number
 }
 
 
@@ -28,14 +32,14 @@ export interface CompanyDetails {
   bussinessLegalname: string;
   email: string;
   phoneno: string;
-  url: string;
   postcode: string;
   address_line_1: string;
   address_line_2: string;
   town: string;
   county: string;
   country: string;
-  document?: any; // optional
+  documentName?:string;
+  documentType?:string;
   flag:number
 }
 
@@ -60,15 +64,19 @@ export const useCompanyApi = () => {
         bussinessLegalname: details.legalName || '',
         email: details.email || '',
         phoneno: details.phone || '',
-        url: details.url || '',
         postcode: details.postCode || '',
         address_line_1: details.address1 || '',
         address_line_2: details.address2 || '',
         town: details.town || '',
         county: details.county || '',
         country: details.country || '',
+        documentName:details?.document?.name || "",
+        documentType:details.document?.type || "",
         flag:1
       };
+
+      console.log('Payload company details:', payload);
+
 
       const response = await fetch(`${BASE_URL}/dev/api/company-details`, {
         method: 'POST',

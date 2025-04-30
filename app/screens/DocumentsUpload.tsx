@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as DocumentPicker from 'expo-document-picker';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { setImg } from '../store/features/owner/ownerSlice';
+import { setDocument } from '../store/features/owner/ownerSlice';
 import { useOwnerApi } from '../hooks/useOwnerApi';
 import { Badge, BadgeText, Box, Button, ButtonText, HStack, Image, Modal, ModalBackdrop, ModalBody, ModalContent, ModalFooter, ModalHeader, Pressable, Text, VStack } from '@/components/ui';
 import { Center, ScrollView } from '@gluestack-ui/themed';
@@ -32,8 +32,8 @@ export default function DocumentsUpload() {
         } else {
           setLicense(selectedFile);
         }
-
-        dispatch(setImg({ path: selectedFile.uri }));
+console.log("selected file",selectedFile);
+        dispatch(setDocument({ name: selectedFile.name , type: selectedFile?.mimeType||"" }));
       }
     } catch (err) {
       console.warn('Document pick error:', err);
@@ -48,15 +48,16 @@ export default function DocumentsUpload() {
     // console.log('conatct details from redux:', contact);
     const address = useSelector((state: any) => state.owner.address);
     // console.log('address details from redux:', address);
-    // const image = useSelector((state: any) => state.owner.image);
-    // console.log('Image details from redux:', image);
+    const document = useSelector((state: any) => state.owner.document);
+    console.log('Image details from redux:', document);
 
   const handleNoDocumentClick = async () => {
     const selectedFile = passport || license
     const details = {
       ...owner,
       ...contact,
-      ...address
+      ...address,
+      document,
     };
 
     try {

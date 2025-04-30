@@ -20,8 +20,9 @@ const initialState = {
     county: '',
     country: '',
   },
-  image: {
-    path: '',
+  document: {
+    name: '',
+    type:'',
   },
 };
 
@@ -38,8 +39,8 @@ const ownerSlice = createSlice({
     setAddressDetails(state, action: PayloadAction<typeof state.address>) {
       state.address = action.payload;
     },
-    setImg(state, action: PayloadAction<{ path: string }>) {
-      state.image = action.payload;
+    setDocument(state, action: PayloadAction<{ name: string,type:string }>) {
+      state.document = action.payload;
     },
   },
 });
@@ -48,7 +49,7 @@ export const {
   setOwnerDetails,
   setContactDetails,
   setAddressDetails,
-  setImg,
+  setDocument,
 } = ownerSlice.actions;
 
 export default ownerSlice.reducer;

@@ -5,8 +5,10 @@ const initialState = {
   sortCode: '',
   accountNumber: '',
   confirmAccountNumber: '',
-  statement: null as any,
-  cheque: null as any,
+  document: {
+    name: '',
+    type:'',
+  },
 };
 
 const bankSlice = createSlice({
@@ -24,19 +26,15 @@ const bankSlice = createSlice({
     ) {
       Object.assign(state, action.payload);
     },
-    setBankStatement(state, action: PayloadAction<any>) {
-      state.statement = action.payload;
-    },
-    setVoidCheque(state, action: PayloadAction<any>) {
-      state.cheque = action.payload;
+    setBankDocument(state, action: PayloadAction<{ name: string,type:string }>) {
+      state.document = action.payload;
     },
   },
 });
 
 export const {
   setBankDetails,
-  setBankStatement,
-  setVoidCheque,
+  setBankDocument
 } = bankSlice.actions;
 
 export default bankSlice.reducer;

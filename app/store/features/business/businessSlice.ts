@@ -16,10 +16,9 @@ const initialState = {
     town: '',
     county: '',
   },
-  documents: {
-    utility: null,
-    rental: null,
-    rates: null,
+  document: {
+    name: '',
+    type:'',
   },
 };
 
@@ -43,8 +42,8 @@ const businessSlice = createSlice({
     setBusinessAddress(state, action: PayloadAction<typeof state.address>) {
       state.address = action.payload;
     },
-    setBusinessDocuments(state, action: PayloadAction<Partial<typeof state.documents>>) {
-      state.documents = { ...state.documents, ...action.payload };
+    setBusinessDocument(state, action: PayloadAction<{ name: string,type:string }>) {
+      state.document = action.payload;
     },
   },
 });
@@ -55,7 +54,7 @@ export const {
   setCompanyDetails,
   setBusinessContact,
   setBusinessAddress,
-  setBusinessDocuments,
+  setBusinessDocument,
 } = businessSlice.actions;
 
 export default businessSlice.reducer;

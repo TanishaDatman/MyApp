@@ -55,11 +55,11 @@ const BankDetailsScreen = () => {
   }, [bankState]);
 
   return (
-    <Box className="flex-1 md:bg-red p-8 md:p-8 bg-white">
+    <Box className="flex-1 xs:p-3 sm:p-8 md:p-8 bg-white">
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
-        className="px-5 pt-7"
+        className="px-5 pt-7 "
       >
         <VStack className="space-y-2 mb-6">
           <HStack className="items-center mb-6">

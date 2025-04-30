@@ -7,6 +7,10 @@ export interface BankDetails {
   sortCode: string;
   accountNumber: string;
   confirmAccountNumber: string;
+  document?: {
+    name: string;
+    type: string;
+  };
   flag?: number; // optional
 }
 
@@ -16,6 +20,8 @@ export interface BankPayload {
   sortCode: string;
   accountNumber: string;
   confirmAccountNumber: string;
+  documentName?:string;
+  documentType?:string;
   flag: number;
 }
 
@@ -43,6 +49,8 @@ export const useBankApi = () => {
         sortCode: details.sortCode,
         accountNumber: details.accountNumber,
         confirmAccountNumber: details.confirmAccountNumber,
+        documentName:details?.document?.name,
+        documentType:details.document?.type,
         flag: details.flag ?? 1, // Default to 1 if flag is not provided
       };
 

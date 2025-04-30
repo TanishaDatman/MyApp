@@ -16,6 +16,10 @@ export interface OwnerDetails {
   city?: string;
   county?: string;
   country?: string;
+  document?: {
+    name: string;
+    type: string;
+  };
   flag?: string; 
 }
 
@@ -34,6 +38,8 @@ export interface OwnerPayload {
   town_city?: string;
   county?: string;
   country?: string;
+  documentName?:string;
+  documentType?:string;
   flag: number;
 }
 
@@ -65,8 +71,13 @@ export const useOwnerApi = () => {
         town_city: details.city,
         county: details.county,
         country: details.country,
+        documentName:details?.document?.name,
+        documentType:details.document?.type,
         flag: 1, // always sending '1' here
       };
+
+      console.log('Pyload owner details:inside hook===>', payload);
+
 
       const response = await fetch(`${BASE_URL}/dev/api/business-details`, {
         method: 'POST',
