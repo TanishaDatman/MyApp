@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Platform } from 'react-native';
 
-// 👇 Incoming details structure
+
 export interface OwnerDetails {
   title: string;
   firstName: string;
@@ -16,10 +16,10 @@ export interface OwnerDetails {
   city?: string;
   county?: string;
   country?: string;
-  flag?: string; // optional
+  flag?: string; 
 }
 
-// 👇 Final payload structure to send to the API
+
 export interface OwnerPayload {
   title: string;
   first_name: string;
@@ -50,7 +50,7 @@ export const useOwnerApi = () => {
       setLoading(true);
       console.log('Submitting owner details:inside hook===>', details);
 
-      // 🔥 Type the payload correctly
+
       const payload: OwnerPayload = {
         title: details.title,
         first_name: details.firstName,

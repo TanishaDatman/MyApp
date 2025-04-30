@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Platform } from 'react-native';
 
-// 👇 Incoming details structure (from form)
+
 export interface TradingDetails {
   tradingName: string;
   postCode?: string;
@@ -13,7 +13,7 @@ export interface TradingDetails {
   isSameAsRegistered?: boolean;
 }
 
-// 👇 Payload structure to send to API
+
 export interface TradingPayload {
   tradingName: string;
   postCode: string;
@@ -39,7 +39,7 @@ export const useTradingApi = () => {
       setLoading(true);
       console.log('Submitting trading details inside hook===>', details);
 
-      // 🔥 Build and type the payload separately
+
       const payload: TradingPayload = {
         tradingName: details.tradingName,
         postCode: details.postCode || '',

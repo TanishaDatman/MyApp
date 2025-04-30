@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Platform } from 'react-native';
 
-// 👇 Incoming details structure
+
 export interface IncomingCompanyDetails {
   address1: string;
   address2: string;
@@ -20,7 +20,7 @@ export interface IncomingCompanyDetails {
   url: string;
 }
 
-// 👇 Final payload structure to send
+
 export interface CompanyDetails {
   companyType: string;
   organizationtype: string;
@@ -52,7 +52,7 @@ export const useCompanyApi = () => {
       setLoading(true);
       console.log('Submitting company details:', details);
 
-      // 🔥 Mapping incoming details properly
+     
       const payload: CompanyDetails = {
         companyType: details.companyWhat || '',
         organizationtype: details.orgType || '',

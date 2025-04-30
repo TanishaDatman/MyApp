@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Platform } from "react-native";
 
-// 👇 Incoming details structure
+
 export interface BankDetails {
   accountHolderName: string;
   sortCode: string;
@@ -10,7 +10,7 @@ export interface BankDetails {
   flag?: number; // optional
 }
 
-// 👇 Final payload structure to send to the API (camelCase as per BE)
+
 export interface BankPayload {
   accountHolderName: string;
   sortCode: string;
@@ -33,12 +33,11 @@ export const useBankApi = () => {
 
       console.log('Submitting bank details:', details);
 
-      // ✅ Validate if account number and confirm account number match
+ 
       if (details.accountNumber !== details.confirmAccountNumber) {
         throw new Error("Account numbers do not match");
       }
 
-      // 🔥 Prepare the payload (match the BE structure)
       const payload: BankPayload = {
         accountHolderName: details.accountHolderName,
         sortCode: details.sortCode,
