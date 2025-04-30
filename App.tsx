@@ -137,7 +137,7 @@ function AppContent() {
       <SafeAreaView
         className={`${
           colorMode === "light" ? "bg-[#ffffff]" : "bg-[#151515]"
-        } flex-1 overflow-hidden`}
+        } flex-1`}
       >
         <NavigationContainer
           theme={MyTheme}

@@ -55,7 +55,7 @@ const BankDetailsScreen = () => {
   }, [bankState]);
 
   return (
-    <Box className="flex-1 bg-white">
+    <Box className="flex-1 md:bg-red p-8 md:p-8 bg-white">
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
@@ -73,10 +73,10 @@ const BankDetailsScreen = () => {
                      <Text className="text-lg font-semibold">Bank Details</Text>
                    </HStack>
 
-          <Text className="text-xl font-semibold mb-1 text-gray-800">
+          <Text className="text-xl md:text-2xl font-semibold mb-1 text-gray-800">
             Set up your payout(bank) account
           </Text>
-          <Text className="text-sm text-gray-500">
+          <Text className="text-sm md:text-md text-textgrey">
             We need your bank details to ensure payouts are sent securely and on time. Providing this information helps avoid delays in receiving payments.
           </Text>
         </VStack>
@@ -89,7 +89,7 @@ const BankDetailsScreen = () => {
               name="accountHolderName"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined">
+                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider md:mb-0 mb-2'>
                     <InputField
                       placeholder="Enter account holder name"
                       value={value}
@@ -115,7 +115,7 @@ const BankDetailsScreen = () => {
               name="sortCode"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined">
+                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider mb-2'>
                     <InputField
                       placeholder="Bank sort code"
                       value={value}
@@ -140,7 +140,7 @@ const BankDetailsScreen = () => {
               name="accountNumber"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined">
+                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider mb-2'>
                     <InputField
                       placeholder="Account Number"
                       value={value}
@@ -165,7 +165,7 @@ const BankDetailsScreen = () => {
               name="confirmAccountNumber"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined">
+                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider'>
                     <InputField
                       placeholder="Confirm Account Number"
                       value={value}
@@ -199,12 +199,12 @@ const BankDetailsScreen = () => {
         </Button>
 
        <Button
-         className={`flex-1 rounded-full ${isValid ? 'bg-black' : 'bg-textgrey'} ${isValid ? 'opacity-100' : 'opacity-70'}`}
+         className={`flex-1 rounded-full ${isValid ? 'bg-black' : 'bg-lightgrey'} `}
          onPress={handleSubmit(onSubmit)}
          disabled={!isValid}
        >
          <ButtonText
-           className={`font-medium ${isValid ? 'text-white' : 'text-white'}`}
+           className={`font-medium ${isValid ? 'text-white' : 'text-textgrey'}`}
          >
            Next
          </ButtonText>

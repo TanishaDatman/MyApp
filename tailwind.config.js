@@ -13,15 +13,16 @@ module.exports = {
     ],
     presets: [require('nativewind/preset')],
     theme: {
-        // screens: {
-        //     base: '0',
-        //     xs: '400px',
-        //     sm: '480px',
-        //     md: '768px',
-        //     lg: '1025px',
-        //     xl: '1280px',
-        //     '2xl': '1536px'
-        // },
+        screens: {
+            base: '0',
+            xs: '400px',
+            sm: '480px',
+            ss:"764px",
+            md: '768px',
+            lg: '1025px',
+            xl: '1280px',
+            '2xl': '1536px'
+        },
         extend: {
           colors: {
             // Basic colors

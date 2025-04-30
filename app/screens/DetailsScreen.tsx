@@ -6,7 +6,7 @@ import { useCompanyApi } from '../hooks/useCompanyApi';
 import { useTradingApi } from '../hooks/useTradingApi';
 import { useBankApi } from '../hooks/useBankApi';
 import {ownerId,companyId,tradeID,bankID} from '../data'
-import { Box, Button, HStack, Pressable, Text, VStack } from '@/components/ui';
+import { Badge, BadgeText, Box, Button, HStack, Pressable, Text, VStack } from '@/components/ui';
 import { Progress, ProgressFilledTrack, ScrollView } from '@gluestack-ui/themed';
 
 const onboardingData = [
@@ -185,7 +185,6 @@ export default function DetailsScreen() {
     return 'lightyellow';
   };
 
-  const ownerverification = getStatusLabel("owner") === 'Verification in progress';
 
   return (
     <Box className='flex-1 pt-8 px-4'>
@@ -271,16 +270,23 @@ export default function DetailsScreen() {
                   <Text className='text-sm'>
                     {item.description}
                   </Text>
-                  <Box className={`justify-start w-20 inline-flex px-3 py-1 rounded-full mt-2 bg-${getStatusBg(item.key)}`}>
-  <Text className={`text-xs text-center whitespace-nowrap text-${getStatusColor(item.key)}`}>
-    {getStatusLabel(item.key)}
-  </Text>
-</Box>
-{/* <Box className={`inline-flex px-3 py-1 rounded-full mt-2 ${getStatusBg(item.key)}`}>
-  <Text className={`text-xs ${getStatusColor(item.key)} whitespace-nowrap`}>
+                 
+{/* <Box
+  className={`inline-flex w-auto px-3 py-1 rounded-full mt-2 bg-${getStatusBg(item.key)}`}
+>
+  <Text
+    className={`text-xs text-${getStatusColor(item.key)} whitespace-nowrap`}
+  >
     {getStatusLabel(item.key)}
   </Text>
 </Box> */}
+
+             <HStack className='items-center mb-2'>
+                        <Badge className={`rounded-full px-3 bg-${getStatusBg(item.key)}`}>
+                          <BadgeText className={`text-xs text-${getStatusColor(item.key)}`}>{getStatusLabel(item.key)}</BadgeText>
+                        </Badge>
+                      </HStack>
+
                 </VStack>
               </HStack>
             </Box>

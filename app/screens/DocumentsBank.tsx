@@ -54,7 +54,7 @@ export default function DocumentsBank() {
   };
 
   return (
-    <Box className="flex-1 px-5 pt-7">
+    <Box className="flex-1 md:p-8 px-5 pt-7">
       <Box className="flex-1">
         <ScrollView showsVerticalScrollIndicator={false}>
           <HStack className="items-center mb-6">
@@ -106,7 +106,7 @@ export default function DocumentsBank() {
           </VStack>
         </ScrollView>
 
-        <HStack className="mt-6 space-x-4 justify-between">
+        <HStack className="mt-6 p-4 space-x-4 mb-3 justify-between">
           <Button
             variant="outline"
             className="rounded-full border border-black flex-1 mr-2"

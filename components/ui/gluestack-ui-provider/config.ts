@@ -3,7 +3,7 @@ import { vars } from 'nativewind';
 
 export const config = {
     light: vars({
-        
+      // 235, 244, 235 
         '--color-red': '214 39 15',
         '--color-green': '25 159 101',
         '--color-lightgreen': '235 244 235',

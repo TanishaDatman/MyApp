@@ -22,7 +22,7 @@ export interface BankPayload {
 const BASE_URL =
   Platform.OS === "web"
     ? "http://localhost:3000"
-    : "hhttps://a3e1-49-249-92-34.ngrok-free.app";
+    : "https://a3e1-49-249-92-34.ngrok-free.app";
 
 export const useBankApi = () => {
   const [loading, setLoading] = useState(false);
