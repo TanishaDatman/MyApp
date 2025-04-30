@@ -13,6 +13,8 @@ export * from './modal';
 export * from './icon';
 export * from './radio';
 export * from './checkbox';
+export * from './progress';
+
 
 
 
