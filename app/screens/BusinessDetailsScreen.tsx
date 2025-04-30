@@ -144,7 +144,7 @@
 
 
 import React, { useState } from 'react';
-import { CheckCircle, Home, Store, Users, Grid } from 'lucide-react-native';
+import { CheckCircle, Home, Store, Users, Grid, CheckCircle2 } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setwhatbusiness } from '../store/features/business/businessSlice';
@@ -232,10 +232,9 @@ const BusinessDetailsScreen = () => {
                 </HStack>
                 {selected === option.id && (
                   <Icon
-                    as={CheckCircle}
+                    // as={CheckCircle2}
                     color="#22c55e"
-                    size="md"
-                    style={{ marginLeft: 8 }}
+                    
                   />
                 )}
               </Box>

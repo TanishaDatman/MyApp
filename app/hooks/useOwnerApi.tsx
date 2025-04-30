@@ -267,7 +267,7 @@ export const useOwnerApi = () => {
   const postOwnerDetails = async (details: OwnerDetails) => {
     try {
       setLoading(true);
-      console.log('Submitting owner details:', details);
+      console.log('Submitting owner details:inside hook===>', details);
 
       // 🔥 Type the payload correctly
       const payload: OwnerPayload = {

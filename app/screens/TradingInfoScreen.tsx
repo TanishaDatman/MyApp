@@ -74,8 +74,9 @@ const TradingInfoScreen = () => {
     };
 
     try {
-      // await postTradingDetails(tradingDetails);
-      console.log('Trading details submitted:', tradingDetails);
+      console.log('Trading details submitted====>:', tradingDetails);
+      await postTradingDetails(tradingDetails);
+      console.log('Trading details submitted====>:', tradingDetails);
       setModal(true);
     } catch (error) {
       console.error('Error posting trading details:', error);

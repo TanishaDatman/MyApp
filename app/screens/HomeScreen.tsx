@@ -352,16 +352,20 @@ export default function HomeScreen() {
       const fetchDetails = async () => {
         try {
           const ownerData = await getOwnerDetails(ownerId);
-          if (ownerData?.data?.flag === 1) setTrack(1);
+          // console.log("===========>",ownerData?.business?.flag)
+          if (ownerData?.business?.flag == 1) setTrack(1);
 
           const companyData = await getCompanyDetails(companyId);
-          if (companyData?.data?.flag === 1) setTrack(2);
+          // console.log("===========>",companyData?.companyDetails?.flag)
+          if (companyData?.companyDetails?.flag === 1) setTrack(2);
 
           const tradingData = await getTradingDetails(tradeID);
-          if (tradingData?.data?.flag === 1) setTrack(3);
+          // console.log("===========>",tradingData?.tradingDetails?.flag)
+          if (tradingData?.tradingDetails?.flag === 1) setTrack(3);
 
           const bankData = await getBankDetails(bankID);
-          if (bankData?.data?.flag === 1) setTrack(4);
+          console.log("===========>",bankData?.bankDetails?.flag)
+          if (bankData?.bankDetails?.flag === 1) setTrack(4);
         } catch (error) {
           console.error("Error fetching details:", error);
         }

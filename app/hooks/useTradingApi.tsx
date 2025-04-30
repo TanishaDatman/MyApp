@@ -126,7 +126,7 @@ export const useTradingApi = () => {
   const postTradingDetails = async (details: TradingDetails) => {
     try {
       setLoading(true);
-      console.log('Submitting trading details:', details);
+      console.log('Submitting trading details inside hook===>', details);
 
       // 🔥 Build and type the payload separately
       const payload: TradingPayload = {

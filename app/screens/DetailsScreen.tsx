@@ -87,7 +87,7 @@ export default function DetailsScreen() {
         const ownerData = await getOwnerDetails(ownerId);
         console.log('Owner data:', ownerData);
   
-        if (ownerData?.data?.flag == 1) {
+        if (ownerData?.business?.flag == 1) {
           setOwnerStatus('inProgress');
           setTrack(1);
         }
@@ -95,15 +95,15 @@ export default function DetailsScreen() {
         const companyData = await getCompanyDetails(companyId);
         console.log('Company data:', companyData);
   
-        if (companyData?.data?.flag == 1) {
+        if (companyData?.companyDetails?.flag == 1) {
           setCompanyStatus('inProgress');
           setTrack(2);
         }
 
         const traddingData = await getTradingDetails(tradeID);
-        console.log('trading data:', traddingData);
+        console.log('trading data: is ===>', traddingData);
   
-        if (traddingData?.data?.flag == 1) {
+        if (traddingData?.tradingDetails?.flag == 1) {
           setTradingtatus('inProgress');
           setTrack(3);
         }
@@ -112,7 +112,7 @@ export default function DetailsScreen() {
         console.log('banking data:', bankData);
 
 
-        if (bankData.data?.flag == 1) {
+        if (bankData?.bankDetails?.flag == 1) {
           setBankingtatus('inProgress');
           setTrack(4);
         }
