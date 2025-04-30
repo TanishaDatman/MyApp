@@ -34,14 +34,17 @@ A cross-platform onboarding experience. The app guides users through a seamless 
 ```bash
 git clone https://github.com/your-username/onboarding-app.git
 cd onboarding-app
+```
 
 ### 2️⃣ Install all dependencies
 ```bash
 npm install
+```
 
 ### 3️⃣ Run the project
 ```bash
 npx expo start
+```
 
 
 
