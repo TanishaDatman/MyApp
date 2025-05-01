@@ -10,6 +10,7 @@ import {
 } from '@/components/ui';
 import { Center, ScrollView } from '@gluestack-ui/themed';
 import { setBusinessDocument } from '../store/features/business/businessSlice';
+import { useThemeToggle } from '@/ThemeContext';
 
 export default function DocumentsBusiness() {
   const navigation: any = useNavigation();
@@ -74,6 +75,8 @@ export default function DocumentsBusiness() {
 
   const isNextEnabled = utility || rental || rates;
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 pt-7 p-5">
       <Box className="flex-1">
@@ -82,10 +85,14 @@ export default function DocumentsBusiness() {
                     <HStack className="items-center mb-6">
                       <Pressable onPress={() => navigation.goBack()}>
                         <Image
-                          source={require('../../assets/images/arrow_forward.png')}
-                          className='h-4 w-7'
-                          alt="back button"
-                        />
+                           source={
+                             theme === 'dark'
+                               ? require('../../assets/images/white_arrow.png') 
+                               : require('../../assets/images/arrow_forward.png') 
+                           }
+                           alt="back button"
+                           className='h-4 w-7'
+                         />
                       </Pressable>
                       <Text className="text-lg font-semibold">Upload Documents</Text>
                     </HStack>

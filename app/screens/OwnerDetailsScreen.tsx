@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  ChevronDownIcon, ScrollView } from '@gluestack-ui/themed';
 import { useForm, Controller } from 'react-hook-form';
 import { Platform } from 'react-native';
-import { Box, Button, HStack, Image, Input, InputField, Pressable, Select, SelectBackdrop, SelectContent, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger, Text, VStack } from '@/components/ui';
+import { Box, Button, ButtonText, HStack, Image, Input, InputField, Pressable, Select, SelectBackdrop, SelectContent, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger, Text, VStack } from '@/components/ui';
+import { useThemeToggle } from '@/ThemeContext';
 
 
 
@@ -76,46 +77,67 @@ const formatDateToDisplay = (date: Date) => {
     navigation.navigate("Contact");
   };
 
+  const {theme}=useThemeToggle()
+
 
   return (
     <Box className='flex-1 px-4 pt-6'>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <HStack className="items-center mb-6">
                    <Pressable onPress={() => navigation.goBack()}>
-                     <Image
-                       source={require('../../assets/images/arrow_forward.png')}
-                       className='h-4 w-7'
-                       alt="back button"
-                     />
+                    <Image
+                        source={
+                          theme === 'dark'
+                            ? require('../../assets/images/white_arrow.png') 
+                            : require('../../assets/images/arrow_forward.png') 
+                        }
+                        alt="back button"
+                        className='h-4 w-7'
+                      />
                    </Pressable>
-                   <Text className="text-lg font-semibold">Owner Details</Text>
+                   <Text className={`text-lg ${
+    theme === "dark" ? "text-white" : "text-black"} font-semibold`}>Owner Details</Text>
                  </HStack>
 
-        <Text className='text-xl font-bold mb-2'>
+        <Text className={`text-xl ${
+    theme === "dark" ? "text-white" : "text-black"}  font-bold mb-2`}>
           Owner name as in ID
         </Text>
-        <Text className='text-sm mb-6'>
+        <Text className={`text-sm ${
+    theme === "dark" ? "text-textgrey" : "text-black"}  mb-6`}>
           Onboarding is an essential step to activate my Datman account for accepting payments and receiving payouts.
         </Text>
 
         <VStack space="lg">
           <Box>
-            <Text className='text-sm mb-1'>Title</Text>
+            <Text className={`text-sm ${
+    theme === "dark" ? "text-white" : "text-black"}  mb-1`}>Title</Text>
             <Controller
               control={control}
               name="title"
               rules={{ required: 'Title is required' }}
               render={({ field: { onChange, value } }) => (
                 <Select selectedValue={value} onValueChange={onChange}>
-                  <SelectTrigger variant="underlined" className="min-h-[40px]">
-                    <SelectInput placeholder="Select title" />
+                  <SelectTrigger
+          variant="underlined"
+          className={`min-h-[40px] border-b ${
+            theme === "dark" ? "border-textgrey" : ""
+          }`}
+        >
+          <SelectInput
+            placeholder="Select title"
+            className={`text-sm ${
+              theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+            }`}
+          />
                     <SelectIcon>
                       <ChevronDownIcon />
                     </SelectIcon>
                   </SelectTrigger>
                   <SelectPortal>
                     <SelectBackdrop />
-                    <SelectContent className='bg-lightgrey'>
+                    <SelectContent className={` ${
+    theme === "dark" ? "bg-gray-600" : "bg-lightgrey"}`}>
                       <SelectItem label="Mr." value="Mr." />
                       <SelectItem label="Mrs." value="Mrs." />
                       <SelectItem label="Ms." value="Ms." />
@@ -129,7 +151,8 @@ const formatDateToDisplay = (date: Date) => {
           </Box>
 
           <Box>
-            <Text className='text-sm mb-1'>First name</Text>
+            <Text className={`text-sm ${
+    theme === "dark" ? "text-white" : "text-black"}  mb-1`}>First name</Text>
             <Controller
               control={control}
               name="firstName"
@@ -145,20 +168,31 @@ const formatDateToDisplay = (date: Date) => {
                 }
               }}
               render={({ field: { onChange, value } }) => (
-                <Input variant="underlined">
-                  <InputField
-                    value={value}
-                    onChangeText={onChange}
-                    placeholder="Enter first name"
-                  />
-                </Input>
+                <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  value={value}
+                  onChangeText={onChange}
+                  placeholder="Enter first name"
+                  className={`${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
               )}
             />
             {errors.firstName && <Text className='text-xs text-red'>{errors.firstName.message}</Text>}
           </Box>
 
           <Box>
-            <Text className='text-sm mb-1'>Last name</Text>
+            <Text className={`text-sm ${
+    theme === "dark" ? "text-white" : "text-black"}  mb-1`}>Last name</Text>
             <Controller
               control={control}
               name="lastName"
@@ -174,13 +208,23 @@ const formatDateToDisplay = (date: Date) => {
                 }
               }}
               render={({ field: { onChange, value } }) => (
-                <Input variant="underlined">
-                  <InputField
-                    value={value}
-                    onChangeText={onChange}
-                    placeholder="Enter last name"
-                  />
-                </Input>
+                <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  value={value}
+                  onChangeText={onChange}
+                  placeholder="Enter last name"
+                  className={`${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
               )}
             />
             {errors.lastName && <Text className='text-xs text-red'>{errors.lastName.message}</Text>}
@@ -240,7 +284,8 @@ const formatDateToDisplay = (date: Date) => {
       </>
     )}
   /> */}
-  <Text className="text-sm mb-1">Date of Birth</Text>
+  <Text className={`text-sm ${
+    theme === "dark" ? "text-white" : "text-black"}  mb-1`}>Date of Birth</Text>
 <Controller
   control={control}
   name="dob"
@@ -253,42 +298,69 @@ const formatDateToDisplay = (date: Date) => {
   }}
   render={({ field: { onChange, value }, fieldState: { error } }) => (
     <>
-      <Input variant="underlined">
+      <Input
+        variant="underlined"
+        className={`border-b ${
+          theme === 'dark' ? 'border-textgrey' : 'border-black'
+        }`}
+      >
         <InputField
           value={value}
           onChangeText={(text) => {
-            const formatted = formatDateWithSlashes(text);
+            const formatted = text
+              .replace(/\D/g, '')
+              .replace(/(\d{2})(\d{2})(\d{0,4})/, (_, d, m, y) => {
+                return [d, m, y].filter(Boolean).join('/');
+              });
             onChange(formatted);
           }}
           placeholder="DD/MM/YYYY"
-          maxLength={10}
-          keyboardType="numeric"
+          className={`${
+            theme === 'dark'
+              ? 'placeholder-textgrey text-white'
+              : 'placeholder-textgrey text-black'
+          }`}
         />
       </Input>
-      {error && <Text className="text-red text-xs mt-1">{error.message}</Text>}
+      {error && (
+        <Text className="text-red text-xs mt-1">{error.message}</Text>
+      )}
     </>
   )}
 />
 
+
 </Box>
 
           <Box>
-            <Text className='text-sm mb-1' >Nationality</Text>
+            <Text className={`text-sm ${
+    theme === "dark" ? "text-white" : "text-black"}  mb-1`} >Nationality</Text>
             <Controller
               control={control}
               name="nationality"
               rules={{ required: 'Nationality is required' }}
               render={({ field: { onChange, value } }) => (
                 <Select selectedValue={value} onValueChange={onChange}>
-                  <SelectTrigger variant="underlined" className="min-h-[40px]">
-                    <SelectInput placeholder="Select nationality" />
+                  <SelectTrigger
+          variant="underlined"
+          className={`min-h-[40px] border-b ${
+            theme === "dark" ? "border-textgrey" : ""
+          }`}
+        >
+          <SelectInput
+            placeholder="Select title"
+            className={`text-sm ${
+              theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+            }`}
+          />
                     <SelectIcon>
                       <ChevronDownIcon />
                     </SelectIcon>
                   </SelectTrigger>
                   <SelectPortal>
                     <SelectBackdrop />
-                    <SelectContent className='bg-lightgrey'>
+                    <SelectContent  className={` ${
+    theme === "dark" ? "bg-gray-600" : "bg-lightgrey"}`}>
                       <SelectItem label="British" value="British" />
                       <SelectItem label="Indian" value="Indian" />
                       <SelectItem label="American" value="American" />
@@ -304,19 +376,24 @@ const formatDateToDisplay = (date: Date) => {
 
         <HStack space="md" className='mt-8 justify-between' >
           <Button
-          className='flex-1 cursor-pointer rounded-full '
-            variant="outline"
-            onPress={() => navigation.goBack()}
+         className={`flex-1 mr-2 ${
+    theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+              onPress={() => navigation.goBack()}
           >
-            <Text className='font-medium'>Later</Text>
+            <Text className={`text-xs ${
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</Text>
           </Button>
           <Button
-            className='flex-1 cursor-pointer rounded-full bg-black '
-            onPress={handleSubmit(onSubmit)}
+             className={`flex-1 ml-2 ${
+    theme === "dark" ? "bg-green" : "bg-black"}  cursor-pointer rounded-full`}
+    onPress={handleSubmit(onSubmit)}
           >
-            <Text className='font-medium text-white'>Next</Text>
+            <Text className={`text-xs sm:text-sm ${
+    theme === "dark" ? "text-black" : "text-white"}`}>Next</Text>
           </Button>
         </HStack>
+       
+
       </ScrollView>
     </Box>
   );

@@ -40,6 +40,7 @@ import {
   VStack,
 } from '@/components/ui';
 import { Center, Divider, ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
 
 const TradingInfoScreen = () => {
   const [isSameAsRegistered, setIsSameAsRegistered] = useState(true);
@@ -98,16 +99,22 @@ const TradingInfoScreen = () => {
 
   const { postTradingDetails } = useTradingApi();
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 p-3 sm:p-5 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="pt-4 px-5">
         <HStack className="items-center mb-6">
                    <Pressable onPress={() => navigation.goBack()}>
-                     <Image
-                       source={require('../../assets/images/arrow_forward.png')}
-                       className='h-4 w-7'
-                       alt="back button"
-                     />
+                      <Image
+                         source={
+                           theme === 'dark'
+                             ? require('../../assets/images/white_arrow.png') 
+                             : require('../../assets/images/arrow_forward.png') 
+                         }
+                         alt="back button"
+                         className='h-4 w-7'
+                       />
                    </Pressable>
                    <Text className="text-md xs:text-base sm:text-md font-semibold">Trading Information</Text>
                  </HStack>

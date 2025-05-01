@@ -22,6 +22,7 @@ export const config = {
         '--color-dred': '212 72 53',
         '--color-dgreen': '25 159 101',
         '--color-dlightgreen': '28 44 27',
+        '--color-dgrey': '32 32 32',
         '--color-dcard': '14 59 78',
         '--color-dwhite': '255 255 255',
         '--color-dyellow': '220 159 55',

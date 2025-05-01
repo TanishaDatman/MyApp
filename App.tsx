@@ -37,6 +37,7 @@ import DocumentsBank from "./app/screens/DocumentsBank";
 import CongoScreen from "./app/screens/CongoScreen";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
+import { ThemeProvider, useThemeToggle } from "./ThemeContext";
 
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE_V1";
@@ -57,6 +58,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
+          <ThemeProvider>
       <StyledProvider config={config}>
         <GluestackUIProvider mode="light">
           <Provider store={store}>
@@ -68,6 +70,7 @@ export default function App() {
           </Provider>
         </GluestackUIProvider>
       </StyledProvider>
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }
@@ -122,8 +125,10 @@ function AppContent() {
     loadNavigationState();
   }, []);
 
-  if (!isReady) return null; // Or return a splash/loading component
+  if (!isReady) return null; // Or return a loading component
 
+  const { theme } = useThemeToggle(); 
+  const isLight = theme === "light";
 
   return (
     <>
@@ -131,12 +136,12 @@ function AppContent() {
         translucent={true}
         animated={true}
         hidden={false}
-        backgroundColor={colorMode === "light" ? "#FFFFFF" : "#151515"}
-        barStyle={colorMode === "light" ? "dark-content" : "light-content"}
+        backgroundColor={isLight ? "#FFFFFF" : "#151515"}
+        barStyle={isLight ? "dark-content" : "light-content"}
       />
       <SafeAreaView
         className={`${
-          colorMode === "light" ? "bg-[#ffffff]" : "bg-[#151515]"
+          isLight ? "bg-[#ffffff]" : "bg-[#151515]"
         } flex-1`}
       >
         <NavigationContainer
@@ -176,8 +181,10 @@ function AppContent() {
               tabBarInactiveTintColor: "#848484",
               headerShown: false,
               tabBarStyle: {
+                backgroundColor: isLight ? "#ffffff" : "#000000", 
                 paddingBottom: 4,
                 height: 60,
+                borderTopColor: isLight ? "#e0e0e0" : "#333333",
               },
             })}
           >
@@ -187,18 +194,9 @@ function AppContent() {
 
           </Tab.Navigator>
         </NavigationContainer>
-        {/* <Tab.Screen name="Home" component={HomeStack} /> */}
             
       </SafeAreaView>
-      {/* 
-      
-       
-        
-            <Tab.Screen name="Home" component={HomeStack} />
-            <Tab.Screen name="Transactions" component={TransactionsScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-
-      </SafeAreaView> */}
+    
     </>
   );
 }

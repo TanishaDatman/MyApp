@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBankDetails } from '../store/features/bank/bankSlice';
 import { Box, Button, ButtonText, HStack, Image, Input, InputField, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
 
 const BankDetailsSchema = z
   .object({
@@ -54,6 +55,8 @@ const BankDetailsScreen = () => {
     console.log('Bank State:', bankState);
   }, [bankState]);
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 p-3 md:p-5 bg-white">
       <ScrollView
@@ -65,10 +68,14 @@ const BankDetailsScreen = () => {
           <HStack className="items-center mb-6">
                      <Pressable onPress={() => navigation.goBack()}>
                        <Image
-                         source={require('../../assets/images/arrow_forward.png')}
-                         className='h-4 w-7'
-                         alt="back button"
-                       />
+                          source={
+                            theme === 'dark'
+                              ? require('../../assets/images/white_arrow.png') 
+                              : require('../../assets/images/arrow_forward.png') 
+                          }
+                          alt="back button"
+                          className='h-4 w-7'
+                        />
                      </Pressable>
                      <Text className="text-md xs:text-base sm:text-md font-semibold">Bank Details</Text>
                    </HStack>

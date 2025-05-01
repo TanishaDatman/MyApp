@@ -12,6 +12,7 @@ import { VStack } from '@/components/ui/vstack';
 import { Input, InputField } from '@/components/ui/input';
 import { Select, SelectIcon } from '@/components/ui/select';
 import { Button, ButtonText } from '@/components/ui/button';
+import { useThemeToggle } from '@/ThemeContext';
 
 export default function AddressBusiness() {
   const navigation: any = useNavigation();
@@ -76,15 +77,21 @@ export default function AddressBusiness() {
     navigation.navigate('DocumentsBusiness');
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 px-4 pt-3rounded-t-3xl">
       <HStack className="items-center mt-5 mb-6">
         <Pressable onPress={() => navigation.goBack()}>
           <Image
-            source={require('../../assets/images/arrow_forward.png')}
-            className="w-5 h-5 mr-2"
-            alt="back button"
-          />
+             source={
+               theme === 'dark'
+                 ? require('../../assets/images/white_arrow.png') 
+                 : require('../../assets/images/arrow_forward.png') 
+             }
+             alt="back button"
+             className='h-4 w-7'
+           />
         </Pressable>
         <Text className="text-base sm:text-md font-semibold">Business Address</Text>
       </HStack>

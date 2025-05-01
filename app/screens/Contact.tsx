@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { config } from '@gluestack-ui/config';
 import { Box, Button, ButtonText, GluestackUIProvider, HStack, Image, Input, InputField, Pressable, Text, VStack } from '@/components/ui';
+import { useThemeToggle } from '@/ThemeContext';
 
 // Define Zod schema for validation
 const contactSchema = z.object({
@@ -67,17 +68,23 @@ const Contact = () => {
     navigation.navigate('Address');
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <GluestackUIProvider>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Box className='flex-1 p-4'>
           <HStack className="items-center mt-2 mb-6">
                      <Pressable onPress={() => navigation.goBack()}>
-                       <Image
-                         source={require('../../assets/images/arrow_forward.png')}
-                         className='h-4 w-7'
-                         alt="back button"
-                       />
+                        <Image
+                           source={
+                             theme === 'dark'
+                               ? require('../../assets/images/white_arrow.png') 
+                               : require('../../assets/images/arrow_forward.png') 
+                           }
+                           alt="back button"
+                           className='h-4 w-7'
+                         />
                      </Pressable>
                      <Text className="text-lg font-semibold">Owner Details</Text>
                    </HStack>

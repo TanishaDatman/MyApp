@@ -6,33 +6,9 @@ import { setwhatbusiness } from '../store/features/business/businessSlice';
 import { Box, Button, HStack, Icon, Image, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useThemeToggle } from '@/ThemeContext';
+import { businessOptions } from '../utils/constants';
 
-const businessOptions = [
-  {
-    id: 'sole_trader',
-    icon: require('../../assets/images/location_away.png'),
-    label: 'Sole Trader',
-    description: 'A self-employed individual running a business.',
-  },
-  {
-    id: 'limited_llp',
-    icon: require('../../assets/images/storefront.png'),
-    label: 'Limited/LLP',
-    description: 'A registered company with limited liability protection.',
-  },
-  {
-    id: 'partnership',
-    label: 'Partnership',
-    description: 'A business owned and operated by two or more individuals.',
-    icon: require('../../assets/images/handshake.png'),
-  },
-  {
-    id: 'others',
-    label: 'Others',
-    description: 'Any business type that doesn’t fall into the above categories.',
-    icon: require('../../assets/images/domain.png'),
-  },
-];
 
 const BusinessDetailsScreen = () => {
   const [selected, setSelected] = useState<string>('limited_llp');
@@ -44,6 +20,8 @@ const BusinessDetailsScreen = () => {
     navigation.navigate("Organization");
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <VStack className="flex-1 px-4 py-6">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -51,10 +29,14 @@ const BusinessDetailsScreen = () => {
         <HStack className="items-center mb-6">
                    <Pressable onPress={() => navigation.goBack()}>
                      <Image
-                       source={require('../../assets/images/arrow_forward.png')}
-                       className='h-4 w-7'
-                       alt="back button"
-                     />
+                        source={
+                          theme === 'dark'
+                            ? require('../../assets/images/white_arrow.png') 
+                            : require('../../assets/images/arrow_forward.png') 
+                        }
+                        alt="back button"
+                        className='h-4 w-7'
+                      />
                    </Pressable>
                    <Text className="text-md xs:text-base sm:text-md font-semibold">Business Details</Text>
                  </HStack>

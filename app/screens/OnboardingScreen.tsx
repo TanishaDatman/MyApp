@@ -13,25 +13,35 @@ import {
   Pressable
 } from '@/components/ui';
 import { config } from '@gluestack-ui/config';
+import { useThemeToggle } from '@/ThemeContext';
 
 const OnboardingScreen = () => {
   const navigation: any = useNavigation();
 
+  const {theme}=useThemeToggle()
+
   return (
     <GluestackUIProvider>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Box className="flex-1 p-6 pt-7 bg-white">
+        <Box className={`flex-1 ${
+    theme === "dark" ? "bg-black" : "bg-white"
+  } p-6 pt-7`}>
 
           {/* Header */}
           <HStack className="items-center mb-4 sm:mb-6">
             <Pressable onPress={() => navigation.goBack()}>
-              <Image
-                source={require('../../assets/images/arrow_forward.png')}
-                className='h-4 w-7'
-                alt="back button"
-              />
+            <Image
+    source={
+      theme === 'dark'
+        ? require('../../assets/images/white_arrow.png') 
+        : require('../../assets/images/arrow_forward.png') 
+    }
+    alt="back button"
+    className='h-4 w-7'
+  />
             </Pressable>
-            <Text className="text-md xs:text-base sm:text-md font-semibold">Onboarding</Text>
+            <Text className={`text-md xs:text-base sm:text-md ${
+    theme === "dark" ? "text-white" : "text-black"} font-semibold`}>Onboarding</Text>
           </HStack>
 
           {/* Image */}
@@ -44,13 +54,15 @@ const OnboardingScreen = () => {
           </Box>
 
           {/* Onboarding Description */}
-          <Text className="text-md sm:text-lg font-bold mb-2">Onboarding</Text>
+          <Text className={`text-md sm:text-lg ${
+    theme === "dark" ? "text-white" : "text-black"} font-bold mb-2`}>Onboarding</Text>
           <Text className="text-sm sm:text-base text-textgrey mb-4">
             Onboarding is an essential step to activate my Datman account for accepting payments and receiving payouts.
           </Text>
 
           {/* Required Details */}
-          <Text className="text-md sm:text-lg xl:text-xl font-semibold mb-2">What details are required?</Text>
+          <Text className={`text-md ${
+    theme === "dark" ? "text-white" : "text-black"} sm:text-lg xl:text-xl font-semibold mb-2`}>What details are required?</Text>
           <Text className="text-sm sm:text-base text-textgrey mb-4">
             To complete the onboarding process, I need to follow the steps below:
           </Text>
@@ -66,7 +78,8 @@ const OnboardingScreen = () => {
               'Review before I submit',
             ].map((step, idx) => (
               <HStack key={idx} className="items-start">
-                <Text className="text-sm text-black">• {step}</Text>
+                <Text className={`text-sm ${
+    theme === "dark" ? "text-white" : "text-black"} `}>• {step}</Text>
               </HStack>
             ))}
           </VStack>
@@ -75,17 +88,21 @@ const OnboardingScreen = () => {
           <HStack space="md" className="justify-between">
             <Button
               variant="outline"
-              className="flex-1 mr-2 border-2 cursor-pointer border-gray-300 rounded-full"
+              className={`flex-1 mr-2 ${
+    theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
               onPress={() => navigation.goBack()}
             >
-              <ButtonText className="text-xs sm:text-sm ">I’ll do this later</ButtonText>
+              <ButtonText className={`text-xs ${
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>I’ll do this later</ButtonText>
             </Button>
 
             <Button
-              className="flex-1 ml-2 cursor-pointer bg-black rounded-full"
+              className={`flex-1 ml-2 ${
+    theme === "dark" ? "bg-green" : "bg-black"}  cursor-pointer rounded-full`}
               onPress={() => navigation.navigate('Details')}
             >
-              <ButtonText className="text-xs sm:text-sm text-white">Continue</ButtonText>
+              <ButtonText className={`text-xs sm:text-sm ${
+    theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
             </Button>
           </HStack>
 

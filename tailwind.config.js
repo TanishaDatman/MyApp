@@ -40,6 +40,7 @@ module.exports = {
 
             // Dark theme colors
             dred: 'rgb(var(--color-dred) / <alpha-value>)',
+            dgrey: 'rgb(var(--color-dgrey) / <alpha-value>)',
             dgreen: 'rgb(var(--color-dgreen) / <alpha-value>)',
             dlightgreen: 'rgb(var(--color-dlightgreen) / <alpha-value>)',
             dcard: 'rgb(var(--color-dcard) / <alpha-value>)',

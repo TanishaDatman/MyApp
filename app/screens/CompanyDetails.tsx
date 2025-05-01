@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setCompanyDetails } from '../store/features/business/businessSlice';
 import { Box, Button, ButtonText, HStack, Image, Input, InputField, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
 
 const companySchema = z.object({
   companyNumber: z
@@ -46,6 +47,8 @@ const CompanyDetails = () => {
     navigation.navigate('ContactBusiness');
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 p-3 sm:p-4 md:p-5 pt-4 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="px-4">
@@ -53,10 +56,14 @@ const CompanyDetails = () => {
                  <HStack className="items-center mb-6">
                    <Pressable onPress={() => navigation.goBack()}>
                      <Image
-                       source={require('../../assets/images/arrow_forward.png')}
-                       className='h-4 w-7'
-                       alt="back button"
-                     />
+                        source={
+                          theme === 'dark'
+                            ? require('../../assets/images/white_arrow.png') 
+                            : require('../../assets/images/arrow_forward.png') 
+                        }
+                        alt="back button"
+                        className='h-4 w-7'
+                      />
                    </Pressable>
                    <Text className="text-md xs:text-base sm:text-md font-semibold">Business Details</Text>
                  </HStack>

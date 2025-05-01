@@ -6,39 +6,11 @@ import { useCompanyApi } from '../hooks/useCompanyApi';
 import { useTradingApi } from '../hooks/useTradingApi';
 import { useBankApi } from '../hooks/useBankApi';
 import {ownerId,companyId,tradeID,bankID} from '../data'
-import { Badge, BadgeText, Box, Button, HStack, Pressable, Text, VStack } from '@/components/ui';
+import { Badge, BadgeText, Box, Button, ButtonText, HStack, Pressable, Text, VStack } from '@/components/ui';
 import { Progress, ProgressFilledTrack, ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
+import { onboardingData } from '../utils/constants';
 
-const onboardingData = [
-  {
-    icon: require('../../assets/images/account_box.png'),
-    title: 'Owner details',
-    description: 'Includes name, address, contact, and identity proof.',
-    route: 'OwnerDetails',
-    key: 'owner', 
-  },
-  {
-    icon: require('../../assets/images/cases.png'),
-    title: 'Business details',
-    description: 'Includes business type, contact, address, proof of business, etc.',
-    route: 'BusinessDetails',
-    key: 'business',
-  },
-  {
-    icon: require('../../assets/images/store.png'),
-    title: 'Trading information',
-    description: 'Includes trading name, address, and related details.',
-    route: 'TradingInfo',
-    key: 'trading',
-  },
-  {
-    icon: require('../../assets/images/account_balance.png'),
-    title: 'Bank details',
-    description: 'Includes account number, bank name, and related information.',
-    route: 'BankDetails',
-    key: 'bank',
-  },
-];
 
 export default function DetailsScreen() {
   const navigation: any = useNavigation();
@@ -162,6 +134,7 @@ export default function DetailsScreen() {
     return 'lightyellow';
   };
 
+  const {theme}=useThemeToggle()
 
   return (
     <>
@@ -171,16 +144,22 @@ export default function DetailsScreen() {
         {/* Back button and title */}
         <HStack className="items-center mb-6">
             <Pressable onPress={() => navigation.goBack()}>
-              <Image
-                source={require('../../assets/images/arrow_forward.png')}
-                className='h-4 w-7'
-                alt="back button"
-              />
+            <Image
+    source={
+      theme === 'dark'
+        ? require('../../assets/images/white_arrow.png') 
+        : require('../../assets/images/arrow_forward.png') 
+    }
+    alt="back button"
+    className='h-4 w-7'
+  />
             </Pressable>
-            <Text className="text-md xs:text-base sm:text-md font-semibold">Onboarding</Text>
+            <Text className={`text-md ${
+    theme === "dark" ? "text-white" : "text-black"} xs:text-base sm:text-md font-semibold`}>Onboarding</Text>
           </HStack>
 
-        <Text className="text-lg sm:text-xl font-bold mb-2">
+        <Text className={`text-lg sm:text-xl ${
+    theme === "dark" ? "text-white" : "text-black"} font-bold mb-2`}>
           Complete Onboarding
         </Text>
         <Text className="text-sm sm:text-base text-textgrey mb-4">
@@ -229,12 +208,15 @@ export default function DetailsScreen() {
             }}
           >
             <Box
-            className='rounded-xl mb-4 border border-lightgrey cursor-pointer p-2 bg-white'
+            className={`rounded-xl mb-4 border ${
+    theme === "dark" ? "bg-dtextgrey" : "bg-white"} cursor-pointer p-2 `}
             >
               <HStack className='justify-start' space="md">
-                <Image source={item.icon} className='object-contain' />
+                <Image source={item.icon} className={`object-contain ${
+    theme === "dark" ? "text-white" : "text-black"} `} />
                 <VStack className='flex-1'>
-                  <Text className='text-md font-semibold mb-1'>
+                  <Text className={`text-md ${
+    theme === "dark" ? "text-white" : "text-black"} font-semibold mb-1`}>
                     {item.title}
                   </Text>
                   {/* className="text-sm sm:text-base text-textgrey mb-4" */}
@@ -256,22 +238,27 @@ export default function DetailsScreen() {
       })}
         </VStack>
 
-        <HStack className='mt-6 mb-4 justify-between' space="md">
-    <Button
-    className='flex-1 rounded-full'
-      variant="outline"
-      onPress={() => navigation.goBack()}
-    >
-      <Text className='text-md font-medium'>Later</Text>
-    </Button>
-    <Button
-    className='flex-1 rounded-full'
-      variant="outline"
-      onPress={() => console.log('Next')}
-    >
-      <Text className='text-md font-medium'>Next</Text>
-    </Button>
-  </HStack>
+        <HStack space="md" className="justify-between mb-4">
+            <Button
+              variant="outline"
+              className={`flex-1 mr-2 ${
+    theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+              onPress={() => navigation.goBack()}
+            >
+              <ButtonText className={`text-xs ${
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>I’ll do this later</ButtonText>
+            </Button>
+
+            <Button
+              className={`flex-1 ml-2 ${
+    theme === "dark" ? "bg-green" : "bg-black"}  cursor-pointer rounded-full`}
+              onPress={() => console.log("Next")}
+            >
+              <ButtonText className={`text-xs sm:text-sm ${
+    theme === "dark" ? "text-black" : "text-white"}`}>Next</ButtonText>
+            </Button>
+          </HStack>
+
 
       </ScrollView>
 

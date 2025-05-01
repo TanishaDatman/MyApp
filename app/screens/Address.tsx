@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAddressDetails } from '../store/features/owner/ownerSlice';
 
 import { Box, Button, HStack, Image, Input, InputField, Pressable, Select, SelectBackdrop, SelectContent, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger, Text, VStack } from '@/components/ui';
+import { useThemeToggle } from '@/ThemeContext';
 
 export default function Address() {
   const navigation:any = useNavigation();
@@ -58,6 +59,8 @@ export default function Address() {
     navigation.navigate('Documents');
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 px-4 pt-6 rounded-t-3xl">
       {/* <ScrollView showsVerticalScrollIndicator={false}> */}
@@ -65,10 +68,14 @@ export default function Address() {
         <HStack className="items-center mb-6">
                    <Pressable onPress={() => navigation.goBack()}>
                      <Image
-                       source={require('../../assets/images/arrow_forward.png')}
-                       className='h-4 w-7'
-                       alt="back button"
-                     /> 
+                        source={
+                          theme === 'dark'
+                            ? require('../../assets/images/white_arrow.png') 
+                            : require('../../assets/images/arrow_forward.png') 
+                        }
+                        alt="back button"
+                        className='h-4 w-7'
+                      />
                    </Pressable>
                    <Text className="text-lg font-semibold">Owner Address</Text>
                  </HStack>

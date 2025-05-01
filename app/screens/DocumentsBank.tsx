@@ -6,6 +6,7 @@ import { setBankDocument } from '../store/features/bank/bankSlice';
 import { useBankApi } from '../hooks/useBankApi'; // adjust path if needed
 import { Box, Button, ButtonText, HStack, Image, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
 
 export default function DocumentsBank() {
   const navigation: any = useNavigation();
@@ -63,6 +64,8 @@ const [statement, setStatement]: any = useState(null);
     }
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 md:p-8 px-5 pt-7">
       <Box className="flex-1">
@@ -70,10 +73,14 @@ const [statement, setStatement]: any = useState(null);
           <HStack className="items-center mb-6">
                      <Pressable onPress={() => navigation.goBack()}>
                        <Image
-                         source={require('../../assets/images/arrow_forward.png')}
-                         className='h-4 w-7'
-                         alt="back button"
-                       />
+                          source={
+                            theme === 'dark'
+                              ? require('../../assets/images/white_arrow.png') 
+                              : require('../../assets/images/arrow_forward.png') 
+                          }
+                          alt="back button"
+                          className='h-4 w-7'
+                        />
                      </Pressable>
                      <Text className="text-lg font-semibold">Upload Documents</Text>
                    </HStack>

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useCompanyApi } from '../hooks/useCompanyApi';
 import { Box, Button, ButtonText, HStack, Image, Modal, ModalBackdrop, ModalBody, ModalContent, ModalFooter, Pressable, Text, VStack } from '@/components/ui';
 import { Center, ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
 
 export default function ReviewBusiness() {
   const navigation: any = useNavigation();
@@ -47,17 +48,23 @@ export default function ReviewBusiness() {
     navigation.navigate('Details');
   };
 
+  const {theme}=useThemeToggle()
+
   return (
     <Box className="flex-1 p-3 sm:p-5 pt-10">
       <ScrollView className="px-4">
         {/* Header */}
        <HStack className="items-center mb-4 sm:mb-6">
                           <Pressable onPress={() => navigation.goBack()}>
-                            <Image
-                              source={require('../../assets/images/arrow_forward.png')}
-                              className='h-4 w-7'
-                              alt="back button"
-                            />
+                             <Image
+                                source={
+                                  theme === 'dark'
+                                    ? require('../../assets/images/white_arrow.png') 
+                                    : require('../../assets/images/arrow_forward.png') 
+                                }
+                                alt="back button"
+                                className='h-4 w-7'
+                              />
                           </Pressable>
                           <Text className="text-md xs:text-base sm:text-md font-semibold">Review Business</Text>
                         </HStack>

@@ -6,6 +6,7 @@ import { setDocument } from '../store/features/owner/ownerSlice';
 import { useOwnerApi } from '../hooks/useOwnerApi';
 import { Badge, BadgeText, Box, Button, ButtonText, HStack, Image, Modal, ModalBackdrop, ModalBody, ModalContent, ModalFooter, ModalHeader, Pressable, Text, VStack } from '@/components/ui';
 import { Center, ScrollView } from '@gluestack-ui/themed';
+import { useThemeToggle } from '@/ThemeContext';
 
 export default function DocumentsUpload() {
   const navigation: any = useNavigation();
@@ -63,12 +64,14 @@ console.log("selected file",selectedFile);
     try {
       console.log('Business detail===========>',details);
       await postOwnerDetails(details);
-      
+
       console.log('Business detail submitted without document',details);
     } catch (err) {
       console.error(err);
     }
   };
+
+  const {theme}=useThemeToggle()
 
   return (
     <Box className='flex-1 p-4 mt-5'>
@@ -76,11 +79,15 @@ console.log("selected file",selectedFile);
         <ScrollView showsVerticalScrollIndicator={false}>
          <HStack className="items-center mb-6">
                           <Pressable onPress={() => navigation.goBack()}>
-                            <Image
-                              source={require('../../assets/images/arrow_forward.png')}
-                              className='h-4 w-7'
-                              alt="back button"
-                            />
+                             <Image
+                                source={
+                                  theme === 'dark'
+                                    ? require('../../assets/images/white_arrow.png') 
+                                    : require('../../assets/images/arrow_forward.png') 
+                                }
+                                alt="back button"
+                                className='h-4 w-7'
+                              />
                           </Pressable>
                           <Text className="text-lg font-semibold">Upload Documents</Text>
                         </HStack>
