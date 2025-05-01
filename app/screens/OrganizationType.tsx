@@ -104,6 +104,7 @@ import { setBusinessType } from "../store/features/business/businessSlice";
 import { useDispatch } from 'react-redux';
 import { Box, Button, HStack, Image, Pressable, Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel, Text, VStack } from '@/components/ui';
 import { CircleIcon } from 'lucide-react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const organisationOptions = [
   { value: 'association', label: 'Association Incorporated' },
@@ -124,9 +125,9 @@ const OrganisationType = () => {
   };
 
   return (
-    <Box className="flex-1 px-4 py-6 bg-white">
+    <Box className="flex-1 p-3 md:p-5 mt-2 bg-white">
       <VStack className="space-y-6">
-                 <HStack className="items-center mb-6">
+                 <HStack className="items-center mb-6 md:mb-4">
                    <Pressable onPress={() => navigation.goBack()}>
                      <Image
                        source={require('../../assets/images/arrow_forward.png')}
@@ -134,10 +135,10 @@ const OrganisationType = () => {
                        alt="back button"
                      />
                    </Pressable>
-                   <Text className="text-lg font-semibold">Business Details</Text>
+                   <Text className="text-md xs:text-base sm:text-md font-semibold">Business Details</Text>
                  </HStack>
 
-        <Text className="text-xl font-bold mt-2">Choose your organisation type</Text>
+        <Text className="text-md sm:text-lg font-bold ">Choose your organisation type</Text>
 
         <Text className="text-sm text-gray-500">
           This helps us determine the documents required to activate your account.
@@ -153,17 +154,23 @@ const OrganisationType = () => {
       key={option.value}
       value={option.value}
       aria-label={option.label}
-      className="flex-row items-start p-2"
+      className="flex-row items-center p-1"
     >
-      <RadioIndicator
-        className={`mr-2 w-5 h-5 rounded-full border-2 ${
-          selectedValue === option.value ? 'border-green-600 bg-green-600' : 'border-gray-400 bg-white'
-        }`}
+      <MaterialIcons
+        name={
+          selectedValue === option.value
+            ? 'radio-button-checked'
+            : 'radio-button-unchecked'
+        }
+        size={22}
+        color={selectedValue === option.value ? '#16a34a' : '#9ca3af'} // green-600 or gray-400
+        style={{ marginRight: 8 }}
       />
-      <RadioLabel className="text-base">{option.label}</RadioLabel>
+      <RadioLabel className="text-[14px] sm:text-base ">{option.label}</RadioLabel>
     </Radio>
   ))}
 </RadioGroup>
+
 
       </VStack>
 

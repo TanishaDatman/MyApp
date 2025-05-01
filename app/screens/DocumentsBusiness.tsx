@@ -163,7 +163,8 @@ export default function DocumentsBusiness() {
       {/* Review Modal */}
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <ModalBackdrop />
-        <ModalContent className="rounded-2xl bg-white">
+        <ModalContent   className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
+        >
           <ModalHeader>
             <Text className="text-lg font-semibold">
               Review your details <Text className="font-medium">(Optional)</Text>
@@ -190,7 +191,7 @@ export default function DocumentsBusiness() {
               </Button>
 
               <Button
-                className="rounded-full flex-1 bg-black"
+                className="rounded-full flex-1 ml-2 bg-black"
                 onPress={async () => {
                   setShowModal(false);
                   setModal(true);
@@ -207,7 +208,8 @@ export default function DocumentsBusiness() {
       {/* Success Modal */}
       <Modal isOpen={modal} onClose={() => setModal(false)}>
         <ModalBackdrop />
-        <ModalContent className="rounded-2xl bg-white">
+        <ModalContent        className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
+        >
           <ModalBody className="mt-6">
             <Center className="mb-4">
               <Image

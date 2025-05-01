@@ -7,6 +7,8 @@ import {
   setTradingAddress,
 } from '../store/features/trading/tradingSlice';
 import { useTradingApi } from '../hooks/useTradingApi';
+import { MaterialIcons } from '@expo/vector-icons';
+
 import {
   Box,
   Button,
@@ -14,7 +16,9 @@ import {
   Checkbox,
   CheckboxIndicator,
   CheckboxLabel,
+  CheckIcon,
   HStack,
+  Icon,
   Image,
   Input,
   InputField,
@@ -95,8 +99,8 @@ const TradingInfoScreen = () => {
   const { postTradingDetails } = useTradingApi();
 
   return (
-    <Box className="flex-1 bg-white">
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="pt-7 px-5">
+    <Box className="flex-1 p-3 sm:p-5 bg-white">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="pt-4 px-5">
         <HStack className="items-center mb-6">
                    <Pressable onPress={() => navigation.goBack()}>
                      <Image
@@ -105,17 +109,17 @@ const TradingInfoScreen = () => {
                        alt="back button"
                      />
                    </Pressable>
-                   <Text className="text-lg font-semibold">Trading Information</Text>
+                   <Text className="text-md xs:text-base sm:text-md font-semibold">Trading Information</Text>
                  </HStack>
 
-        <Text className="text-xl font-bold mb-2">Trading Information</Text>
+        <Text className="text-md sm:text-lg font-bold ">Trading Information</Text>
 
         <Text className="text-gray-500 text-sm mb-6">
           Provide us with the trading details of your business or select same as registered address if that applies.
         </Text>
 
         <VStack className="space-y-4 mb-6">
-          <Text className="text-lg font-semibold">Trading name</Text>
+          <Text className="text-sm md:text-md font-semibold ">Trading name</Text>
           <Input variant="underlined">
             <InputField
               placeholder="Enter trading name"
@@ -138,8 +142,10 @@ const TradingInfoScreen = () => {
             aria-label="Same as registered address"
           >
             <CheckboxIndicator className="mr-2">
-              {/* You can add a check icon here if needed */}
-            </CheckboxIndicator>
+            {isSameAsRegistered && (
+    <MaterialIcons name="check" size={16} className='text-white bg-black p-1' />
+  )}
+                        </CheckboxIndicator>
             <CheckboxLabel>Same as registered address</CheckboxLabel>
           </Checkbox>
         </VStack>
@@ -214,7 +220,17 @@ const TradingInfoScreen = () => {
               {/* <Text className="text-sm">Country</Text> */}
             <Box className="pb-2">
                       <Select selectedValue={country} onValueChange={(value) => setCountry(value)}>
-                        <SelectTrigger className="border-b border-gray-300 px-0 min-h-[40px]">
+                        <SelectTrigger
+                              className="border-0 border-b-[1px] border-gray-300 rounded-none px-0 min-h-[40px] bg-transparent"
+                              style={{
+                                borderTopWidth: 0,
+                                borderLeftWidth: 0,
+                                borderRightWidth: 0,
+                                borderBottomWidth: 1,
+                                borderColor: '#D1D5DB', // same as Tailwind's gray-300
+                                borderRadius: 0,
+                              }}
+                            >
                           <SelectInput placeholder="Country" />
                           <SelectIcon />
                         </SelectTrigger>
@@ -255,7 +271,8 @@ const TradingInfoScreen = () => {
 
       <Modal isOpen={modal} onClose={() => setModal(false)}>
         <ModalBackdrop />
-        <ModalContent className="rounded-t-2xl bg-white items-center">
+        <ModalContent         className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
+        >
           <ModalBody className="mt-6">
             <Center className="mb-4">
               <Image

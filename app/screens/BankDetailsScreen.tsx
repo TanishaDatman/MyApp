@@ -55,7 +55,7 @@ const BankDetailsScreen = () => {
   }, [bankState]);
 
   return (
-    <Box className="flex-1 xs:p-3 sm:p-8 md:p-8 bg-white">
+    <Box className="flex-1 p-3 md:p-5 bg-white">
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
@@ -70,13 +70,13 @@ const BankDetailsScreen = () => {
                          alt="back button"
                        />
                      </Pressable>
-                     <Text className="text-lg font-semibold">Bank Details</Text>
+                     <Text className="text-md xs:text-base sm:text-md font-semibold">Bank Details</Text>
                    </HStack>
 
-          <Text className="text-xl md:text-2xl font-semibold mb-1 text-gray-800">
+          <Text className="text-md sm:text-lg font-bold mb-2">
             Set up your payout(bank) account
           </Text>
-          <Text className="text-sm md:text-md text-textgrey">
+          <Text className="text-sm sm:text-base text-textgrey mb-4">
             We need your bank details to ensure payouts are sent securely and on time. Providing this information helps avoid delays in receiving payments.
           </Text>
         </VStack>
@@ -89,7 +89,7 @@ const BankDetailsScreen = () => {
               name="accountHolderName"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider md:mb-0 mb-2'>
+                  <Input variant="underlined" className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
                     <InputField
                       placeholder="Enter account holder name"
                       value={value}
@@ -115,7 +115,7 @@ const BankDetailsScreen = () => {
               name="sortCode"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider mb-2'>
+                  <Input variant="underlined"  className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
                     <InputField
                       placeholder="Bank sort code"
                       value={value}
@@ -140,7 +140,7 @@ const BankDetailsScreen = () => {
               name="accountNumber"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider mb-2'>
+                  <Input variant="underlined"  className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
                     <InputField
                       placeholder="Account Number"
                       value={value}
@@ -165,7 +165,7 @@ const BankDetailsScreen = () => {
               name="confirmAccountNumber"
               render={({ field: { onChange, value } }) => (
                 <>
-                  <Input variant="underlined" className='text-lightgrey md:text-md md:text-textgrey border-b border-divider'>
+                  <Input variant="underlined"  className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
                     <InputField
                       placeholder="Confirm Account Number"
                       value={value}

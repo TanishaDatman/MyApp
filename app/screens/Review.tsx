@@ -41,7 +41,7 @@ export default function Review() {
   };
 
   return (
-    <Box className="flex-1 pt-10">
+    <Box className="flex-1 p-3 pt-10">
       <ScrollView className="px-4">
         {/* Header */}
         <HStack className="items-center mb-4 sm:mb-6">
@@ -56,7 +56,7 @@ export default function Review() {
                  </HStack>
 
         {/* Title */}
-        <Text className="text-2xl font-bold mb-1" >
+        <Text className="text-lg sm:text-xl font-bold mb-2" >
           Review
         </Text>
         <Text className="text-sm text-gray-500 mb-5">
@@ -134,9 +134,7 @@ export default function Review() {
 
         {/* Confirm Button */}
         <Button
-          // bg="$black"
-          // borderRadius="$full"
-          // size="lg"
+         
           className="bg-black rounded-full"
           onPress={handleConfirm}
         >
@@ -152,7 +150,7 @@ export default function Review() {
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <ModalBackdrop />
         <ModalContent
-        className="bg-white rounded-2xl"
+        className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
           // borderTopLeftRadius="$2xl"
           // borderTopRightRadius="$2xl"
           // alignItems="center"

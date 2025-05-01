@@ -48,7 +48,7 @@ export default function ReviewBusiness() {
   };
 
   return (
-    <Box className="flex-1 pt-10">
+    <Box className="flex-1 p-3 sm:p-5 pt-10">
       <ScrollView className="px-4">
         {/* Header */}
        <HStack className="items-center mb-4 sm:mb-6">
@@ -63,7 +63,7 @@ export default function ReviewBusiness() {
                         </HStack>
 
         {/* Title */}
-        <Text className="text-2xl font-bold mb-1">Review</Text>
+        <Text className="text-lg sm:text-xl font-bold mb-2">Review</Text>
         <Text className="text-sm text-gray-500 mb-5">
           Time to review before you submit this onboarding form.
         </Text>
@@ -110,9 +110,15 @@ export default function ReviewBusiness() {
         </Box>
 
         {/* Confirm Button */}
-        <Button className="bg-black rounded-full w-full py-3" onPress={handleConfirm}>
-          <ButtonText className="text-white font-semibold">Confirm</ButtonText>
-        </Button>
+        <Button
+                
+                 className="bg-black rounded-full"
+                 onPress={handleConfirm}
+               >
+                 <ButtonText className="font-semibold text-white ">
+                   Confirm
+                 </ButtonText>
+               </Button>
 
         <Box className="h-10" />
       </ScrollView>
@@ -120,7 +126,8 @@ export default function ReviewBusiness() {
       {/* Modal */}
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <ModalBackdrop />
-        <ModalContent className="rounded-t-2xl bg-white items-center">
+        <ModalContent         className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
+        >
           <ModalBody className="mt-6">
             <Center className="mb-4">
               <Image source={require('../../assets/images/tick.png')} alt="Tick" className="h-[90px] w-[110px]" />

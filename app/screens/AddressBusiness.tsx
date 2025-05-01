@@ -77,8 +77,8 @@ export default function AddressBusiness() {
   };
 
   return (
-    <Box className="flex-1 px-4 pt-6 rounded-t-3xl">
-      <HStack className="items-center mt-3 mb-6">
+    <Box className="flex-1 px-4 pt-3rounded-t-3xl">
+      <HStack className="items-center mt-5 mb-6">
         <Pressable onPress={() => navigation.goBack()}>
           <Image
             source={require('../../assets/images/arrow_forward.png')}
@@ -86,10 +86,10 @@ export default function AddressBusiness() {
             alt="back button"
           />
         </Pressable>
-        <Text className="text-lg font-medium">Business Address</Text>
+        <Text className="text-base sm:text-md font-semibold">Business Address</Text>
       </HStack>
 
-      <Text className="text-2xl font-bold mb-2">Business address</Text>
+      <Text className="text-md sm:text-lg font-bold mb-3 ">Business address</Text>
       <Text className="text-sm text-[#888888] mb-6">
         Onboarding is an essential step to activate my Datman account for accepting payments and receiving payouts.
       </Text>
@@ -114,7 +114,10 @@ export default function AddressBusiness() {
     selectedValue={country}
     onValueChange={(value) => setCountry(value)}
   >
-    <SelectTrigger
+ 
+
+    <SelectTrigger   className="border-0 border-b border-gray-300 rounded-none px-0 min-h-[40px] bg-transparent focus:outline-none focus:ring-0 focus:border-none active:border-none hover:border-gray-300"
+
       borderBottomWidth={1}
       borderColor="$borderLight300"
       borderWidth={0}

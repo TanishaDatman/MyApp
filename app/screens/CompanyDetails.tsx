@@ -221,7 +221,7 @@ const CompanyDetails = () => {
   };
 
   return (
-    <Box className="flex-1 pt-4 bg-white">
+    <Box className="flex-1 p-3 sm:p-4 md:p-5 pt-4 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="px-4">
         {/* Header */}
                  <HStack className="items-center mb-6">
@@ -232,12 +232,12 @@ const CompanyDetails = () => {
                        alt="back button"
                      />
                    </Pressable>
-                   <Text className="text-lg font-semibold">Business Details</Text>
+                   <Text className="text-md xs:text-base sm:text-md font-semibold">Business Details</Text>
                  </HStack>
        
 
         {/* Subheader */}
-        <Text className="text-lg font-semibold mb-1">
+        <Text className="text-md sm:text-lg font-bold mb-1 ">
           Company registered details
         </Text>
         <Text className="text-sm text-gray-500 mb-6">

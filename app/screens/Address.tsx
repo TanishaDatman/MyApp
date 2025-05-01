@@ -280,7 +280,7 @@ export default function Address() {
   };
 
   return (
-    <Box className="flex-1 bg-[#F5F6F8] px-4 pt-6 rounded-t-3xl">
+    <Box className="flex-1 px-4 pt-6 rounded-t-3xl">
       {/* <ScrollView showsVerticalScrollIndicator={false}> */}
         {/* Header */}
         <HStack className="items-center mb-6">
@@ -306,7 +306,7 @@ export default function Address() {
     <Box key={index} className="border-b mb-3 border-gray-300">
       <Input
         variant="underlined" // prevents any default box styling
-        className="text-base text-black px-0 py-2"
+        className="text-base text-black px-0 py-2 border-b-[1px] border-gray-300"
       >
         <InputField
           placeholder={label}
@@ -341,8 +341,18 @@ export default function Address() {
         {/* Country Dropdown */}
         <Box className="pb-2">
           <Select selectedValue={country} onValueChange={(value) => setCountry(value)}>
-            <SelectTrigger className="border-b border-gray-300 px-0 min-h-[40px]">
-              <SelectInput placeholder="Country" />
+          <SelectTrigger
+      className="border-0 border-b-[1px] border-gray-300 rounded-none px-0 min-h-[40px] bg-transparent"
+      style={{
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 1,
+        borderColor: '#D1D5DB', // same as Tailwind's gray-300
+        borderRadius: 0,
+      }}
+    >
+              <SelectInput variant='underlined' placeholder="Country" />
               <SelectIcon />
             </SelectTrigger>
             <SelectPortal>

@@ -150,64 +150,66 @@ console.log("selected file",selectedFile);
       </Box>
 
       {/* Review Modal */}
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <ModalBackdrop />
-        <ModalContent className='rounded-2xl bg-white'
-      
+      <Modal
+  isOpen={showModal}
+  onClose={() => setShowModal(false)}
+  avoidKeyboard
+>
+  <ModalBackdrop />
+
+  <ModalContent className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8">
+    {/* Drag handle */}
+    <Box className="items-center mb-4">
+      <Box className="w-12 h-1.5 bg-gray-300 rounded-full" />
+    </Box>
+
+    <ModalHeader>
+      <Text className="text-lg font-semibold text-black">
+        Review your details <Text className="font-medium text-black">(Optional)</Text>
+      </Text>
+    </ModalHeader>
+
+    <ModalBody>
+      <Text className="text-sm text-gray-600 mb-6">
+        You can review your provided information and make changes if needed, or proceed as it is.
+      </Text>
+    </ModalBody>
+
+    <ModalFooter>
+      <HStack space="md" className="w-full">
+        <Button
+          className="rounded-full flex-1 border border-black bg-white"
+          variant="outline"
+          onPress={() => {
+            setShowModal(false);
+            navigation.navigate('Review');
+          }}
         >
-          <ModalHeader>
-            <Text className='text-lg font-semibold'>
-              Review your details <Text className='font-medium'>(Optional)</Text>
-            </Text>
-          </ModalHeader>
+          <ButtonText className="text-sm text-black">Review</ButtonText>
+        </Button>
 
-          <ModalBody>
-            <Text className='text-sm mb-4'>
-              You can review your provided information and make changes if needed, or proceed as it is.
-            </Text>
-          </ModalBody>
+        <Button
+          className="rounded-full flex-1 bg-black"
+          onPress={async () => {
+            setShowModal(false);
+            setModal(true);
+            await handleNoDocumentClick();
+          }}
+        >
+          <ButtonText className="text-sm text-white">No, I’m good</ButtonText>
+        </Button>
+      </HStack>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
 
-          <ModalFooter>
-            <HStack space="md" className='w-[100%]' >
-              <Button
-              className='rounded-full flex-1 '
-                variant="outline"
-                // borderRadius="$full"
-                // borderColor="$black"
-                // flex={1}
-                onPress={async() => {
-                  setShowModal(false);
-                  navigation.navigate('Review');
 
-                  
-                }}
-              >
-                <ButtonText className='text-sm'>Review</ButtonText>
-              </Button>
-
-              <Button
-              className='rounded-full flex-1 bg-black'
-                // borderRadius="$full"
-                // bg="$black"
-                // flex={1}
-                onPress={async () => {
-                  setShowModal(false);
-                  setModal(true);
-                  await handleNoDocumentClick();
-                }}
-              >
-                <ButtonText className='text-sm text-white'>No, I’m good</ButtonText>
-              </Button>
-            </HStack>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
 
       {/* Success Modal */}
       <Modal isOpen={modal} onClose={() => setModal(false)}>
         <ModalBackdrop />
         <ModalContent
-        className='rounded-2xl bg-white'
+       className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
           // borderTopLeftRadius="$2xl"
           // borderTopRightRadius="$2xl"
           // borderBottomLeftRadius="$none"

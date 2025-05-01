@@ -256,7 +256,7 @@ const ContactBusiness = () => {
   return (
     <GluestackUIProvider>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Box className="bg-white flex-1 pt-7 p-4">
+        <Box className="bg-white flex-1 mt-2 pt-7 p-4">
                    <HStack className="items-center mb-6">
                      <Pressable onPress={() => navigation.goBack()}>
                        <Image
@@ -265,14 +265,14 @@ const ContactBusiness = () => {
                          alt="back button"
                        />
                      </Pressable>
-                     <Text className="text-lg font-semibold">Business Contact Details</Text>
-                   </HStack>
+                     <Text className="text-base sm:text-md font-semibold">Business Contact Details</Text>
+                   </HStack> 
 
-          <Text className="text-xl font-bold mb-3">
+          <Text  className="text-md sm:text-lg font-bold mb-3 ">
             Business Contact details
           </Text>
 
-          <Text className="text-base mb-6">
+          <Text className="text-[14px] sm:text-base mb-6">
             Onboarding is an essential step to activate my
             Datman account for accepting payments and
             receiving payouts.
