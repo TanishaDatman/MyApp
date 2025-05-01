@@ -77,11 +77,15 @@ export default function Address() {
                         className='h-4 w-7'
                       />
                    </Pressable>
-                   <Text className="text-lg font-semibold">Owner Address</Text>
+                   <Text className={`text-lg ${
+                theme === "dark" ? "text-white" : "text-black"
+              } font-semibold`}>Owner Address</Text>
                  </HStack>
 
         {/* Title & Description */}
-        <Text className="text-2xl font-bold mb-2">Owner address</Text>
+        <Text className={`text-2xl ${
+                theme === "dark" ? "text-white" : "text-black"
+              } font-bold mb-2`}>Owner address</Text>
         <Text className="text-sm text-gray-500 mb-6">
           Onboarding is an essential step to activate my Datman account for accepting payments and receiving payouts.
         </Text>
@@ -95,6 +99,9 @@ export default function Address() {
         className="text-base text-black px-0 py-2 border-b-[1px] border-gray-300"
       >
         <InputField
+          className={`${
+            theme === "dark" ? "text-white" : "text-black"
+          }`}
           placeholder={label}
           placeholderTextColor="#888"
           value={
@@ -128,22 +135,23 @@ export default function Address() {
         <Box className="pb-2">
           <Select selectedValue={country} onValueChange={(value) => setCountry(value)}>
           <SelectTrigger
-      className="border-0 border-b-[1px] border-gray-300 rounded-none px-0 min-h-[40px] bg-transparent"
-      style={{
-        borderTopWidth: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderBottomWidth: 1,
-        borderColor: '#D1D5DB', // same as Tailwind's gray-300
-        borderRadius: 0,
-      }}
-    >
-              <SelectInput variant='underlined' placeholder="Country" />
+          variant="underlined"
+          className={`min-h-[40px] border-b ${
+            theme === "dark" ? "border-textgrey" : ""
+          }`}
+        >
+          <SelectInput
+            placeholder="Country"
+            className={`text-sm ${
+              theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+            }`}
+          />
               <SelectIcon />
             </SelectTrigger>
             <SelectPortal>
               <SelectBackdrop />
-              <SelectContent className='bg-lightgrey'>
+              <SelectContent className={` ${
+    theme === "dark" ? "bg-gray-600" : "bg-lightgrey"}`}>
                 {countries.map((name) => (
                   <SelectItem key={name} label={name} value={name} />
                 ))}
@@ -156,19 +164,31 @@ export default function Address() {
       <HStack className="space-x-4 justify-between mt-auto mb-4">
         <Button
           variant="outline"
-          className="flex-1 cursor-pointer border-black rounded-full mr-2"
+          className={`flex-1 mr-2 ${
+            theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
           onPress={() => navigation.goBack()}
         >
-          <Text className="text-black">Later</Text>
+          <Text className={`text-xs ${
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</Text>
         </Button>
         <Button
-          className={`flex-1 cursor-pointer rounded-full ${
-            isNextEnabled ? 'bg-black' : 'bg-gray-300'
-          }`}
+          className={`flex-1 rounded-full cursor-pointer 
+            ${
+              theme === "dark"
+                ? isNextEnabled
+                  ? "bg-green"
+                  : "bg-textgrey"
+                : isNextEnabled
+                ? "bg-black"
+                : "bg-textgrey"
+            } 
+            ${isNextEnabled ? "opacity-100" : "opacity-70"}`}
           onPress={handleNext}
           disabled={!isNextEnabled}
         >
-          <Text className={`font-medium ${isNextEnabled ? 'text-white' : 'text-gray-500'}`}>Next</Text>
+          <Text className={`font-medium text-xs sm:text-sm 
+      ${theme === "dark" ? "text-black" : "text-white"} 
+      ${!isNextEnabled && "text-white"}`}>Next</Text>
         </Button>
       </HStack>
     </Box>

@@ -289,10 +289,10 @@ const TradingInfoScreen = () => {
               />
             </Center>
             <Text className="text-lg font-semibold text-center">
-              Owner verification in progress
+              Trading verification in progress
             </Text>
             <Text className="text-sm text-center mt-2 text-gray-500">
-              The owner details will be verified soon. You can continue filling in the remaining details.
+              The trading details will be verified soon. You can continue filling in the remaining details.
             </Text>
           </ModalBody>
           <ModalFooter className="w-full px-4 pb-6">

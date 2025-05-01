@@ -89,22 +89,32 @@ console.log("selected file",selectedFile);
                                 className='h-4 w-7'
                               />
                           </Pressable>
-                          <Text className="text-lg font-semibold">Upload Documents</Text>
+                          <Text className={`text-lg font-semibold ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}>Upload Documents</Text>
                         </HStack>
-          <Text className='text-xl font-bold mb-2'>
+          <Text className={`text-xl ${
+                theme === "dark" ? "text-white" : "text-black"
+              } font-bold mb-2`}>
             Upload any of the documents to verify your identity
           </Text>
-          <Text className='text-sm mb-4'>
+          <Text className={`text-sm ${
+                theme === "dark" ? "text-textgrey" : "text-black"
+              } mb-4`}>
             Accepted formats: JPG, PNG, JPEG, and PDF.
           </Text>
 
-          <Text className='font-semibold mb-1'>Identity Verification</Text>
+          <Text className={`font-semibold ${
+                theme === "dark" ? "text-white" : "text-black"
+              } mb-1`}>Identity Verification</Text>
           <HStack className='items-center mb-2'>
             <Badge className='rounded-full px-3 py-1 bg-lightyellow'>
               <BadgeText className='text-xs text-yellow'>Pending</BadgeText>
             </Badge>
           </HStack>
-          <Text className='text-sm mb-6'>
+          <Text className={`text-sm ${
+                theme === "dark" ? "text-textgrey" : "text-black"
+              } mb-6`}>
             Provide a copy of a government-issued ID such as a passport or driver’s license.
           </Text>
 
@@ -112,7 +122,9 @@ console.log("selected file",selectedFile);
             <Pressable onPress={() => pickDocument('passport')}>
               <Text className='text-md text-green'>+ Passport</Text>
               {passport && (
-                <Text className='text-sm'>
+                <Text className={`text-xs ${
+                  theme === "dark" ? "text-textgrey" : "text-black"
+                    }`}>
                   Uploaded: {passport.name}
                 </Text>
               )}
@@ -121,7 +133,9 @@ console.log("selected file",selectedFile);
             <Pressable onPress={() => pickDocument('license')}>
               <Text className='text-md text-green'>+ Driving license</Text>
               {license && (
-                <Text className='text-xs'>
+                <Text className={`text-xs ${
+              theme === "dark" ? "text-textgrey" : "text-black"
+                }`}>
                   Uploaded: {license.name}
                 </Text>
               )}
@@ -131,28 +145,33 @@ console.log("selected file",selectedFile);
 
         <HStack space="md" className='mt-6 justify-between'>
           <Button
-          className='rounded-full flex-1 mr-2'
-            variant="outline"
-            // borderRadius="$full"
-            // borderColor="$black"
-            // flex={1}
-            // mr="$2"
+          className={`flex-1 mr-2 ${
+            theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
             onPress={() => navigation.goBack()}
           >
-            <ButtonText>Later</ButtonText>
+            <ButtonText className={`text-xs ${
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
           </Button>
 
           <Button
-  className={`rounded-full flex-1 ${
-    isNextEnabled ? 'bg-black' : 'bg-lightgrey'
-  }`}
+  className={`flex-1 rounded-full cursor-pointer 
+    ${
+      theme === "dark"
+        ? isNextEnabled
+          ? "bg-green"
+          : "bg-textgrey"
+        : isNextEnabled
+        ? "bg-black"
+        : "bg-textgrey"
+    } 
+    ${isNextEnabled ? "opacity-100" : "opacity-70"}`}
   disabled={!isNextEnabled}
   onPress={() => setShowModal(true)}
 >
 
-            <ButtonText className={`${
-    isNextEnabled ? 'text-white' : 'text-grey'
-  }`}>Next</ButtonText>
+            <ButtonText className={`font-medium text-xs sm:text-sm 
+      ${theme === "dark" ? "text-black" : "text-white"} 
+      ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
           </Button>
         </HStack>
       </Box>
@@ -162,18 +181,24 @@ console.log("selected file",selectedFile);
   isOpen={showModal}
   onClose={() => setShowModal(false)}
   avoidKeyboard
+  // className={` ${
+  //   theme === "dark" ? "bg-dgrey" : "bg-white"
+  //     }`}
 >
   <ModalBackdrop />
 
-  <ModalContent className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8">
+  <ModalContent className={`absolute md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full rounded-t-3xl px-6 pt-4 pb-8 ${
+    theme === "dark" ? "bg-black" : "bg-white"
+  }`}>
     {/* Drag handle */}
     <Box className="items-center mb-4">
       <Box className="w-12 h-1.5 bg-gray-300 rounded-full" />
     </Box>
 
     <ModalHeader>
-      <Text className="text-lg font-semibold text-black">
-        Review your details <Text className="font-medium text-black">(Optional)</Text>
+      <Text className={`text-lg font-semibold  ${theme === "dark" ? "text-white" : "text-black"} `}>
+        Review your details 
+        <Text className={`font-medium  ${theme === "dark" ? "text-white" : "text-black"}`}>(Optional)</Text>
       </Text>
     </ModalHeader>
 
@@ -186,25 +211,25 @@ console.log("selected file",selectedFile);
     <ModalFooter>
       <HStack space="md" className="w-full">
         <Button
-          className="rounded-full cursor-pointer flex-1 border border-black bg-white"
+          className={`rounded-full  cursor-pointer flex-1 border ${theme === "dark" ? "border-green" : "border-black"} `}
           variant="outline"
           onPress={() => {
             setShowModal(false);
             navigation.navigate('Review');
           }}
         >
-          <ButtonText className="text-sm text-black">Review</ButtonText>
+          <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-white"}`}>Review</ButtonText>
         </Button>
 
         <Button
-          className="rounded-full flex-1 bg-black"
+          className={`rounded-full flex-1  ${theme === "dark" ? "bg-green" : "bg-black"}`}
           onPress={async () => {
             setShowModal(false);
             setModal(true);
             await handleNoDocumentClick();
           }}
         >
-          <ButtonText className="text-sm cursor-pointer text-white">No, I’m good</ButtonText>
+          <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-black"}`}>No, I’m good</ButtonText>
         </Button>
       </HStack>
     </ModalFooter>
@@ -214,26 +239,28 @@ console.log("selected file",selectedFile);
 
 
       {/* Success Modal */}
-      <Modal isOpen={modal} onClose={() => setModal(false)}>
+      <Modal isOpen={modal} onClose={() => setModal(false)} >
         <ModalBackdrop />
-        <ModalContent
-       className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
-         
-        >
+        <ModalContent className={`absolute md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full rounded-t-3xl px-6 pt-4 pb-8 ${
+    theme === "dark" ? "bg-black" : "bg-white"
+  }`}>
+          <Box className="items-center mb-4">
+      <Box className="w-12 h-1.5 bg-gray-300 rounded-full" />
+    </Box>
           <ModalBody className='mt-6' >
             <Center mb="$4">
               <Image source={require('../../assets/images/tick.png')} alt="Tick" className='h-[90] w-[110]'  />
             </Center>
-            <Text className='text-lg font-semibold text-center'>
+            <Text className={`text-lg ${theme === "dark" ? "text-white" : "text-black"} font-semibold text-center`}>
               Owner verification in progress
             </Text>
-            <Text className='text-sm text-center mt-2'>
+            <Text className={`text-sm ${theme === "dark" ? "text-textgrey" : "text-black"} text-center mt-2`}>
               The owner details will be verified soon. You can continue filling in the remaining details.
             </Text>
           </ModalBody>
           <ModalFooter className='px-4 pb-6 w-[100%]'>
             <Button
-            className='flex-1 cursor-pointer rounded-full bg-black'
+          className={`rounded-full cursor-pointer flex-1 border border-black ${theme === "dark" ? "bg-green" : "bg-black"} `}
              
               onPress={() => {
                 navigation.navigate('Details');
@@ -241,7 +268,7 @@ console.log("selected file",selectedFile);
 
               }}
             >
-              <ButtonText className='text-white'>Continue</ButtonText>
+              <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
             </Button>
           </ModalFooter>
         </ModalContent>
