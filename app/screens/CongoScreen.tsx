@@ -32,7 +32,7 @@ const CongoScreen = () => {
 
         {/* Action Button */}
         <Button
-          className="mt-6 sm:mt-8 rounded-full bg-black px-6 py-3"
+          className="mt-6 sm:mt-8 cursor-pointer rounded-full bg-black px-6 py-3"
           onPress={() => navigation.navigate('HomeMain')}
         >
           <ButtonText className="text-white text-sm sm:text-lg">Awesome!💪</ButtonText>

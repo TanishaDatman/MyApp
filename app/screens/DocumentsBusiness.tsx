@@ -144,14 +144,14 @@ export default function DocumentsBusiness() {
         <HStack className="mt-6 space-x-4 justify-between">
           <Button
             variant="outline"
-            className="rounded-full flex-1 border border-black mr-2"
+            className="rounded-full cursor-pointer flex-1 border border-black mr-2"
             onPress={() => navigation.goBack()}
           >
             <ButtonText className="text-black">Later</ButtonText>
           </Button>
 
           <Button
-            className={`rounded-full flex-1 ${isNextEnabled ? 'bg-black' : 'bg-gray-300'}`}
+            className={`rounded-full cursor-pointer flex-1 ${isNextEnabled ? 'bg-black' : 'bg-gray-300'}`}
             disabled={!isNextEnabled}
             onPress={() => isNextEnabled && setShowModal(true)}
           >
@@ -180,7 +180,7 @@ export default function DocumentsBusiness() {
           <ModalFooter>
             <HStack className="w-full space-x-4">
               <Button
-                className="rounded-full flex-1"
+                className="rounded-full cursor-pointer flex-1"
                 variant="outline"
                 onPress={async () => {
                   setShowModal(false);
@@ -191,7 +191,7 @@ export default function DocumentsBusiness() {
               </Button>
 
               <Button
-                className="rounded-full flex-1 ml-2 bg-black"
+                className="rounded-full cursor-pointer flex-1 ml-2 bg-black"
                 onPress={async () => {
                   setShowModal(false);
                   setModal(true);
@@ -219,15 +219,15 @@ export default function DocumentsBusiness() {
               />
             </Center>
             <Text className="text-lg font-semibold text-center">
-              Owner verification in progress
+              Business verification in progress
             </Text>
             <Text className="text-sm text-center mt-2">
-              The owner details will be verified soon. You can continue filling in the remaining details.
+              The business details will be verified soon. You can continue filling in the remaining details.
             </Text>
           </ModalBody>
           <ModalFooter className="px-4 pb-6 w-full">
             <Button
-              className="flex-1 rounded-full bg-black"
+              className="flex-1 rounded-full cursor-pointer bg-black"
               onPress={() => {
                 navigation.navigate('Details');
                 setModal(false);

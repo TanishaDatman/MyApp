@@ -140,7 +140,7 @@ export default function ReviewBusiness() {
             </Text>
           </ModalBody>
           <ModalFooter className="w-full px-4 pb-6">
-            <Button className="flex-1 bg-black rounded-full py-3" onPress={handleContinue}>
+            <Button className="flex-1 cursor-pointer bg-black rounded-full py-3" onPress={handleContinue}>
               <ButtonText className="text-white text-sm">Continue</ButtonText>
             </Button>
           </ModalFooter>

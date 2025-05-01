@@ -157,17 +157,14 @@ const Contact = () => {
           <HStack space="md" className='justify-between mt-8'>
             <Button
               variant="outline"
-              className='flex-1 rounded-full'
-              // borderColor="$borderLight400"
-              // flex={1}
-              // borderRadius="$full"
+              className='flex-1 cursor-pointer rounded-full'
               onPress={() => navigation.goBack()}
             >
               <ButtonText >Later</ButtonText>
             </Button>
 
             <Button
-  className={`flex-1 rounded-full ${isValid ? 'bg-black' : 'bg-textgrey'} ${isValid ? 'opacity-100' : 'opacity-70'}`}
+  className={`flex-1 rounded-full cursor-pointer ${isValid ? 'bg-black' : 'bg-textgrey'} ${isValid ? 'opacity-100' : 'opacity-70'}`}
   onPress={handleSubmit(onSubmit)}
   disabled={!isValid}
 >

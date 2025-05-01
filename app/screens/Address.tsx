@@ -149,13 +149,13 @@ export default function Address() {
       <HStack className="space-x-4 justify-between mt-auto mb-4">
         <Button
           variant="outline"
-          className="flex-1 border-black rounded-full mr-2"
+          className="flex-1 cursor-pointer border-black rounded-full mr-2"
           onPress={() => navigation.goBack()}
         >
           <Text className="text-black">Later</Text>
         </Button>
         <Button
-          className={`flex-1 rounded-full ${
+          className={`flex-1 cursor-pointer rounded-full ${
             isNextEnabled ? 'bg-black' : 'bg-gray-300'
           }`}
           onPress={handleNext}

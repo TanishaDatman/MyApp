@@ -101,13 +101,13 @@ export default function HomeScreen() {
 
   return (
 <VStack className="flex-1 bg-white py-5">
-<HStack className="mb-6 items-center px-2 md:px-7 md:py-4">
+<HStack className="mb-6 cursor-pointer items-center px-2 md:px-7 md:py-4">
       <Image
         source={require("../../assets/images/logo.png")}
         alt="Logo"
         className="h-8 w-8 ml-3 md:m-0"
       />
-      <Text className="ml-2 font-bold text-lg md:text-xl text-black">
+      <Text className="ml-2 font-bold text-lg cursor-pointer md:text-xl text-black">
         John's Takeaway
       </Text>
     </HStack>
@@ -121,7 +121,7 @@ export default function HomeScreen() {
         </Text>
       </Box>
       </VStack>
-      <Pressable className="w-full mb-4" onPress={() => navigation.navigate("Onboarding")}>
+      <Pressable className="w-full mb-4 cursor-pointer" onPress={() => navigation.navigate("Onboarding")}>
       <VStack className="rounded-xl sm:mb-5 mb-0 w-full h-60">
 <ImageBackground
                 className=" flex-grow mx-3 md:mx-0 mb-4 md:mb-0 md:mr-5 md:ml-5"

@@ -229,15 +229,7 @@ export default function DetailsScreen() {
             }}
           >
             <Box
-            className='rounded-xl mb-4 border border-lightgrey p-2 bg-white'
-              // borderWidth={1}
-              // borderColor="$borderLight300"
-              // borderRadius="$xl"
-              // p="$4"
-              // bg="$white"
-              // shadowColor="rgba(0, 0, 0, 0.05)"
-              // shadowOpacity={0.1}
-              // mb="$4"
+            className='rounded-xl mb-4 border border-lightgrey cursor-pointer p-2 bg-white'
             >
               <HStack className='justify-start' space="md">
                 <Image source={item.icon} className='object-contain' />
@@ -249,16 +241,6 @@ export default function DetailsScreen() {
                   <Text className='text-sm text-textgrey mb-1'>
                     {item.description}
                   </Text>
-                 
-{/* <Box
-  className={`inline-flex w-auto px-3 py-1 rounded-full mt-2 bg-${getStatusBg(item.key)}`}
->
-  <Text
-    className={`text-xs text-${getStatusColor(item.key)} whitespace-nowrap`}
-  >
-    {getStatusLabel(item.key)}
-  </Text>
-</Box> */}
 
              <HStack className='items-center mb-2'>
                         <Badge className={`rounded-full px-3 bg-${getStatusBg(item.key)}`}>

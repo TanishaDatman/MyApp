@@ -178,7 +178,7 @@ console.log("selected file",selectedFile);
     <ModalFooter>
       <HStack space="md" className="w-full">
         <Button
-          className="rounded-full flex-1 border border-black bg-white"
+          className="rounded-full cursor-pointer flex-1 border border-black bg-white"
           variant="outline"
           onPress={() => {
             setShowModal(false);
@@ -196,7 +196,7 @@ console.log("selected file",selectedFile);
             await handleNoDocumentClick();
           }}
         >
-          <ButtonText className="text-sm text-white">No, I’m good</ButtonText>
+          <ButtonText className="text-sm cursor-pointer text-white">No, I’m good</ButtonText>
         </Button>
       </HStack>
     </ModalFooter>
@@ -210,11 +210,7 @@ console.log("selected file",selectedFile);
         <ModalBackdrop />
         <ModalContent
        className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
-          // borderTopLeftRadius="$2xl"
-          // borderTopRightRadius="$2xl"
-          // borderBottomLeftRadius="$none"
-          // borderBottomRightRadius="$none"
-          // alignItems="center"
+         
         >
           <ModalBody className='mt-6' >
             <Center mb="$4">
@@ -229,14 +225,11 @@ console.log("selected file",selectedFile);
           </ModalBody>
           <ModalFooter className='px-4 pb-6 w-[100%]'>
             <Button
-            className='flex-1 rounded-full bg-black'
-              // flex={1}
-              // bg="$black"
-              // borderRadius="$full"
+            className='flex-1 cursor-pointer rounded-full bg-black'
+             
               onPress={() => {
                 navigation.navigate('Details');
                 setModal(false);
-                // await handleNoDocumentClick();
 
               }}
             >

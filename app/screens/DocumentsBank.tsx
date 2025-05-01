@@ -119,14 +119,14 @@ const [statement, setStatement]: any = useState(null);
         <HStack className="mt-6 p-4 space-x-4 mb-3 justify-between">
           <Button
             variant="outline"
-            className="rounded-full border border-black flex-1 mr-2"
+            className="rounded-full cursor-pointer border border-black flex-1 mr-2"
             onPress={() => navigation.goBack()}
           >
             <ButtonText className="text-black">Later</ButtonText>
           </Button>
 
           <Button
-            className={`rounded-full flex-1 ${
+            className={`rounded-full cursor-pointer flex-1 ${
               isNextEnabled ? 'bg-black' : 'bg-gray-300'
             }`}
             disabled={!isNextEnabled || loading}

@@ -130,14 +130,14 @@ const CompanyDetails = () => {
       <HStack className="px-4 pb-4 space-x-4 bg-white">
         <Button
           variant="outline"
-          className="flex-1 border mr-3 border-black rounded-full"
+          className="flex-1 cursor-pointer border mr-3 border-black rounded-full"
           onPress={() => navigation.goBack()}
         >
           <ButtonText className="text-black">Later</ButtonText>
         </Button>
 
         <Button
-          className={`flex-1 rounded-full ${isValid ? 'bg-black' : 'bg-gray-300 opacity-70'}`}
+          className={`flex-1 rounded-full cursor-pointer ${isValid ? 'bg-black' : 'bg-gray-300 opacity-70'}`}
           onPress={handleSubmit(onSubmit)}
           disabled={!isValid}
         >

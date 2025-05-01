@@ -98,13 +98,13 @@ const BusinessDetailsScreen = () => {
         <HStack className="space-x-4 mt-8 justify-between">
           <Button
             variant="outline"
-            className="flex-1 border mr-3 border-black rounded-full"
+            className="flex-1 cursor-pointer border mr-3 border-black rounded-full"
             onPress={() => navigation.goBack()}
           >
             <Text className="font-medium text-black">Later</Text>
           </Button>
           <Button
-            className="flex-1 rounded-full bg-black"
+            className="flex-1 cursor-pointer rounded-full bg-black"
             onPress={onSubmit}
           >
             <Text className="font-medium text-white">Next</Text>

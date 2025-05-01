@@ -138,7 +138,7 @@ export default function Review() {
           className="bg-black rounded-full"
           onPress={handleConfirm}
         >
-          <ButtonText className="font-semibold text-white ">
+          <ButtonText className="font-semibold cursor-pointer text-white ">
             Confirm
           </ButtonText>
         </Button>
@@ -151,13 +151,10 @@ export default function Review() {
         <ModalBackdrop />
         <ModalContent
         className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
-          // borderTopLeftRadius="$2xl"
-          // borderTopRightRadius="$2xl"
-          // alignItems="center"
+         
         >
           <ModalBody className="mt-6">
             <Center mb="$4">
-              {/* Optional icon (checkmark pen) */}
               <Image
                 source={require("../../assets/images/tick.png")}
                 alt="Tick"
@@ -175,10 +172,8 @@ export default function Review() {
           </ModalBody>
           <ModalFooter className="px-4 pb-6 w-[100%]">
             <Button
-            className="flex-1 rounded-full bg-black"
-              // flex={1}
-              // bg="$black"
-              // borderRadius="$full"
+            className="flex-1 cursor-pointer rounded-full bg-black"
+              
               onPress={handleContinue}
             >
               <ButtonText className="text-white">Continue</ButtonText>

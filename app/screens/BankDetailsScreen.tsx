@@ -189,17 +189,15 @@ const BankDetailsScreen = () => {
       <HStack className="p-4 space-x-4 bg-white">
         <Button
           variant="outline"
-          className='flex-1 rounded-full mr-3'
-          // flex={1}
-          // borderRadius="$full"
-          // borderColor="$black"
+          className='flex-1 rounded-full cursor-pointer mr-3'
+         
           onPress={() => navigation.goBack()}
         >
           <ButtonText className="text-black">Later</ButtonText>
         </Button>
 
        <Button
-         className={`flex-1 rounded-full ${isValid ? 'bg-black' : 'bg-lightgrey'} `}
+         className={`flex-1 rounded-full cursor-pointer ${isValid ? 'bg-black' : 'bg-lightgrey'} `}
          onPress={handleSubmit(onSubmit)}
          disabled={!isValid}
        >

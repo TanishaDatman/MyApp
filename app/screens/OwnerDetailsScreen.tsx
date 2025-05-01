@@ -304,14 +304,14 @@ const formatDateToDisplay = (date: Date) => {
 
         <HStack space="md" className='mt-8 justify-between' >
           <Button
-          className='flex-1 rounded-full '
+          className='flex-1 cursor-pointer rounded-full '
             variant="outline"
             onPress={() => navigation.goBack()}
           >
             <Text className='font-medium'>Later</Text>
           </Button>
           <Button
-            className='flex-1 rounded-full bg-black '
+            className='flex-1 cursor-pointer rounded-full bg-black '
             onPress={handleSubmit(onSubmit)}
           >
             <Text className='font-medium text-white'>Next</Text>

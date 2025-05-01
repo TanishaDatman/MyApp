@@ -177,13 +177,13 @@ const OrganisationType = () => {
       <HStack className="flex-row space-x-4 mt-8 justify-between">
         <Button
           variant="outline"
-          className="flex-1 border border-black mr-3 rounded-full"
+          className="flex-1 border cursor-pointer border-black mr-3 rounded-full"
           onPress={() => navigation.goBack()}
         >
           <Text className="font-medium text-black">Later</Text>
         </Button>
         <Button
-          className="flex-1 bg-black rounded-full"
+          className="flex-1 bg-black cursor-pointer rounded-full"
           onPress={onSubmit}
         >
           <Text className="font-medium text-white">Next</Text>

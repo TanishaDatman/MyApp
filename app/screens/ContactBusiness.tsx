@@ -367,14 +367,14 @@ const ContactBusiness = () => {
           {/* Buttons */}
           <HStack className="flex-row justify-between space-x-4 mt-8">
             <Button
-              className="flex-1 mr-3 border border-gray-300 rounded-full"
+              className="flex-1 mr-3 cursor-pointer border border-gray-300 rounded-full"
               onPress={() => navigation.goBack()}
             >
               <ButtonText className="text-gray-700">Later</ButtonText>
             </Button>
 
             <Button
-              className={`flex-1 rounded-full ${isNextEnabled ? 'bg-black' : 'bg-gray-300'} ${!isNextEnabled ? 'opacity-70' : ''}`}
+              className={`flex-1 cursor-pointer rounded-full ${isNextEnabled ? 'bg-black' : 'bg-gray-300'} ${!isNextEnabled ? 'opacity-70' : ''}`}
               onPress={handleSubmit(onSubmit)}
               disabled={!isNextEnabled}
             >

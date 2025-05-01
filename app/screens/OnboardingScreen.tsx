@@ -75,14 +75,14 @@ const OnboardingScreen = () => {
           <HStack space="md" className="justify-between">
             <Button
               variant="outline"
-              className="flex-1 mr-2 border-2 border-gray-300 rounded-full"
+              className="flex-1 mr-2 border-2 cursor-pointer border-gray-300 rounded-full"
               onPress={() => navigation.goBack()}
             >
               <ButtonText className="text-xs sm:text-sm ">I’ll do this later</ButtonText>
             </Button>
 
             <Button
-              className="flex-1 ml-2  bg-black rounded-full"
+              className="flex-1 ml-2 cursor-pointer bg-black rounded-full"
               onPress={() => navigation.navigate('Details')}
             >
               <ButtonText className="text-xs sm:text-sm text-white">Continue</ButtonText>
