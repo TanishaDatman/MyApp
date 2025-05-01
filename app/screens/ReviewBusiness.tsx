@@ -48,25 +48,29 @@ export default function ReviewBusiness() {
   };
 
   return (
-    <Box className="flex-1 bg-gray-100 pt-10">
+    <Box className="flex-1 pt-10">
       <ScrollView className="px-4">
         {/* Header */}
-        <HStack className="items-center mb-4">
-          <Pressable onPress={() => navigation.goBack()}>
-            <Text className="text-lg mr-2">←</Text>
-          </Pressable>
-          <Text className="text-base font-medium text-gray-700">Review Business</Text>
-        </HStack>
+       <HStack className="items-center mb-4 sm:mb-6">
+                          <Pressable onPress={() => navigation.goBack()}>
+                            <Image
+                              source={require('../../assets/images/arrow_forward.png')}
+                              className='h-4 w-7'
+                              alt="back button"
+                            />
+                          </Pressable>
+                          <Text className="text-md xs:text-base sm:text-md font-semibold">Review Business</Text>
+                        </HStack>
 
         {/* Title */}
         <Text className="text-2xl font-bold mb-1">Review</Text>
         <Text className="text-sm text-gray-500 mb-5">
-          Time to review before I submit this onboarding form.
+          Time to review before you submit this onboarding form.
         </Text>
 
         {/* Section: Owner Details */}
         <Text className="text-sm font-semibold mb-2">Business details</Text>
-        <Box className="bg-white rounded-lg p-4 mb-4">
+        <Box className="bg-white border-2 rounded-lg p-4 mb-4">
           <HStack className="justify-between mb-2">
             <VStack>
               <Text className="text-base text-black">Company: {companyWhat} {orgType}</Text>
@@ -81,7 +85,7 @@ export default function ReviewBusiness() {
 
         {/* Section: Contact Details */}
         <Text className="text-sm font-semibold mb-2">Contact details</Text>
-        <Box className="bg-white rounded-lg p-4 mb-4">
+        <Box className="bg-white border-2 rounded-lg p-4 mb-4">
           <HStack className="justify-between mb-2">
             <VStack>
               <Text className="text-sm text-gray-700">{email}</Text>
@@ -95,7 +99,7 @@ export default function ReviewBusiness() {
 
         {/* Section: Address */}
         <Text className="text-sm font-semibold mb-2">Address details</Text>
-        <Box className="bg-white rounded-lg border border-white p-4 mb-6">
+        <Box className="bg-white border-2 rounded-lg p-4 mb-6">
           <HStack className="justify-between items-start">
             <Text className="text-sm text-gray-700 flex-shrink">
               {address.country} {address.postCode} {address.address1} {address.address2} {address.town} {address.county}
@@ -116,7 +120,7 @@ export default function ReviewBusiness() {
       {/* Modal */}
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <ModalBackdrop />
-        <ModalContent className="rounded-t-2xl items-center">
+        <ModalContent className="rounded-t-2xl bg-white items-center">
           <ModalBody className="mt-6">
             <Center className="mb-4">
               <Image source={require('../../assets/images/tick.png')} alt="Tick" className="h-[90px] w-[110px]" />

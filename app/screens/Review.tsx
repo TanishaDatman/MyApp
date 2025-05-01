@@ -42,32 +42,32 @@ export default function Review() {
 
   return (
     <Box className="flex-1 pt-10">
-      <ScrollView px="$4">
+      <ScrollView className="px-4">
         {/* Header */}
-        <HStack className="items-center mb-4">
-          <Pressable onPress={() => navigation.goBack()}>
-            <Text className="text-lg mr-2">
-              ←
-            </Text>
-          </Pressable>
-          <Text className="text-md font-medium">
-            Review
-          </Text>
-        </HStack>
+        <HStack className="items-center mb-4 sm:mb-6">
+                   <Pressable onPress={() => navigation.goBack()}>
+                     <Image
+                       source={require('../../assets/images/arrow_forward.png')}
+                       className='h-4 w-7'
+                       alt="back button"
+                     />
+                   </Pressable>
+                   <Text className="text-md xs:text-base sm:text-md font-semibold">Review</Text>
+                 </HStack>
 
         {/* Title */}
         <Text className="text-2xl font-bold mb-1" >
           Review
         </Text>
-        <Text className="text-sm mb-5">
-          Time to review before I submit this onboarding form.
+        <Text className="text-sm text-gray-500 mb-5">
+          Time to review before you submit this onboarding form.
         </Text>
 
         {/* Section: Owner Details */}
         <Text className="text-sm font-semibold mb-2">
           Owner details
         </Text>
-        <Box className="rounded-lg p-4 mb-4">
+        <Box className="rounded-lg border-2  p-4 mb-4">
           <HStack className="justify-between mb-2">
             <VStack>
               <Text className="text-md">
@@ -91,7 +91,7 @@ export default function Review() {
         <Text className="text-sm font-semibold mb-2">
           Contact details
         </Text>
-        <Box className="rounded-lg p-4 mb-4">
+        <Box className="rounded-lg border-2 p-4 mb-4">
           <HStack className="justify-between mb-2">
             <VStack>
               <Text className="text-sm">
@@ -109,10 +109,10 @@ export default function Review() {
 
         {/* Section: Address */}
         <Text className="text-sm font-semibold mb-2">
-          Contact details
+          Address details
         </Text>
         <Box
-        className="p-4 mb-6 rounded-lg"
+        className="p-4 mb-6 border-2 rounded-lg"
           // bg="$white"
           // borderRadius="$lg"
           // borderColor="$$white"
@@ -137,9 +137,10 @@ export default function Review() {
           // bg="$black"
           // borderRadius="$full"
           // size="lg"
+          className="bg-black rounded-full"
           onPress={handleConfirm}
         >
-          <ButtonText className="font-semibold">
+          <ButtonText className="font-semibold text-white ">
             Confirm
           </ButtonText>
         </Button>
@@ -151,6 +152,7 @@ export default function Review() {
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <ModalBackdrop />
         <ModalContent
+        className="bg-white rounded-2xl"
           // borderTopLeftRadius="$2xl"
           // borderTopRightRadius="$2xl"
           // alignItems="center"
@@ -161,7 +163,7 @@ export default function Review() {
               <Image
                 source={require("../../assets/images/tick.png")}
                 alt="Tick"
-                className="h-[90] w[110]"
+                className="h-[95] w-[118] object-contain"
                
               />
             </Center>
@@ -175,13 +177,13 @@ export default function Review() {
           </ModalBody>
           <ModalFooter className="px-4 pb-6 w-[100%]">
             <Button
-            className="flex-1 rounded-full"
+            className="flex-1 rounded-full bg-black"
               // flex={1}
               // bg="$black"
               // borderRadius="$full"
               onPress={handleContinue}
             >
-              <ButtonText>Continue</ButtonText>
+              <ButtonText className="text-white">Continue</ButtonText>
             </Button>
           </ModalFooter>
         </ModalContent>
