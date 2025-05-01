@@ -63,6 +63,7 @@ console.log("selected file",selectedFile);
     try {
       console.log('Business detail===========>',details);
       await postOwnerDetails(details);
+      
       console.log('Business detail submitted without document',details);
     } catch (err) {
       console.error(err);

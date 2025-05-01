@@ -25,20 +25,28 @@ module.exports = {
         },
         extend: {
           colors: {
-            // Basic colors
+            // Light theme colors
             red: 'rgb(var(--color-red)/<alpha-value>)',
             green: 'rgb(var(--color-green)/<alpha-value>)',
             black: 'rgb(var(--color-black)/<alpha-value>)',
             white: 'rgb(var(--color-white)/<alpha-value>)',
             yellow: 'rgb(var(--color-yellow)/<alpha-value>)',
-            
-            // Extended colors
             lightgreen: 'rgb(var(--color-lightgreen)/<alpha-value>)',
             lightyellow: 'rgb(var(--color-lightyellow)/<alpha-value>)',
             textgrey: 'rgb(var(--color-textgrey)/<alpha-value>)',
             lightgrey: 'rgb(var(--color-lightgrey)/<alpha-value>)',
             backgroundgrey: 'rgb(var(--color-backgroundgrey)/<alpha-value>)',
-            divider: 'rgb(var(--color-divider)/<alpha-value>)'
+            divider: 'rgb(var(--color-divider)/<alpha-value>)',
+
+            // Dark theme colors
+            dred: 'rgb(var(--color-dred) / <alpha-value>)',
+            dgreen: 'rgb(var(--color-dgreen) / <alpha-value>)',
+            dlightgreen: 'rgb(var(--color-dlightgreen) / <alpha-value>)',
+            dcard: 'rgb(var(--color-dcard) / <alpha-value>)',
+            dwhite: 'rgb(var(--color-dwhite) / <alpha-value>)',
+            dyellow: 'rgb(var(--color-dyellow) / <alpha-value>)',
+            dlightyellow: 'rgb(var(--color-dlightyellow) / <alpha-value>)',
+            dtextgrey: 'rgb(var(--color-dtextgrey) / <alpha-value>)'
         }, 
            
         }

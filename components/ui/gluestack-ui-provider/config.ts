@@ -17,5 +17,17 @@ export const config = {
         '--color-divider': '237 237 237'
 
     }),
+    dark: vars({
+      // 235, 244, 235 
+        '--color-dred': '212 72 53',
+        '--color-dgreen': '25 159 101',
+        '--color-dlightgreen': '28 44 27',
+        '--color-dcard': '14 59 78',
+        '--color-dwhite': '255 255 255',
+        '--color-dyellow': '220 159 55',
+        '--color-dlightyellow': '220 159 55',
+        '--color-dtextgrey': '132 132 132',
+
+    }),
     
 };
