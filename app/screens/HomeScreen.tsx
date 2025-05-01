@@ -216,16 +216,19 @@ export default function HomeScreen() {
         }
       >
         <Box
-  className={`h-24 p-3 rounded-xl items-center justify-center ${
-    activeItem === action.id
-      ? "bg-lightyellow"
-      : theme === "dark"
-      ? "bg-textgrey"
-      : "bg-white"
-  }`}
->
-
-          <Box className="mb-2 bg-white p-2 rounded-full">
+          className={`h-24 p-3 rounded-xl items-center justify-center ${
+            activeItem === action.id
+              ? "bg-lightyellow"
+              : theme === "dark"
+              ? "bg-gray-700"
+              : "bg-gray-200"
+          }`}
+        >
+          <Box
+            className={`mb-2 p-2 rounded-full ${
+              theme === "dark" ? "bg-white" : "bg-white"
+            }`}
+          >
             <Image
               source={action.icon}
               alt={action.label}
@@ -235,7 +238,11 @@ export default function HomeScreen() {
               }}
             />
           </Box>
-          <Text className={`text-xs sm:text-sm ${theme === "dark" ? "text-white" : "text-black"} text-center font-medium`}>
+          <Text
+            className={`text-xs sm:text-sm text-center font-medium ${
+              theme === "dark" ? "text-white" : "text-black"
+            }`}
+          >
             {action.label}
           </Text>
         </Box>
@@ -243,6 +250,7 @@ export default function HomeScreen() {
     </Box>
   ))}
 </HStack>
+
 </VStack>
   );
 }

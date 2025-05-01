@@ -93,19 +93,24 @@ export default function AddressBusiness() {
              className='h-4 w-7'
            />
         </Pressable>
-        <Text className="text-base sm:text-md font-semibold">Business Address</Text>
+        <Text className={`text-base ${
+                theme === "dark" ? "text-white" : "text-black"
+              } sm:text-md font-semibold`}>Business Address</Text>
       </HStack>
 
-      <Text className="text-md sm:text-lg font-bold mb-3 ">Business address</Text>
+      <Text className={`text-md ${
+                theme === "dark" ? "text-white" : "text-black"
+              } sm:text-lg font-bold mb-3`}>Business address</Text>
       <Text className="text-sm text-[#888888] mb-6">
         Onboarding is an essential step to activate my Datman account for accepting payments and receiving payouts.
       </Text>
 
-      <VStack space="md" className='mb-6'>
+      <VStack space="md" className="mb-6">
   {fields.map((field, index) => (
-    <Box key={index} className='pb-2'>
-      <Input variant="underlined" style={{ paddingVertical: 8 }}>
+    <Box key={index} className="pb-2">
+      <Input variant="underlined" style={{ paddingVertical: 8 }} className="border-b-[1px] border-gray-300 px-0">
         <InputField
+          className={`${theme === "dark" ? "text-white" : "text-black"}`}
           placeholder={field.label}
           placeholderTextColor="#888"
           value={field.value}
@@ -115,55 +120,64 @@ export default function AddressBusiness() {
     </Box>
   ))}
 
-        
-<Box className='pb-2'>
-  <Select
-    selectedValue={country}
-    onValueChange={(value) => setCountry(value)}
-  >
- 
+  {/* Country Dropdown */}
+  <Box className="pb-2">
+    <Select selectedValue={country} onValueChange={(value) => setCountry(value)}>
+      <SelectTrigger
+        variant="underlined"
+        className={`border-0 border-b px-0 min-h-[40px] rounded-none bg-transparent focus:outline-none 
+        ${theme === "dark" ? "border-textgrey" : "border-gray-300"}`}
+      >
+        <SelectInput
+          placeholder="Country"
+          className={`text-sm ${theme === "dark" ? "text-white placeholder-textgrey" : "text-black placeholder-textgrey"}`}
+        />
+        {/* <SelectIcon as={ChevronDownIcon} /> */}
+      </SelectTrigger>
+      <SelectPortal>
+        <SelectBackdrop />
+        <SelectContent className={` ${
+    theme === "dark" ? "bg-gray-600" : "bg-lightgrey"}`}>
+                {countries.map((name) => (
+                  <SelectItem key={name} label={name} value={name} />
+                ))}
+        </SelectContent>
+      </SelectPortal>
+    </Select>
+  </Box>
+</VStack>
 
-    <SelectTrigger   className="border-0 border-b border-gray-300 rounded-none px-0 min-h-[40px] bg-transparent focus:outline-none focus:ring-0 focus:border-none active:border-none hover:border-gray-300"
 
-      borderBottomWidth={1}
-      borderColor="$borderLight300"
-      borderWidth={0}
-      borderRadius={0}
-      px={0}
-    >
-      <SelectInput placeholder="Country" />
-      {/* <SelectIcon as={ChevronDownIcon} /> */}
-    </SelectTrigger>
-    <SelectPortal>
-      <SelectBackdrop />
-      <SelectContent>
-        {countries.map((name) => (
-          <SelectItem key={name} label={name} value={name} />
-        ))}
-      </SelectContent>
-    </SelectPortal>
-  </Select>
-</Box>
-
-      </VStack>
-
-      <HStack className="space-x-4 justify-between mt-auto mb-4">
-        <Button
-          variant="outline"
-          className="flex-1 cursor-pointer rounded-full border-black mr-2"
-          onPress={() => navigation.goBack()}
-        >
-          <ButtonText className="text-black">Later</ButtonText>
-        </Button>
-        
-        <Button
-          className={`flex-1 cursor-pointer rounded-full ${isNextEnabled ? 'bg-black' : 'bg-gray-300'}`}
-          onPress={handleNext}
-          isDisabled={!isNextEnabled}
-        >
-          <ButtonText className={`${isNextEnabled ? 'text-white' : 'text-gray-500'}`}>Next</ButtonText>
-        </Button>
-      </HStack>
+     <HStack className="space-x-4 justify-between mt-auto mb-4">
+             <Button
+               variant="outline"
+               className={`flex-1 mr-2 ${
+                 theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+               onPress={() => navigation.goBack()}
+             >
+               <Text className={`text-xs ${
+         theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</Text>
+             </Button>
+             <Button
+               className={`flex-1 rounded-full cursor-pointer 
+                 ${
+                   theme === "dark"
+                     ? isNextEnabled
+                       ? "bg-green"
+                       : "bg-textgrey"
+                     : isNextEnabled
+                     ? "bg-black"
+                     : "bg-textgrey"
+                 } 
+                 ${isNextEnabled ? "opacity-100" : "opacity-70"}`}
+               onPress={handleNext}
+               disabled={!isNextEnabled}
+             >
+               <Text className={`font-medium text-xs sm:text-sm 
+           ${theme === "dark" ? "text-black" : "text-white"} 
+           ${!isNextEnabled && "text-white"}`}>Next</Text>
+             </Button>
+           </HStack>
     </Box>
   );
 }

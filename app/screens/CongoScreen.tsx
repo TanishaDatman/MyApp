@@ -26,7 +26,9 @@ const CongoScreen = () => {
         />
 
         {/* Header */}
-        <Text className="text-xl sm:text-2xl md:text-3xl font-bold text-center">
+        <Text className={`text-xl ${
+            theme === "dark" ? "text-white" : "text-black"
+          }  sm:text-2xl md:text-3xl font-bold text-center`}>
           It's done 😍 🎉
         </Text>
 

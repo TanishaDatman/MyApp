@@ -94,11 +94,15 @@ export default function DocumentsBusiness() {
                            className='h-4 w-7'
                          />
                       </Pressable>
-                      <Text className="text-lg font-semibold">Upload Documents</Text>
+                      <Text className={`text-lg font-semibold ${
+            theme === "dark" ? "text-white" : "text-black"
+          } `}>Upload Documents</Text>
                     </HStack>
 
           {/* Title */}
-          <Text className="text-xl font-bold mb-2">
+          <Text className={`text-xl font-bold ${
+            theme === "dark" ? "text-white" : "text-black"
+          }  mb-2`}>
             Upload any of the documents to verify your business
           </Text>
           <Text className="text-sm text-gray-500 mb-4">
@@ -106,7 +110,9 @@ export default function DocumentsBusiness() {
           </Text>
 
           {/* Identity Verification */}
-          <Text className="font-semibold mb-1">Address Verification</Text>
+          <Text className={`font-semibold ${
+            theme === "dark" ? "text-textgrey" : "text-black"
+          }  mb-1`}>Address Verification</Text>
           <HStack className="items-center mb-2">
             <Box className="bg-lightyellow mb-2 rounded-full px-2 py-1">
               <Text className="text-yellow text-xs">Pending</Text>
@@ -148,103 +154,136 @@ export default function DocumentsBusiness() {
         </ScrollView>
 
         {/* Footer */}
-        <HStack className="mt-6 space-x-4 justify-between">
-          <Button
-            variant="outline"
-            className="rounded-full cursor-pointer flex-1 border border-black mr-2"
-            onPress={() => navigation.goBack()}
-          >
-            <ButtonText className="text-black">Later</ButtonText>
-          </Button>
-
-          <Button
-            className={`rounded-full cursor-pointer flex-1 ${isNextEnabled ? 'bg-black' : 'bg-gray-300'}`}
-            disabled={!isNextEnabled}
-            onPress={() => isNextEnabled && setShowModal(true)}
-          >
-            <ButtonText className="text-white">Next</ButtonText>
-          </Button>
-        </HStack>
+       <HStack space="md" className='mt-6 justify-between'>
+                <Button
+                className={`flex-1 mr-2 ${
+                  theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+                  onPress={() => navigation.goBack()}
+                >
+                  <ButtonText className={`text-xs ${
+          theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+                </Button>
+      
+                <Button
+        className={`flex-1 rounded-full cursor-pointer 
+          ${
+            theme === "dark"
+              ? isNextEnabled
+                ? "bg-green"
+                : "bg-textgrey"
+              : isNextEnabled
+              ? "bg-black"
+              : "bg-textgrey"
+          } 
+          ${isNextEnabled ? "opacity-100" : "opacity-70"}`}
+        disabled={!isNextEnabled}
+        onPress={() => setShowModal(true)}
+      >
+      
+                  <ButtonText className={`font-medium text-xs sm:text-sm 
+            ${theme === "dark" ? "text-black" : "text-white"} 
+            ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
+                </Button>
+              </HStack>
       </Box>
 
       {/* Review Modal */}
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <ModalBackdrop />
-        <ModalContent   className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
-        >
-          <ModalHeader>
-            <Text className="text-lg font-semibold">
-              Review your details <Text className="font-medium">(Optional)</Text>
-            </Text>
-          </ModalHeader>
-
-          <ModalBody>
-            <Text className="text-sm mb-4">
-              You can review your provided information and make changes if needed, or proceed as it is.
-            </Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <HStack className="w-full space-x-4">
-              <Button
-                className="rounded-full cursor-pointer flex-1"
-                variant="outline"
-                onPress={async () => {
-                  setShowModal(false);
-                  navigation.navigate('ReviewBusiness');
-                }}
-              >
-                <ButtonText className="text-sm">Review</ButtonText>
-              </Button>
-
-              <Button
-                className="rounded-full cursor-pointer flex-1 ml-2 bg-black"
-                onPress={async () => {
-                  setShowModal(false);
-                  setModal(true);
-                  await handleNoDocumentClick();
-                }}
-              >
-                <ButtonText className="text-sm text-white">No, I’m good</ButtonText>
-              </Button>
-            </HStack>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-      {/* Success Modal */}
-      <Modal isOpen={modal} onClose={() => setModal(false)}>
-        <ModalBackdrop />
-        <ModalContent        className="absolute  md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full bg-white rounded-t-3xl px-6 pt-4 pb-8"
-        >
-          <ModalBody className="mt-6">
-            <Center className="mb-4">
-              <Image
-                source={require('../../assets/images/tick.png')}
-                alt="Tick"
-                className="h-[90px] w-[110px]"
-              />
-            </Center>
-            <Text className="text-lg font-semibold text-center">
-              Business verification in progress
-            </Text>
-            <Text className="text-sm text-center mt-2">
-              The business details will be verified soon. You can continue filling in the remaining details.
-            </Text>
-          </ModalBody>
-          <ModalFooter className="px-4 pb-6 w-full">
+    <Modal
+      isOpen={showModal}
+      onClose={() => setShowModal(false)}
+      avoidKeyboard
+      // className={` ${
+      //   theme === "dark" ? "bg-dgrey" : "bg-white"
+      //     }`}
+    >
+      <ModalBackdrop />
+    
+      <ModalContent className={`absolute md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full rounded-t-3xl px-6 pt-4 pb-8 ${
+        theme === "dark" ? "bg-black" : "bg-white"
+      }`}>
+        {/* Drag handle */}
+        <Box className="items-center mb-4">
+          <Box className="w-12 h-1.5 bg-gray-300 rounded-full" />
+        </Box>
+    
+        <ModalHeader>
+          <Text className={`text-lg font-semibold  ${theme === "dark" ? "text-white" : "text-black"} `}>
+            Review your details 
+            <Text className={`font-medium  ${theme === "dark" ? "text-white" : "text-black"}`}>(Optional)</Text>
+          </Text>
+        </ModalHeader>
+    
+        <ModalBody>
+          <Text className="text-sm text-gray-600 mb-6">
+            You can review your provided information and make changes if needed, or proceed as it is.
+          </Text>
+        </ModalBody>
+    
+        <ModalFooter>
+          <HStack space="md" className="w-full">
             <Button
-              className="flex-1 rounded-full cursor-pointer bg-black"
+              className={`rounded-full  cursor-pointer flex-1 border ${theme === "dark" ? "border-green" : "border-black"} `}
+              variant="outline"
               onPress={() => {
-                navigation.navigate('Details');
-                setModal(false);
+                setShowModal(false);
+                navigation.navigate('ReviewBusiness');
               }}
             >
-              <ButtonText className="text-white">Continue</ButtonText>
+              <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-white"}`}>Review</ButtonText>
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+    
+            <Button
+              className={`rounded-full flex-1  ${theme === "dark" ? "bg-green" : "bg-black"}`}
+              onPress={async () => {
+                setShowModal(false);
+                setModal(true);
+                await handleNoDocumentClick();
+              }}
+            >
+              <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-black"}`}>No, I’m good</ButtonText>
+            </Button>
+          </HStack>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+
+
+
+      {/* Success Modal */}
+      <Modal isOpen={modal} onClose={() => setModal(false)} >
+             <ModalBackdrop />
+             <ModalContent className={`absolute md:relative md:bottom-auto md:rounded-2xl md:self-center md:mt-24 md:max-w-md bottom-0 w-full rounded-t-3xl px-6 pt-4 pb-8 ${
+         theme === "dark" ? "bg-black" : "bg-white"
+       }`}>
+               <Box className="items-center mb-4">
+           <Box className="w-12 h-1.5 bg-gray-300 rounded-full" />
+         </Box>
+               <ModalBody className='mt-6' >
+                 <Center mb="$4">
+                   <Image source={require('../../assets/images/tick.png')} alt="Tick" className='h-[90] w-[110]'  />
+                 </Center>
+                 <Text className={`text-lg ${theme === "dark" ? "text-white" : "text-black"} font-semibold text-center`}>
+                   Owner verification in progress
+                 </Text>
+                 <Text className={`text-sm ${theme === "dark" ? "text-textgrey" : "text-black"} text-center mt-2`}>
+                   The owner details will be verified soon. You can continue filling in the remaining details.
+                 </Text>
+               </ModalBody>
+               <ModalFooter className='px-4 pb-6 w-[100%]'>
+                 <Button
+               className={`rounded-full cursor-pointer flex-1 border border-black ${theme === "dark" ? "bg-green" : "bg-black"} `}
+                  
+                   onPress={() => {
+                     navigation.navigate('Details');
+                     setModal(false);
+     
+                   }}
+                 >
+                   <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
+                 </Button>
+               </ModalFooter>
+             </ModalContent>
+           </Modal>
     </Box>
   );
 }

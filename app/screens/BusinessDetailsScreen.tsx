@@ -3,7 +3,7 @@ import { CheckCircle, Home, Store, Users, Grid, CheckCircle2 } from 'lucide-reac
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setwhatbusiness } from '../store/features/business/businessSlice';
-import { Box, Button, HStack, Icon, Image, Pressable, Text, VStack } from '@/components/ui';
+import { Box, Button, ButtonText, HStack, Icon, Image, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useThemeToggle } from '@/ThemeContext';
@@ -38,60 +38,71 @@ const BusinessDetailsScreen = () => {
                         className='h-4 w-7'
                       />
                    </Pressable>
-                   <Text className="text-md xs:text-base sm:text-md font-semibold">Business Details</Text>
+                   <Text className={`text-md ${
+      theme === "dark" ? "text-white" : "text-black"} xs:text-base sm:text-md font-semibold`}>Business Details</Text>
                  </HStack>
 
         {/* Title */}
-        <Text className="text-base sm:text-md md:text-lg font-bold text-black">Which best describes your business?</Text>
+        <Text className={`text-base  ${
+      theme === "dark" ? "text-white" : "text-black"} mb-2 sm:text-md md:text-lg font-bold`}>Which best describes your business?</Text>
         <Text className="text-sm text-gray-500">
           This helps us determine the documents required to activate your account and process payouts smoothly.
         </Text>
 
         {/* Options */}
         <VStack className="space-y-4 mt-4">
-          {businessOptions.map((option) => (
-            <Pressable key={option.id} onPress={() => setSelected(option.id)}>
-              <Box
-                className={`flex-row items-center mb-4 justify-between p-4 rounded-lg border-2 ${
-                  selected === option.id ? 'border-green' : 'border-textgrey'
-                } bg-white`}
-              >
-                <HStack className="space-x-3 items-center flex-shrink">
-                  <Image
-                    source={option.icon}
-                    alt={`${option.label} icon`}
-                    className="w-7 h-7 mr-3" 
+  {businessOptions.map((option) => (
+    <Pressable key={option.id} onPress={() => setSelected(option.id)}>
+      <Box
+        className={`flex-row items-center mb-4 justify-between p-4 rounded-lg border-2 
+          ${theme === "dark" ? "bg-black border-textgrey" : "bg-white border-textgrey"} 
+          ${selected === option.id ? "border-green" : ""}`}
+      >
+        <HStack className="space-x-3 items-center flex-shrink">
+          <Image
+            source={option.icon}
+            alt={`${option.label} icon`}
+            className="w-7 h-7 mr-3"
+          />
+          <VStack className="flex-shrink">
+            <Text className={`${theme === "dark" ? "text-white" : "text-black"} md:font-medium font-base`}>
+              {option.label}
+            </Text>
+            <Text className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+              {option.description}
+            </Text>
+          </VStack>
+        </HStack>
+        {selected === option.id && (
+          <MaterialIcons name="check-circle" size={22} color="#22c55e" />
+        )}
+      </Box>
+    </Pressable>
+  ))}
+</VStack>
 
-                  />
-                  <VStack className="flex-shrink">
-                    <Text className="md:font-medium font-base">{option.label}</Text>
-                    <Text className="text-sm text-gray-500">{option.description}</Text>
-                  </VStack>
-                </HStack>
-                {selected === option.id && (
-        <MaterialIcons name="check-circle" size={22} color="#22c55e" />
-      )}
-              </Box>
-            </Pressable>
-          ))}
-        </VStack>
 
         {/* Footer Buttons */}
-        <HStack className="space-x-4 mt-8 justify-between">
-          <Button
-            variant="outline"
-            className="flex-1 cursor-pointer border mr-3 border-black rounded-full"
-            onPress={() => navigation.goBack()}
-          >
-            <Text className="font-medium text-black">Later</Text>
-          </Button>
-          <Button
-            className="flex-1 cursor-pointer rounded-full bg-black"
-            onPress={onSubmit}
-          >
-            <Text className="font-medium text-white">Next</Text>
-          </Button>
-        </HStack>
+        <HStack space="md" className="mt-5 justify-between">
+            <Button
+              variant="outline"
+              className={`flex-1 mr-2 ${
+    theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+              onPress={() => navigation.goBack()}
+            >
+              <ButtonText className={`text-xs ${
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+            </Button>
+
+            <Button
+              className={`flex-1 ml-2 ${
+    theme === "dark" ? "bg-green" : "bg-black"}  cursor-pointer rounded-full`}
+              onPress={onSubmit}
+            >
+              <ButtonText className={`text-xs sm:text-sm ${
+    theme === "dark" ? "text-black" : "text-white"}`}>Next</ButtonText>
+            </Button>
+          </HStack>
       </ScrollView>
     </VStack>
   );
