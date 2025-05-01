@@ -35,7 +35,7 @@ const CongoScreen = () => {
           className="mt-6 sm:mt-8 rounded-full bg-black px-6 py-3"
           onPress={() => navigation.navigate('HomeMain')}
         >
-          <ButtonText className="text-white text-base sm:text-lg">Awesome!💪</ButtonText>
+          <ButtonText className="text-white text-sm sm:text-lg">Awesome!💪</ButtonText>
         </Button>
       </VStack>
     </Box>

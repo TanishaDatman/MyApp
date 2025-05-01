@@ -118,7 +118,7 @@ const Contact = () => {
               )}
             />
             {errors.email && (
-              <Text className='text-xs mt-1'>
+              <Text className='text-xs text-red mt-1'>
                 {errors.email.message}
               </Text>
             )}
@@ -147,7 +147,7 @@ const Contact = () => {
               )}
             />
             {errors.phone && (
-              <Text className='text-xs mt-1'>
+              <Text className='text-xs text-red mt-1'>
                 {errors.phone.message}
               </Text>
             )}

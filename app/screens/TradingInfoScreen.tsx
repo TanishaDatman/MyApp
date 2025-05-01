@@ -247,7 +247,7 @@ const TradingInfoScreen = () => {
             </VStack>
           </VStack>
         )}
-      </ScrollView>
+     
 
       <HStack className="p-4 space-x-4 bg-white">
         <Button
@@ -301,6 +301,7 @@ const TradingInfoScreen = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
+      </ScrollView>
     </Box>
   );
 };

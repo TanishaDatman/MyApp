@@ -1,4 +1,4 @@
-export const ownerId = 73;
-export const companyId=22;
-export const tradeID=17;
-export const bankID=16;
+export const ownerId = 75;
+export const companyId=23;
+export const tradeID=18;
+export const bankID=17;

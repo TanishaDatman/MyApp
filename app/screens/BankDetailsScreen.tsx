@@ -183,7 +183,7 @@ const BankDetailsScreen = () => {
             />
           </VStack>
         </VStack>
-      </ScrollView>
+     
 
       {/* Footer buttons */}
       <HStack className="p-4 space-x-4 bg-white">
@@ -210,6 +210,7 @@ const BankDetailsScreen = () => {
          </ButtonText>
        </Button>
       </HStack>
+      </ScrollView>
     </Box>
   );
 };

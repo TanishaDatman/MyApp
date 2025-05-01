@@ -4,10 +4,7 @@ import { setOwnerDetails } from '../store/features/owner/ownerSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {  ChevronDownIcon, ScrollView } from '@gluestack-ui/themed';
 import { useForm, Controller } from 'react-hook-form';
-// import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform } from 'react-native';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
 import { Box, Button, HStack, Image, Input, InputField, Pressable, Select, SelectBackdrop, SelectContent, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger, Text, VStack } from '@/components/ui';
 
 
@@ -29,10 +26,8 @@ export default function OwnerDetailsScreen() {
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const formatDateWithSlashes = (input: string): string => {
-    // Remove all non-digit characters
     const digits = input.replace(/\D/g, '');
 
-    // Add slashes automatically based on input length
     if (digits.length <= 2) {
       return digits;
     }
@@ -311,18 +306,12 @@ const formatDateToDisplay = (date: Date) => {
           <Button
           className='flex-1 rounded-full '
             variant="outline"
-            // flex={1}
-            // borderRadius="$full"
-            // borderColor="$black"
             onPress={() => navigation.goBack()}
           >
             <Text className='font-medium'>Later</Text>
           </Button>
           <Button
             className='flex-1 rounded-full bg-black '
-            // flex={1}
-            // bg="$black"
-            // borderRadius="$full"
             onPress={handleSubmit(onSubmit)}
           >
             <Text className='font-medium text-white'>Next</Text>
