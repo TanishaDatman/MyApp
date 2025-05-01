@@ -82,17 +82,23 @@ const [statement, setStatement]: any = useState(null);
                           className='h-4 w-7'
                         />
                      </Pressable>
-                     <Text className="text-lg font-semibold">Upload Documents</Text>
+                     <Text className={`text-lg ${
+              theme === "dark" ? "text-white" : "text-black"
+            } font-semibold`}>Upload Documents</Text>
                    </HStack>
 
-          <Text className="text-xl font-bold mb-2">
+          <Text className={`text-xl ${
+              theme === "dark" ? "text-white" : "text-black"
+            } font-bold mb-2`}>
             Upload any of the documents to verify your bank
           </Text>
-          <Text className="text-sm text-gray-500 mb-4">
+          <Text className="text-sm text-textgrey mb-4">
             Accepted formats: JPG, PNG, JPEG, and PDF.
           </Text>
 
-          <Text className="font-semibold mb-1">Bank Account Verification</Text>
+          <Text className={`font-semibold ${
+              theme === "dark" ? "text-white" : "text-black"
+            } mb-1`}>Bank Account Verification</Text>
           <HStack className="items-center mb-2">
             <Box className="bg-lightyellow rounded-full px-2 py-1">
               <Text className="text-yellow text-xs">Pending</Text>
@@ -123,7 +129,7 @@ const [statement, setStatement]: any = useState(null);
           </VStack>
         </ScrollView>
 
-        <HStack className="mt-6 p-4 space-x-4 mb-3 justify-between">
+        {/* <HStack className="mt-6 p-4 space-x-4 mb-3 justify-between">
           <Button
             variant="outline"
             className="rounded-full cursor-pointer border border-black flex-1 mr-2"
@@ -143,7 +149,38 @@ const [statement, setStatement]: any = useState(null);
               {loading ? 'Submitting...' : 'Next'}
             </ButtonText>
           </Button>
-        </HStack>
+        </HStack> */}
+         <HStack space="md" className='mt-6 mb-4 justify-between'>
+                  <Button
+                  className={`flex-1 mr-2 ${
+                    theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+                    onPress={() => navigation.goBack()}
+                  >
+                    <ButtonText className={`text-xs ${
+            theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+                  </Button>
+        
+                  <Button
+          className={`flex-1 rounded-full cursor-pointer 
+            ${
+              theme === "dark"
+                ? isNextEnabled
+                  ? "bg-green"
+                  : "bg-textgrey"
+                : isNextEnabled
+                ? "bg-black"
+                : "bg-textgrey"
+            } 
+            ${isNextEnabled ? "opacity-100" : "opacity-70"}`}
+            disabled={!isNextEnabled || loading}
+            onPress={handleNext}
+        >
+        
+                    <ButtonText className={`font-medium text-xs sm:text-sm 
+              ${theme === "dark" ? "text-black" : "text-white"} 
+              ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
+                  </Button>
+                </HStack>
       </Box>
     </Box>
   );

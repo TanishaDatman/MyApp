@@ -200,145 +200,182 @@ const TradingInfoScreen = () => {
         </VStack>
 
         {!isSameAsRegistered && (
-  <VStack className="space-y-4 mb-6">
-    <Divider className="my-2" />
+          <VStack className="space-y-4 mb-6">
+            <Divider className="my-2" />
 
-    <Text className={`text-lg font-semibold mb-3 ${theme === "dark" ? "text-white" : "text-black"}`}>
-      Trading address
-    </Text>
+            <Text
+              className={`text-lg font-semibold mb-3 ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}
+            >
+              Trading address
+            </Text>
 
-    {/** Post Code */}
-    <VStack className="space-y-2 mb-3">
-      <Input
-        variant="underlined"
-        className={`border-b ${theme === "dark" ? "border-textgrey" : "border-black"}`}
-      >
-        <InputField
-          placeholder="Enter post code"
-          value={postCode}
-          onChangeText={setPostCode}
-          className={`text-base ${
-            theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
-          }`}
-        />
-      </Input>
-    </VStack>
+            {/** Post Code */}
+            <VStack className="space-y-2 mb-3">
+              <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  placeholder="Enter post code"
+                  value={postCode}
+                  onChangeText={setPostCode}
+                  className={`text-base ${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
+            </VStack>
 
-    {/** Address Line 1 */}
-    <VStack className="space-y-2 mb-3">
-      <Input
-        variant="underlined"
-        className={`border-b ${theme === "dark" ? "border-textgrey" : "border-black"}`}
-      >
-        <InputField
-          placeholder="Enter address line 1"
-          value={addressLine1}
-          onChangeText={setAddressLine1}
-          className={`text-base ${
-            theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
-          }`}
-        />
-      </Input>
-    </VStack>
+            {/** Address Line 1 */}
+            <VStack className="space-y-2 mb-3">
+              <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  placeholder="Enter address line 1"
+                  value={addressLine1}
+                  onChangeText={setAddressLine1}
+                  className={`text-base ${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
+            </VStack>
 
-    {/** Address Line 2 */}
-    <VStack className="space-y-2 mb-3">
-      <Input
-        variant="underlined"
-        className={`border-b ${theme === "dark" ? "border-textgrey" : "border-black"}`}
-      >
-        <InputField
-          placeholder="Enter address line 2"
-          value={addressLine2}
-          onChangeText={setAddressLine2}
-          className={`text-base ${
-            theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
-          }`}
-        />
-      </Input>
-    </VStack>
+            {/** Address Line 2 */}
+            <VStack className="space-y-2 mb-3">
+              <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  placeholder="Enter address line 2"
+                  value={addressLine2}
+                  onChangeText={setAddressLine2}
+                  className={`text-base ${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
+            </VStack>
 
-    {/** Town/City */}
-    <VStack className="space-y-2 mb-3">
-      <Input
-        variant="underlined"
-        className={`border-b ${theme === "dark" ? "border-textgrey" : "border-black"}`}
-      >
-        <InputField
-          placeholder="Enter town/city"
-          value={townCity}
-          onChangeText={setTownCity}
-          className={`text-base ${
-            theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
-          }`}
-        />
-      </Input>
-    </VStack>
+            {/** Town/City */}
+            <VStack className="space-y-2 mb-3">
+              <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  placeholder="Enter town/city"
+                  value={townCity}
+                  onChangeText={setTownCity}
+                  className={`text-base ${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
+            </VStack>
 
-    {/** County */}
-    <VStack className="space-y-2 mb-3">
-      <Input
-        variant="underlined"
-        className={`border-b ${theme === "dark" ? "border-textgrey" : "border-black"}`}
-      >
-        <InputField
-          placeholder="Enter county"
-          value={county}
-          onChangeText={setCounty}
-          className={`text-base ${
-            theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
-          }`}
-        />
-      </Input>
-    </VStack>
+            {/** County */}
+            <VStack className="space-y-2 mb-3">
+              <Input
+                variant="underlined"
+                className={`border-b ${
+                  theme === "dark" ? "border-textgrey" : "border-black"
+                }`}
+              >
+                <InputField
+                  placeholder="Enter county"
+                  value={county}
+                  onChangeText={setCounty}
+                  className={`text-base ${
+                    theme === "dark"
+                      ? "placeholder-textgrey text-white"
+                      : "placeholder-textgrey text-black"
+                  }`}
+                />
+              </Input>
+            </VStack>
 
-    {/** Country Select */}
-    <VStack className="space-y-2">
-      <Box className="pb-2">
-        <Select selectedValue={country} onValueChange={(value) => setCountry(value)}>
-                 <SelectTrigger
-                 variant="underlined"
-                 className={`min-h-[40px] border-b ${
-                   theme === "dark" ? "border-textgrey" : ""
-                 }`}
-               >
-                 <SelectInput
-                   placeholder="Country"
-                   className={`text-sm ${
-                     theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
-                   }`}
-                 />
-                     <SelectIcon />
-                   </SelectTrigger>
-                   <SelectPortal>
-                     <SelectBackdrop />
-                     <SelectContent className={` ${
-           theme === "dark" ? "bg-gray-600" : "bg-lightgrey"}`}>
-                       {countries.map((name) => (
-                         <SelectItem key={name} label={name} value={name} />
-                       ))}
-                     </SelectContent>
-                   </SelectPortal>
-                 </Select>
-      </Box>
-    </VStack>
-  </VStack>
-)}
-
+            {/** Country Select */}
+            <VStack className="space-y-2">
+              <Box className="pb-2">
+                <Select
+                  selectedValue={country}
+                  onValueChange={(value) => setCountry(value)}
+                >
+                  <SelectTrigger
+                    variant="underlined"
+                    className={`min-h-[40px] border-b ${
+                      theme === "dark" ? "border-textgrey" : ""
+                    }`}
+                  >
+                    <SelectInput
+                      placeholder="Country"
+                      className={`text-sm ${
+                        theme === "dark"
+                          ? "placeholder-textgrey text-white"
+                          : "placeholder-textgrey text-black"
+                      }`}
+                    />
+                    <SelectIcon />
+                  </SelectTrigger>
+                  <SelectPortal>
+                    <SelectBackdrop />
+                    <SelectContent
+                      className={` ${
+                        theme === "dark" ? "bg-gray-600" : "bg-lightgrey"
+                      }`}
+                    >
+                      {countries.map((name) => (
+                        <SelectItem key={name} label={name} value={name} />
+                      ))}
+                    </SelectContent>
+                  </SelectPortal>
+                </Select>
+              </Box>
+            </VStack>
+          </VStack>
+        )}
 
         <HStack className="p-4 space-x-4">
           <Button
             variant="outline"
             className={`flex-1 mr-2 ${
-              theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}
+              theme === "dark" ? "border-green" : "border-black"
+            }  border-2 cursor-pointer  rounded-full`}
             onPress={() => navigation.goBack()}
           >
-            <ButtonText className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+            <ButtonText
+              className={`text-xs ${
+                theme === "dark" ? "text-green" : "text-black"
+              } sm:text-sm `}
+            >
+              Later
+            </ButtonText>
           </Button>
 
           <Button
-             className={`flex-1 rounded-full cursor-pointer 
+            className={`flex-1 rounded-full cursor-pointer 
               ${
                 theme === "dark"
                   ? isNextEnabled
@@ -352,9 +389,13 @@ const TradingInfoScreen = () => {
             disabled={!isNextEnabled}
             onPress={handleNext}
           >
-            <ButtonText className={`font-medium text-xs sm:text-sm 
+            <ButtonText
+              className={`font-medium text-xs sm:text-sm 
       ${theme === "dark" ? "text-black" : "text-white"} 
-      ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
+      ${!isNextEnabled && "text-white"}`}
+            >
+              Next
+            </ButtonText>
           </Button>
         </HStack>
 

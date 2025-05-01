@@ -58,7 +58,9 @@ const BankDetailsScreen = () => {
   const {theme}=useThemeToggle()
 
   return (
-    <Box className="flex-1 p-3 md:p-5 bg-white">
+    <Box className={`flex-1 p-3 md:p-5 ${
+      theme === "dark" ? "bg-black" : "bg-white"
+    } `}>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
@@ -77,10 +79,14 @@ const BankDetailsScreen = () => {
                           className='h-4 w-7'
                         />
                      </Pressable>
-                     <Text className="text-md xs:text-base sm:text-md font-semibold">Bank Details</Text>
+                     <Text className={`text-md xs:text-base ${
+              theme === "dark" ? "text-white" : "text-black"
+            } sm:text-md font-semibold`}>Bank Details</Text>
                    </HStack>
 
-          <Text className="text-md sm:text-lg font-bold mb-2">
+          <Text className={`text-md ${
+              theme === "dark" ? "text-white" : "text-black"
+            } sm:text-lg font-bold mb-2`}>
             Set up your payout(bank) account
           </Text>
           <Text className="text-sm sm:text-base text-textgrey mb-4">
@@ -89,128 +95,167 @@ const BankDetailsScreen = () => {
         </VStack>
 
         <VStack className="space-y-4 mb-8">
-          {/* Account Holder Name */}
-          <VStack className="space-y-1 mb-3">
-            <Controller
-              control={control}
-              name="accountHolderName"
-              render={({ field: { onChange, value } }) => (
-                <>
-                  <Input variant="underlined" className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
-                    <InputField
-                      placeholder="Enter account holder name"
-                      value={value}
-                      onChangeText={onChange}
-                      autoCapitalize="none"
-                      autoCorrect={false}
-                    />
-                  </Input>
-                  {errors.accountHolderName && (
-                    <Text className="text-xs text-red">
-                      {errors.accountHolderName.message}
-                    </Text>
-                  )}
-                </>
-              )}
+  {/* Account Holder Name */}
+  <VStack className="space-y-1 mb-3">
+    <Controller
+      control={control}
+      name="accountHolderName"
+      render={({ field: { onChange, value } }) => (
+        <>
+          <Input
+            variant="underlined"
+            className={`md:text-md border-b ${
+              theme === "dark" ? "border-textgrey" : "border-black"
+            } md:mb-0 mb-2`}
+          >
+            <InputField
+              placeholder="Enter account holder name"
+              value={value}
+              onChangeText={onChange}
+              autoCapitalize="none"
+              autoCorrect={false}
+              className={`${
+                theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+              }`}
             />
-          </VStack>
+          </Input>
+          {errors.accountHolderName && (
+            <Text className="text-xs text-red">{errors.accountHolderName.message}</Text>
+          )}
+        </>
+      )}
+    />
+  </VStack>
 
-          {/* Sort Code */}
-          <VStack className="space-y-1 mb-3">
-            <Controller
-              control={control}
-              name="sortCode"
-              render={({ field: { onChange, value } }) => (
-                <>
-                  <Input variant="underlined"  className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
-                    <InputField
-                      placeholder="Bank sort code"
-                      value={value}
-                      onChangeText={onChange}
-                      keyboardType="numeric"
-                    />
-                  </Input>
-                  {errors.sortCode && (
-                    <Text className="text-xs text-red">
-                      {errors.sortCode.message}
-                    </Text>
-                  )}
-                </>
-              )}
+  {/* Sort Code */}
+  <VStack className="space-y-1 mb-3">
+    <Controller
+      control={control}
+      name="sortCode"
+      render={({ field: { onChange, value } }) => (
+        <>
+          <Input
+            variant="underlined"
+            className={`md:text-md border-b ${
+              theme === "dark" ? "border-textgrey" : "border-black"
+            } md:mb-0 mb-2`}
+          >
+            <InputField
+              placeholder="Bank sort code"
+              value={value}
+              onChangeText={onChange}
+              keyboardType="numeric"
+              className={`${
+                theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+              }`}
             />
-          </VStack>
+          </Input>
+          {errors.sortCode && (
+            <Text className="text-xs text-red">{errors.sortCode.message}</Text>
+          )}
+        </>
+      )}
+    />
+  </VStack>
 
-          {/* Account Number */}
-          <VStack className="space-y-1 mb-3">
-            <Controller
-              control={control}
-              name="accountNumber"
-              render={({ field: { onChange, value } }) => (
-                <>
-                  <Input variant="underlined"  className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
-                    <InputField
-                      placeholder="Account Number"
-                      value={value}
-                      onChangeText={onChange}
-                      keyboardType="numeric"
-                    />
-                  </Input>
-                  {errors.accountNumber && (
-                    <Text className="text-xs text-red">
-                      {errors.accountNumber.message}
-                    </Text>
-                  )}
-                </>
-              )}
+  {/* Account Number */}
+  <VStack className="space-y-1 mb-3">
+    <Controller
+      control={control}
+      name="accountNumber"
+      render={({ field: { onChange, value } }) => (
+        <>
+          <Input
+            variant="underlined"
+            className={`md:text-md border-b ${
+              theme === "dark" ? "border-textgrey" : "border-black"
+            } md:mb-0 mb-2`}
+          >
+            <InputField
+              placeholder="Account Number"
+              value={value}
+              onChangeText={onChange}
+              keyboardType="numeric"
+              className={`${
+                theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+              }`}
             />
-          </VStack>
+          </Input>
+          {errors.accountNumber && (
+            <Text className="text-xs text-red">{errors.accountNumber.message}</Text>
+          )}
+        </>
+      )}
+    />
+  </VStack>
 
-          {/* Confirm Account Number */}
-          <VStack className="space-y-1 mb-3">
-            <Controller
-              control={control}
-              name="confirmAccountNumber"
-              render={({ field: { onChange, value } }) => (
-                <>
-                  <Input variant="underlined"  className='text-black md:text-md  border-b border-textgrey md:mb-0 mb-2'>
-                    <InputField
-                      placeholder="Confirm Account Number"
-                      value={value}
-                      onChangeText={onChange}
-                      keyboardType="numeric"
-                    />
-                  </Input>
-                  {errors.confirmAccountNumber && (
-                    <Text className="text-xs text-red">
-                      {errors.confirmAccountNumber.message}
-                    </Text>
-                  )}
-                </>
-              )}
+  {/* Confirm Account Number */}
+  <VStack className="space-y-1 mb-3">
+    <Controller
+      control={control}
+      name="confirmAccountNumber"
+      render={({ field: { onChange, value } }) => (
+        <>
+          <Input
+            variant="underlined"
+            className={`md:text-md border-b ${
+              theme === "dark" ? "border-textgrey" : "border-black"
+            } md:mb-0 mb-2`}
+          >
+            <InputField
+              placeholder="Confirm Account Number"
+              value={value}
+              onChangeText={onChange}
+              keyboardType="numeric"
+              className={`${
+                theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
+              }`}
             />
-          </VStack>
-        </VStack>
+          </Input>
+          {errors.confirmAccountNumber && (
+            <Text className="text-xs text-red">{errors.confirmAccountNumber.message}</Text>
+          )}
+        </>
+      )}
+    />
+  </VStack>
+</VStack>
+
      
 
       {/* Footer buttons */}
-      <HStack className="p-4 space-x-4 bg-white">
+      <HStack className="p-4 space-x-4">
         <Button
           variant="outline"
-          className='flex-1 rounded-full cursor-pointer mr-3'
+          className={`flex-1 ${
+            theme === "dark" ? "border-green" : "border-black"
+          } cursor-pointer rounded-full mr-3`}
          
           onPress={() => navigation.goBack()}
         >
-          <ButtonText className="text-black">Later</ButtonText>
+          <ButtonText  className={`text-xs ${
+                  theme === "dark" ? "text-green" : "text-black"
+                } sm:text-sm `}>Later</ButtonText>
         </Button>
 
        <Button
-         className={`flex-1 rounded-full cursor-pointer ${isValid ? 'bg-black' : 'bg-lightgrey'} `}
-         onPress={handleSubmit(onSubmit)}
+className={`flex-1 rounded-full cursor-pointer 
+  ${
+    theme === "dark"
+      ? isValid
+        ? "bg-green"
+        : "bg-textgrey"
+      : isValid
+      ? "bg-black"
+      : "bg-textgrey"
+  } 
+  ${isValid ? "opacity-100" : "opacity-70"}`}         onPress={handleSubmit(onSubmit)}
          disabled={!isValid}
        >
          <ButtonText
-           className={`font-medium ${isValid ? 'text-white' : 'text-textgrey'}`}
-         >
+ className={`font-medium text-xs sm:text-sm 
+  ${theme === "dark" ? "text-black" : "text-white"} 
+  ${!isValid && "text-white"}`}         >
            Next
          </ButtonText>
        </Button>
