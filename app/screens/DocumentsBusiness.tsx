@@ -229,7 +229,7 @@ export default function DocumentsBusiness() {
                 navigation.navigate('ReviewBusiness');
               }}
             >
-              <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-white"}`}>Review</ButtonText>
+              <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-black"}`}>Review</ButtonText>
             </Button>
     
             <Button
@@ -240,7 +240,7 @@ export default function DocumentsBusiness() {
                 await handleNoDocumentClick();
               }}
             >
-              <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-black"}`}>No, I’m good</ButtonText>
+              <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>No, I’m good</ButtonText>
             </Button>
           </HStack>
         </ModalFooter>

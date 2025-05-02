@@ -201,7 +201,7 @@ export default function HomeScreen() {
               </Pressable>
 
                   {/* Divider */}
-      <Divider className="text-divider  md:my-20 " />
+      {/* <Divider className="text-divider  md:my-20 " /> */}
   
   {/* Action Buttons */}
   <HStack className="flex-wrap overflow-hidden p-3 px-4 justify-between">

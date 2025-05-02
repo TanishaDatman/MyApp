@@ -129,27 +129,7 @@ const [statement, setStatement]: any = useState(null);
           </VStack>
         </ScrollView>
 
-        {/* <HStack className="mt-6 p-4 space-x-4 mb-3 justify-between">
-          <Button
-            variant="outline"
-            className="rounded-full cursor-pointer border border-black flex-1 mr-2"
-            onPress={() => navigation.goBack()}
-          >
-            <ButtonText className="text-black">Later</ButtonText>
-          </Button>
-
-          <Button
-            className={`rounded-full cursor-pointer flex-1 ${
-              isNextEnabled ? 'bg-black' : 'bg-gray-300'
-            }`}
-            disabled={!isNextEnabled || loading}
-            onPress={handleNext}
-          >
-            <ButtonText className="text-white">
-              {loading ? 'Submitting...' : 'Next'}
-            </ButtonText>
-          </Button>
-        </HStack> */}
+       
          <HStack space="md" className='mt-6 mb-4 justify-between'>
                   <Button
                   className={`flex-1 mr-2 ${

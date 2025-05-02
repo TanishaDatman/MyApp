@@ -49,7 +49,7 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "transparent", // 👈 set background transparent
+    background: "transparent", 
   },
 };
 
@@ -125,7 +125,7 @@ function AppContent() {
     loadNavigationState();
   }, []);
 
-  if (!isReady) return null; // Or return a loading component
+  if (!isReady) return null;
 
   const { theme } = useThemeToggle(); 
   const isLight = theme === "light";

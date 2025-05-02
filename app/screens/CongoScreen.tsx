@@ -18,11 +18,6 @@ const CongoScreen = () => {
           source={require('../../assets/images/tick.png')}
           alt="Success checkmark"
           className='h-[90] w-[110]' 
-          // style={{
-          //   height: 80,
-          //   width: 100,
-          //   resizeMode: 'contain',
-          // }}
         />
 
         {/* Header */}

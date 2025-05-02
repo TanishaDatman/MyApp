@@ -181,9 +181,6 @@ console.log("selected file",selectedFile);
   isOpen={showModal}
   onClose={() => setShowModal(false)}
   avoidKeyboard
-  // className={` ${
-  //   theme === "dark" ? "bg-dgrey" : "bg-white"
-  //     }`}
 >
   <ModalBackdrop />
 
@@ -218,7 +215,7 @@ console.log("selected file",selectedFile);
             navigation.navigate('Review');
           }}
         >
-          <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-white"}`}>Review</ButtonText>
+          <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-black"}`}>Review</ButtonText>
         </Button>
 
         <Button
@@ -229,7 +226,7 @@ console.log("selected file",selectedFile);
             await handleNoDocumentClick();
           }}
         >
-          <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-black"}`}>No, I’m good</ButtonText>
+          <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>No, I’m good</ButtonText>
         </Button>
       </HStack>
     </ModalFooter>
