@@ -130,7 +130,7 @@ export default function AddressBusiness() {
       >
         <SelectInput
           placeholder="Country"
-          className={`text-sm ${theme === "dark" ? "text-white placeholder-textgrey" : "text-black placeholder-textgrey"}`}
+          className={`text-sm ${theme === "dark" ? "text-white" : "text-black"}`}
         />
         {/* <SelectIcon as={ChevronDownIcon} /> */}
       </SelectTrigger>
