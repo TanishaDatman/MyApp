@@ -32,6 +32,8 @@ export default function DetailsScreen() {
   const { getTradingDetails } = useTradingApi();
   const { getBankDetails } = useBankApi();
 
+  
+
   const [ownerStatus, setOwnerStatus] = useState<"pending" | "inProgress">(
     "pending"
   );

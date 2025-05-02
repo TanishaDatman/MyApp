@@ -138,6 +138,7 @@ const CompanyDetails = () => {
                     onChangeText={onChange}
                     onBlur={onBlur}
                     keyboardType="numeric"
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`py-2 ${
                       theme === "dark" ? "text-white" : "text-black"
                     }`}
@@ -175,6 +176,7 @@ const CompanyDetails = () => {
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`py-2 ${
                       theme === "dark" ? "text-white" : "text-black"
                     }`}

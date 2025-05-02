@@ -152,6 +152,7 @@ const Contact = () => {
                     placeholder="Email ID"
                     keyboardType="email-address"
                     autoCapitalize="none"
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`${
                       theme === "dark"
                         ? "placeholder-textgrey text-white"
@@ -194,6 +195,7 @@ const Contact = () => {
                     placeholder="Phone number"
                     keyboardType="phone-pad"
                     autoCapitalize="none"
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`${
                       theme === "dark"
                         ? "placeholder-textgrey text-white"

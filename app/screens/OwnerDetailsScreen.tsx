@@ -178,6 +178,7 @@ const formatDateToDisplay = (date: Date) => {
                   value={value}
                   onChangeText={onChange}
                   placeholder="Enter first name"
+                  placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                   className={`${
                     theme === "dark"
                       ? "placeholder-textgrey text-white"
@@ -218,6 +219,7 @@ const formatDateToDisplay = (date: Date) => {
                   value={value}
                   onChangeText={onChange}
                   placeholder="Enter last name"
+                  placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                   className={`${
                     theme === "dark"
                       ? "placeholder-textgrey text-white"
@@ -315,6 +317,7 @@ const formatDateToDisplay = (date: Date) => {
             onChange(formatted);
           }}
           placeholder="DD/MM/YYYY"
+          placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
           className={`${
             theme === 'dark'
               ? 'placeholder-textgrey text-white'

@@ -220,14 +220,14 @@ export default function ReviewBusiness() {
                 theme === "dark" ? "text-white" : "text-black"
               } font-semibold text-center`}
             >
-              Owner verification in progress
+              Business verification in progress
             </Text>
             <Text
               className={`text-sm ${
                 theme === "dark" ? "text-textgrey" : "text-black"
               } text-center mt-2`}
             >
-              The owner details will be verified soon. You can continue filling
+              The business details will be verified soon. You can continue filling
               in the remaining details.
             </Text>
           </ModalBody>

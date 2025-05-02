@@ -102,6 +102,7 @@ const ContactBusiness = () => {
                     placeholder="Email ID"
                     keyboardType="email-address"
                     autoCapitalize="none"
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`${
                       theme === "dark" ? "text-white" : "text-black"
                     }`}
@@ -136,6 +137,7 @@ const ContactBusiness = () => {
                     onBlur={onBlur}
                     placeholder="Phone number"
                     keyboardType="phone-pad"
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`${
                       theme === "dark" ? "text-white" : "text-black"
                     }`}
@@ -168,6 +170,7 @@ const ContactBusiness = () => {
                     onChangeText={onChange}
                     onBlur={onBlur}
                     placeholder="Company URL"
+                    placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
                     className={`${
                       theme === "dark" ? "text-white" : "text-black"
                     }`}

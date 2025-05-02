@@ -263,10 +263,10 @@ export default function DocumentsBusiness() {
                    <Image source={require('../../assets/images/tick.png')} alt="Tick" className='h-[90] w-[110]'  />
                  </Center>
                  <Text className={`text-lg ${theme === "dark" ? "text-white" : "text-black"} font-semibold text-center`}>
-                   Owner verification in progress
+                   Business verification in progress
                  </Text>
                  <Text className={`text-sm ${theme === "dark" ? "text-textgrey" : "text-black"} text-center mt-2`}>
-                   The owner details will be verified soon. You can continue filling in the remaining details.
+                   The business details will be verified soon. You can continue filling in the remaining details.
                  </Text>
                </ModalBody>
                <ModalFooter className='px-4 pb-6 w-[100%]'>

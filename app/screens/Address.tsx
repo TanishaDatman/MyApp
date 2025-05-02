@@ -142,6 +142,7 @@ export default function Address() {
         >
           <SelectInput
             placeholder="Country"
+            placeholderTextColor={theme === 'dark' ? '#A0A0A0' : '#6B7280'}
             className={`text-sm ${
               theme === "dark" ? "placeholder-textgrey text-white" : "placeholder-textgrey text-black"
             }`}
