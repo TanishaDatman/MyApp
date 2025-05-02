@@ -34,13 +34,15 @@ export const onboardingData = [
 export const businessOptions = [
     {
       id: 'sole_trader',
-      icon: require('../../assets/images/location_away.png'),
+      iconl: require('../../assets/images/location_away.png'),
+      icond: require('../../assets/images/location_awaydark.png'),
       label: 'Sole Trader',
       description: 'A self-employed individual running a business.',
     },
     {
       id: 'limited_llp',
-      icon: require('../../assets/images/storefront.png'),
+      iconl: require('../../assets/images/storefront.png'),
+      icond: require('../../assets/images/storefrontdark.png'),
       label: 'Limited/LLP',
       description: 'A registered company with limited liability protection.',
     },
@@ -48,13 +50,16 @@ export const businessOptions = [
       id: 'partnership',
       label: 'Partnership',
       description: 'A business owned and operated by two or more individuals.',
-      icon: require('../../assets/images/handshake.png'),
+      iconl: require('../../assets/images/handshake.png'),
+      icond: require('../../assets/images/handshakedark.png'),
+
     },
     {
       id: 'others',
       label: 'Others',
       description: 'Any business type that doesn’t fall into the above categories.',
-      icon: require('../../assets/images/domain.png'),
+      iconl: require('../../assets/images/domain.png'),
+      icond: require('../../assets/images/domaindark.png'),
     },
   ];
 

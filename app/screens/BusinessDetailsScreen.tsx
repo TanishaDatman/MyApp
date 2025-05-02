@@ -60,9 +60,13 @@ const BusinessDetailsScreen = () => {
       >
         <HStack className="space-x-3 items-center flex-shrink">
           <Image
-            source={option.icon}
+            source={
+              theme==="dark" ? option.icond : option.iconl
+            }
             alt={`${option.label} icon`}
             className="w-7 h-7 mr-3"
+            style={{
+              tintColor: theme === "dark" ? "#FFFFFF" : "#000000",}}
           />
           <VStack className="flex-shrink">
             <Text className={`${theme === "dark" ? "text-white" : "text-black"} md:font-medium font-base`}>

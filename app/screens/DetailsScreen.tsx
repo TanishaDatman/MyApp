@@ -275,6 +275,12 @@ export default function DetailsScreen() {
                     <HStack className="justify-start" space="md">
                       <Image
                         source={item.icon}
+                        style={{
+                          tintColor: theme === "dark" ? "#FFFFFF" : "#000000",
+                          resizeMode: "contain",
+                          height: 24,
+                          width: 24,
+                        }}
                         className={`object-contain ${
                           theme === "dark" ? "text-white" : "text-black"
                         } `}
