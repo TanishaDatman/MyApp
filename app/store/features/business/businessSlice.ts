@@ -45,6 +45,19 @@ const businessSlice = createSlice({
     setBusinessDocument(state, action: PayloadAction<{ name: string,type:string }>) {
       state.document = action.payload;
     },
+    setAllBusinessDetails(state, action: PayloadAction<{
+      companywhat: string;
+      businessType: string;
+      contact: typeof state.contact;
+      address: typeof state.address;
+      document: typeof state.document;
+    }>) {
+      state.companywhat = action.payload.companywhat;
+      state.businessType = action.payload.businessType;
+      state.contact = action.payload.contact;
+      state.address = action.payload.address;
+      state.document = action.payload.document;
+    },
   },
 });
 
@@ -55,6 +68,7 @@ export const {
   setBusinessContact,
   setBusinessAddress,
   setBusinessDocument,
+  setAllBusinessDetails
 } = businessSlice.actions;
 
 export default businessSlice.reducer;

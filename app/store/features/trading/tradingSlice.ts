@@ -26,6 +26,15 @@ const tradingSlice = createSlice({
     setTradingAddress(state, action: PayloadAction<typeof state.address>) {
       state.address = { ...state.address, ...action.payload };
     },
+    setAllTradingDetails(state, action: PayloadAction<{
+      tradingName: string;
+      isSameAsRegistered: boolean;
+      address: typeof state.address;
+    }>) {
+      state.tradingName = action.payload.tradingName;
+      state.isSameAsRegistered = action.payload.isSameAsRegistered;
+      state.address = action.payload.address;
+    },
   },
 });
 
@@ -33,6 +42,7 @@ export const {
   setTradingName,
   setSameAsRegistered,
   setTradingAddress,
+  setAllTradingDetails,
 } = tradingSlice.actions;
 
 export default tradingSlice.reducer;

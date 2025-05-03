@@ -42,6 +42,17 @@ const ownerSlice = createSlice({
     setDocument(state, action: PayloadAction<{ name: string,type:string }>) {
       state.document = action.payload;
     },
+    setAllOwnerDetails(state, action: PayloadAction<{
+      owner: typeof state.owner,
+      contact: typeof state.contact,
+      address: typeof state.address,
+      document: typeof state.document,
+    }>) {
+      state.owner = action.payload.owner;
+      state.contact = action.payload.contact;
+      state.address = action.payload.address;
+      state.document = action.payload.document;
+    },
   },
 });
 
@@ -50,6 +61,7 @@ export const {
   setContactDetails,
   setAddressDetails,
   setDocument,
+  setAllOwnerDetails,
 } = ownerSlice.actions;
 
 export default ownerSlice.reducer;

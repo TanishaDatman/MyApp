@@ -18,13 +18,17 @@ import {
   Text,
   VStack,
 } from "@/components/ui";
-import {
-  Divider,
-  ScrollView,
-} from "@gluestack-ui/themed";
 import LottieView from "lottie-react-native";
 import { useThemeToggle } from "@/ThemeContext";
 import { actions } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { setAllOwnerDetails } from "../store/features/owner/ownerSlice";
+import { setAllBusinessDetails } from "../store/features/business/businessSlice";
+import { setAllTradingDetails } from "../store/features/trading/tradingSlice";
+import { setAllBankDetails } from "../store/features/bank/bankSlice";
+
+
+
 
 export default function HomeScreen() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
@@ -40,31 +44,33 @@ export default function HomeScreen() {
   const [track, setTrack] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
 
-  const screenWidth = Dimensions.get("window").width;
+  const dispatch=useDispatch()
 
-
-  // const backgroundImage = imageSource ? { uri: imageSource } : undefined;
-// 
 
   useFocusEffect(
     useCallback(() => {
       const fetchDetails = async () => {
         try {
           const ownerData = await getOwnerDetails(ownerId);
-          // console.log("===========>",ownerData?.business?.flag)
           if (ownerData?.business?.flag == 1) setTrack(1);
+          dispatch(setAllOwnerDetails(ownerData?.business))
 
           const companyData = await getCompanyDetails(companyId);
-          // console.log("===========>",companyData?.companyDetails?.flag)
+          console.log("===========>",companyData?.companyDetails)
           if (companyData?.companyDetails?.flag === 1) setTrack(2);
+          dispatch(setAllBusinessDetails(companyData?.companyDetails))
 
           const tradingData = await getTradingDetails(tradeID);
-          // console.log("===========>",tradingData?.tradingDetails?.flag)
+          console.log("==checking for the trading on home=========>",tradingData?.tradingDetails)
           if (tradingData?.tradingDetails?.flag === 1) setTrack(3);
+          dispatch(setAllTradingDetails(tradingData?.tradingDetails))
 
           const bankData = await getBankDetails(bankID);
-          console.log("===========>",bankData?.bankDetails?.flag)
+          console.log("===========>",bankData?.bankDetails)
           if (bankData?.bankDetails?.flag === 1) setTrack(4);
+          dispatch(setAllBankDetails(bankData?.bankDetails))
+
+
         } catch (error) {
           console.error("Error fetching details:", error);
         }
