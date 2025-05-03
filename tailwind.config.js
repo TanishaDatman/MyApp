@@ -37,6 +37,8 @@ module.exports = {
             lightgrey: 'rgb(var(--color-lightgrey)/<alpha-value>)',
             backgroundgrey: 'rgb(var(--color-backgroundgrey)/<alpha-value>)',
             divider: 'rgb(var(--color-divider)/<alpha-value>)',
+            blue: 'rgb(var(--color-blue)/<alpha-value>)',
+            lightblue: 'rgb(var(--color-lightblue)/<alpha-value>)',
 
             // Dark theme colors
             dred: 'rgb(var(--color-dred) / <alpha-value>)',

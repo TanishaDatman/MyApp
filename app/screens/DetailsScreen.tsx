@@ -25,6 +25,9 @@ import {
 import { useThemeToggle } from "@/ThemeContext";
 import { onboardingData } from "../utils/constants";
 
+type StatusType = "pending" | "inProgress" | "verified" | "rejected";
+
+
 export default function DetailsScreen() {
   const navigation: any = useNavigation();
   const { getOwnerDetails } = useOwnerApi();
@@ -34,63 +37,57 @@ export default function DetailsScreen() {
 
   
 
-  const [ownerStatus, setOwnerStatus] = useState<"pending" | "inProgress">(
-    "pending"
-  );
-  const [companyStatus, setCompanyStatus] = useState<"pending" | "inProgress">(
-    "pending"
-  );
-  const [tradingStatus, setTradingtatus] = useState<"pending" | "inProgress">(
-    "pending"
-  );
-  const [bankingStatus, setBankingtatus] = useState<"pending" | "inProgress">(
-    "pending"
-  );
+  const [ownerStatus, setOwnerStatus] = useState<StatusType>("pending");
+const [companyStatus, setCompanyStatus] = useState<StatusType>("pending");
+const [tradingStatus, setTradingtatus] = useState<StatusType>("pending");
+const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
 
   const [track, setTrack] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
 
+  const mapFlagToStatus = (flag: number): StatusType => {
+    switch (flag) {
+      case 1:
+        return "inProgress";
+      case 2:
+        return "verified";
+      case 3:
+        return "rejected";
+      default:
+        return "pending";
+    }
+  };
+  
   useEffect(() => {
     const fetchDetails = async () => {
       try {
         const ownerData = await getOwnerDetails(ownerId);
-        console.log("Owner data:", ownerData);
-
-        if (ownerData?.business?.flag == 1) {
-          setOwnerStatus("inProgress");
-          setTrack(1);
-        }
-
+        const ownerFlag = ownerData?.business?.flag;
+        setOwnerStatus(mapFlagToStatus(ownerFlag));
+        if (ownerFlag === 1) setTrack(1);
+  
         const companyData = await getCompanyDetails(companyId);
-        console.log("Company data:", companyData);
-
-        if (companyData?.companyDetails?.flag == 1) {
-          setCompanyStatus("inProgress");
-          setTrack(2);
-        }
-
+        const companyFlag = companyData?.companyDetails?.flag;
+        setCompanyStatus(mapFlagToStatus(companyFlag));
+        if (companyFlag === 1) setTrack(2);
+  
         const traddingData = await getTradingDetails(tradeID);
-        console.log("trading data: is ===>", traddingData);
-
-        if (traddingData?.tradingDetails?.flag == 1) {
-          setTradingtatus("inProgress");
-          setTrack(3);
-        }
-
+        const tradingFlag = traddingData?.tradingDetails?.flag;
+        setTradingtatus(mapFlagToStatus(tradingFlag));
+        if (tradingFlag === 1) setTrack(3);
+  
         const bankData = await getBankDetails(bankID);
-        console.log("banking data:", bankData);
-
-        if (bankData?.bankDetails?.flag == 1) {
-          setBankingtatus("inProgress");
-          setTrack(4);
-        }
+        const bankFlag = bankData?.bankDetails?.flag;
+        setBankingtatus(mapFlagToStatus(bankFlag));
+        if (bankFlag === 1) setTrack(4);
       } catch (error) {
         console.error("Error fetching details:", error);
       }
     };
-
+  
     fetchDetails();
   }, []);
+  
 
   useFocusEffect(
     useCallback(() => {
@@ -113,53 +110,122 @@ export default function DetailsScreen() {
     }, [track])
   );
 
-  const getStatusLabel = (stepKey: string) => {
-    if (stepKey === "owner") {
-      return ownerStatus === "inProgress"
-        ? "Verification in progress"
-        : "Pending";
+  const getStatusLabel = (stepKey: string): string => {
+    let status: StatusType;
+  
+    switch (stepKey) {
+      case "owner":
+        status = ownerStatus;
+        break;
+      case "business":
+        status = companyStatus;
+        break;
+      case "trading":
+        status = tradingStatus;
+        break;
+      case "bank":
+        status = bankingStatus;
+        break;
+      default:
+        status = "pending";
     }
-    if (stepKey === "business") {
-      return companyStatus === "inProgress"
-        ? "Verification in progress"
-        : "Pending";
+  
+    switch (status) {
+      case "inProgress":
+        return "Verification in progress";
+      case "verified":
+        return "Verified";
+      case "rejected":
+        return "Rejected";
+      case "pending":
+      default:
+        return "Pending";
     }
-    if (stepKey === "trading") {
-      return tradingStatus === "inProgress"
-        ? "Verification in progress"
-        : "Pending";
-    }
-    if (stepKey === "bank") {
-      return bankingStatus === "inProgress"
-        ? "Verification in progress"
-        : "Pending";
-    }
-    return "Pending";
   };
+  
+  
 
-  const getStatusColor = (stepKey: string) => {
-    if (
-      (stepKey === "owner" && ownerStatus === "inProgress") ||
-      (stepKey === "business" && companyStatus === "inProgress") ||
-      (stepKey === "trading" && tradingStatus === "inProgress") ||
-      (stepKey === "bank" && bankingStatus === "inProgress")
-    ) {
-      return "green";
-    }
-    return "yellow";
+  const statusColorMap = {
+    pending: "yellow",
+    inProgress: "green",
+    verified: "green",
+    rejected: "red",
   };
+  
+  const statusBgMap = {
+    pending: "lightyellow",
+    inProgress: "lightgreen",
+    verified: "lightgreen",
+    rejected: "#fdd", // light red
+  };
+  
+  const getStatusColor = (stepKey: string): string => {
+    let status: StatusType;
+  
+    switch (stepKey) {
+      case "owner":
+        status = ownerStatus;
+        break;
+      case "business":
+        status = companyStatus;
+        break;
+      case "trading":
+        status = tradingStatus;
+        break;
+      case "bank":
+        status = bankingStatus;
+        break;
+      default:
+        status = "pending";
+    }
+  
+    switch (status) {
+      case "inProgress":
+        return "green";
+      case "verified":
+        return "green";
+      case "rejected":
+        return "red";
+      case "pending":
+      default:
+        return "yellow";
+    }
+  };
+  
 
-  const getStatusBg = (stepKey: string) => {
-    if (
-      (stepKey === "owner" && ownerStatus === "inProgress") ||
-      (stepKey === "business" && companyStatus === "inProgress") ||
-      (stepKey === "trading" && tradingStatus === "inProgress") ||
-      (stepKey === "bank" && bankingStatus === "inProgress")
-    ) {
-      return "lightgreen";
+  const getStatusBg = (stepKey: string): string => {
+    let status: StatusType;
+  
+    switch (stepKey) {
+      case "owner":
+        status = ownerStatus;
+        break;
+      case "business":
+        status = companyStatus;
+        break;
+      case "trading":
+        status = tradingStatus;
+        break;
+      case "bank":
+        status = bankingStatus;
+        break;
+      default:
+        status = "pending";
     }
-    return "lightyellow";
+  
+    switch (status) {
+      case "inProgress":
+        return "lightgreen";
+      case "verified":
+        return "lightgreen";
+      case "rejected":
+        return "#fdd";
+      case "pending":
+      default:
+        return "lightyellow";
+    }
   };
+  
 
   const { theme } = useThemeToggle();
 

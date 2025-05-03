@@ -14,8 +14,9 @@ export const config = {
         '--color-textgrey': '132 132 132',
         '--color-lightgrey': '243 244 247',
         '--color-backgroundgrey': '243 244 247',
-        '--color-divider': '237 237 237'
-
+        '--color-divider': '237 237 237',
+        '--color-blue': '39 99 209',
+        '--color-lightblue': '221 235 255',
     }),
     dark: vars({
       // 235, 244, 235 
@@ -28,6 +29,8 @@ export const config = {
         '--color-dyellow': '220 159 55',
         '--color-dlightyellow': '220 159 55',
         '--color-dtextgrey': '132 132 132',
+        '--color-blue': '39 99 209',
+        '--color-lightblue': '221 235 255',
 
     }),
     
