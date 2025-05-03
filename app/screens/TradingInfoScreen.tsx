@@ -41,6 +41,7 @@ import {
 } from "@/components/ui";
 import { Center, Divider, ScrollView } from "@gluestack-ui/themed";
 import { useThemeToggle } from "@/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const TradingInfoScreen = () => {
   const [isSameAsRegistered, setIsSameAsRegistered] = useState(true);
@@ -96,6 +97,8 @@ const TradingInfoScreen = () => {
   }, [tradingState]);
 
   const { postTradingDetails } = useTradingApi();
+
+  const {t}=useTranslation()
 
   const { theme } = useThemeToggle();
 
@@ -370,7 +373,7 @@ const TradingInfoScreen = () => {
                 theme === "dark" ? "text-green" : "text-black"
               } sm:text-sm `}
             >
-              Later
+              {t('later')}
             </ButtonText>
           </Button>
 
@@ -394,7 +397,7 @@ const TradingInfoScreen = () => {
       ${theme === "dark" ? "text-black" : "text-white"} 
       ${!isNextEnabled && "text-white"}`}
             >
-              Next
+              {t('next')}
             </ButtonText>
           </Button>
         </HStack>
@@ -448,7 +451,7 @@ const TradingInfoScreen = () => {
                     theme === "dark" ? "text-black" : "text-white"
                   }`}
                 >
-                  Continue
+                  {t('continue')}
                 </ButtonText>
               </Button>
             </ModalFooter>

@@ -19,6 +19,7 @@ import {
 } from "@/components/ui";
 import { ScrollView } from "@gluestack-ui/themed";
 import { useThemeToggle } from "@/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const BankDetailsSchema = z
   .object({
@@ -63,6 +64,10 @@ const BankDetailsScreen = () => {
   useEffect(() => {
     console.log("Bank State:", bankState);
   }, [bankState]);
+
+
+
+  const {t}=useTranslation()
 
   const { theme } = useThemeToggle();
 
@@ -282,7 +287,7 @@ const BankDetailsScreen = () => {
                 theme === "dark" ? "text-green" : "text-black"
               } sm:text-sm `}
             >
-              Later
+              {t('later')}
             </ButtonText>
           </Button>
 
@@ -306,7 +311,7 @@ const BankDetailsScreen = () => {
   ${theme === "dark" ? "text-black" : "text-white"} 
   ${!isValid && "text-white"}`}
             >
-              Next
+              {t('next')}
             </ButtonText>
           </Button>
         </HStack>

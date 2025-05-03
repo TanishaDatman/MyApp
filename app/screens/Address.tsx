@@ -5,6 +5,7 @@ import { setAddressDetails } from '../store/features/owner/ownerSlice';
 
 import { Box, Button, HStack, Image, Input, InputField, Pressable, Select, SelectBackdrop, SelectContent, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger, Text, VStack } from '@/components/ui';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function Address() {
   const navigation:any = useNavigation();
@@ -58,6 +59,8 @@ export default function Address() {
 
     navigation.navigate('Documents');
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -170,7 +173,7 @@ export default function Address() {
           onPress={() => navigation.goBack()}
         >
           <Text className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</Text>
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</Text>
         </Button>
         <Button
           className={`flex-1 rounded-full cursor-pointer 
@@ -189,7 +192,7 @@ export default function Address() {
         >
           <Text className={`font-medium text-xs sm:text-sm 
       ${theme === "dark" ? "text-black" : "text-white"} 
-      ${!isNextEnabled && "text-white"}`}>Next</Text>
+      ${!isNextEnabled && "text-white"}`}>{t('next')}</Text>
         </Button>
       </HStack>
     </Box>

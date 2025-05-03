@@ -7,6 +7,7 @@ import { useBankApi } from '../hooks/useBankApi'; // adjust path if needed
 import { Box, Button, ButtonText, HStack, Image, Pressable, Text, VStack } from '@/components/ui';
 import { ScrollView } from '@gluestack-ui/themed';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function DocumentsBank() {
   const navigation: any = useNavigation();
@@ -63,6 +64,8 @@ const [statement, setStatement]: any = useState(null);
       console.error('Submission error:', err);
     }
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -137,7 +140,7 @@ const [statement, setStatement]: any = useState(null);
                     onPress={() => navigation.goBack()}
                   >
                     <ButtonText className={`text-xs ${
-            theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+            theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</ButtonText>
                   </Button>
         
                   <Button
@@ -158,7 +161,7 @@ const [statement, setStatement]: any = useState(null);
         
                     <ButtonText className={`font-medium text-xs sm:text-sm 
               ${theme === "dark" ? "text-black" : "text-white"} 
-              ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
+              ${!isNextEnabled && "text-white"}`}>{t('next')}</ButtonText>
                   </Button>
                 </HStack>
       </Box>

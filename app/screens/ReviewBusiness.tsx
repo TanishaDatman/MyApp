@@ -19,6 +19,7 @@ import {
 } from "@/components/ui";
 import { Center, ScrollView } from "@gluestack-ui/themed";
 import { useThemeToggle } from "@/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 export default function ReviewBusiness() {
   const navigation: any = useNavigation();
@@ -60,6 +61,8 @@ export default function ReviewBusiness() {
     setShowModal(false);
     navigation.navigate("Details");
   };
+
+  const {t}=useTranslation()
 
   const { theme } = useThemeToggle();
 
@@ -189,7 +192,7 @@ export default function ReviewBusiness() {
                  onPress={handleConfirm}
                >
                  <ButtonText className={`font-semibold cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>
-                   Confirm
+                 {t('confirm')}
                  </ButtonText>
                </Button>
 
@@ -244,7 +247,7 @@ export default function ReviewBusiness() {
               <ButtonText
                 className={`${theme === "dark" ? "text-black" : "text-white"}`}
               >
-                Continue
+                {t('continue')}
               </ButtonText>
             </Button>
           </ModalFooter>

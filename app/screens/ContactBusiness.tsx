@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Box, Button, ButtonText, HStack, Image, Input, InputField, Pressable, Text, VStack } from '@/components/ui';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 // Zod schema remains unchanged
 const businessContactSchema = z.object({
@@ -41,6 +42,8 @@ const ContactBusiness = () => {
     dispatch(setBusinessContact(data));
     navigation.navigate("AddressBusiness");
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -192,7 +195,7 @@ const ContactBusiness = () => {
   theme === "dark" ? "border-green" : "border-black"}  border-2 cursor-pointer  rounded-full`}              onPress={() => navigation.goBack()}
             >
               <ButtonText className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</ButtonText>
             </Button>
 
             <Button
@@ -212,7 +215,7 @@ const ContactBusiness = () => {
               <Text className={`font-medium text-xs sm:text-sm 
       ${theme === "dark" ? "text-black" : "text-white"} 
       ${!isNextEnabled && "text-white"}`}>
-                Next
+                {t('next')}
               </Text>
             </Button>
           </HStack>

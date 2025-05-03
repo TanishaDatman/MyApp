@@ -5,6 +5,7 @@ import { useOwnerApi } from "../hooks/useOwnerApi";
 import { Box, Button, ButtonText, HStack, Image, Modal, ModalBackdrop, ModalBody, ModalContent, ModalFooter, Pressable, Text, VStack } from "@/components/ui";
 import { Center, ScrollView } from "@gluestack-ui/themed";
 import { useThemeToggle } from "@/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 export default function Review() {
   const navigation: any = useNavigation();
@@ -40,6 +41,8 @@ export default function Review() {
     setShowModal(false);
     navigation.navigate("Details"); // Replace with actual next screen
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -140,7 +143,7 @@ export default function Review() {
           onPress={handleConfirm}
         >
           <ButtonText className={`font-semibold cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>
-            Confirm
+          {t('confirm')}
           </ButtonText>
         </Button>
 
@@ -177,7 +180,7 @@ export default function Review() {
      
                    }}
                  >
-                   <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
+                   <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>{t('continue')}</ButtonText>
                  </Button>
                </ModalFooter>
              </ModalContent>

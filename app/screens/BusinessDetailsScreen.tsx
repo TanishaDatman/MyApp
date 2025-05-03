@@ -8,6 +8,7 @@ import { ScrollView } from '@gluestack-ui/themed';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useThemeToggle } from '@/ThemeContext';
 import { businessOptions } from '../utils/constants';
+import { useTranslation } from 'react-i18next';
 
 
 const BusinessDetailsScreen = () => {
@@ -19,6 +20,9 @@ const BusinessDetailsScreen = () => {
     dispatch(setwhatbusiness(selected));
     navigation.navigate("Organization");
   };
+
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -95,7 +99,7 @@ const BusinessDetailsScreen = () => {
               onPress={() => navigation.goBack()}
             >
               <ButtonText className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</ButtonText>
             </Button>
 
             <Button
@@ -104,7 +108,7 @@ const BusinessDetailsScreen = () => {
               onPress={onSubmit}
             >
               <ButtonText className={`text-xs sm:text-sm ${
-    theme === "dark" ? "text-black" : "text-white"}`}>Next</ButtonText>
+    theme === "dark" ? "text-black" : "text-white"}`}>{t('next')}</ButtonText>
             </Button>
           </HStack>
       </ScrollView>

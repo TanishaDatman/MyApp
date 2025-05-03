@@ -7,6 +7,7 @@ import { CircleIcon } from 'lucide-react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useThemeToggle } from '@/ThemeContext';
 import { organisationOptions } from '../utils/constants';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -19,6 +20,8 @@ const OrganisationType = () => {
     dispatch(setBusinessType(selectedValue));
     navigation.navigate("Company");
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -88,7 +91,7 @@ const OrganisationType = () => {
                     onPress={() => navigation.goBack()}
                   >
                     <ButtonText className={`text-xs ${
-          theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+          theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</ButtonText>
                   </Button>
       
                   <Button
@@ -97,7 +100,7 @@ const OrganisationType = () => {
                     onPress={onSubmit}
                   >
                     <ButtonText className={`text-xs sm:text-sm ${
-          theme === "dark" ? "text-black" : "text-white"}`}>Next</ButtonText>
+          theme === "dark" ? "text-black" : "text-white"}`}>{t('next')}</ButtonText>
                   </Button>
                 </HStack>
     </Box>

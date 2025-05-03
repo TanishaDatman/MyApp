@@ -21,6 +21,7 @@ import {
   VStack,
 } from "@/components/ui";
 import { useThemeToggle } from "@/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 // Define Zod schema for validation
 const contactSchema = z.object({
@@ -79,6 +80,8 @@ const Contact = () => {
     // Navigate to Address screen
     navigation.navigate("Address");
   };
+
+  const {t}=useTranslation()
 
   const { theme } = useThemeToggle();
 
@@ -226,7 +229,7 @@ const Contact = () => {
                   theme === "dark" ? "text-green" : "text-black"
                 } sm:text-sm `}
               >
-                Later
+                {t('later')}
               </ButtonText>
             </Button>
 
@@ -250,7 +253,7 @@ const Contact = () => {
       ${theme === "dark" ? "text-black" : "text-white"} 
       ${!isValid && "text-white"}`}
               >
-                Next
+                {t('next')}
               </ButtonText>
             </Button>
           </HStack>

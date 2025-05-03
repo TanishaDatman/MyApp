@@ -14,9 +14,15 @@ import {
 } from '@/components/ui';
 import { config } from '@gluestack-ui/config';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 
 const OnboardingScreen = () => {
   const navigation: any = useNavigation();
+
+
+  const { t } = useTranslation();
+
 
   const {theme}=useThemeToggle()
 
@@ -93,7 +99,7 @@ const OnboardingScreen = () => {
               onPress={() => navigation.goBack()}
             >
               <ButtonText className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>I’ll do this later</ButtonText>
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('do-later')}</ButtonText>
             </Button>
 
             <Button
@@ -102,8 +108,13 @@ const OnboardingScreen = () => {
               onPress={() => navigation.navigate('Details')}
             >
               <ButtonText className={`text-xs sm:text-sm ${
-    theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
+    theme === "dark" ? "text-black" : "text-white"}`}>{t('continue')}</ButtonText>
             </Button>
+
+            {/* <Button onPress={() => i18n.changeLanguage('hi')}>
+            <ButtonText>हिंदी</ButtonText>
+            </Button> */}
+
           </HStack>
 
         </Box>

@@ -7,6 +7,7 @@ import { useOwnerApi } from '../hooks/useOwnerApi';
 import { Badge, BadgeText, Box, Button, ButtonText, HStack, Image, Modal, ModalBackdrop, ModalBody, ModalContent, ModalFooter, ModalHeader, Pressable, Text, VStack } from '@/components/ui';
 import { Center, ScrollView } from '@gluestack-ui/themed';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function DocumentsUpload() {
   const navigation: any = useNavigation();
@@ -70,6 +71,8 @@ console.log("selected file",selectedFile);
       console.error(err);
     }
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -150,7 +153,7 @@ console.log("selected file",selectedFile);
             onPress={() => navigation.goBack()}
           >
             <ButtonText className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</ButtonText>
           </Button>
 
           <Button
@@ -171,7 +174,7 @@ console.log("selected file",selectedFile);
 
             <ButtonText className={`font-medium text-xs sm:text-sm 
       ${theme === "dark" ? "text-black" : "text-white"} 
-      ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
+      ${!isNextEnabled && "text-white"}`}>{t('next')}</ButtonText>
           </Button>
         </HStack>
       </Box>
@@ -215,7 +218,7 @@ console.log("selected file",selectedFile);
             navigation.navigate('Review');
           }}
         >
-          <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-black"}`}>Review</ButtonText>
+          <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-black"}`}>{t('review')}</ButtonText>
         </Button>
 
         <Button
@@ -226,7 +229,7 @@ console.log("selected file",selectedFile);
             await handleNoDocumentClick();
           }}
         >
-          <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>No, I’m good</ButtonText>
+          <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>{t('no-good')}</ButtonText>
         </Button>
       </HStack>
     </ModalFooter>
@@ -265,7 +268,7 @@ console.log("selected file",selectedFile);
 
               }}
             >
-              <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
+              <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>{t('continue')}</ButtonText>
             </Button>
           </ModalFooter>
         </ModalContent>

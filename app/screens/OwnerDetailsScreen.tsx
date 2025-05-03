@@ -7,6 +7,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { Platform } from 'react-native';
 import { Box, Button, ButtonText, HStack, Image, Input, InputField, Pressable, Select, SelectBackdrop, SelectContent, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger, Text, VStack } from '@/components/ui';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -76,6 +77,8 @@ const formatDateToDisplay = (date: Date) => {
     dispatch(setOwnerDetails(data));
     navigation.navigate("Contact");
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -384,7 +387,7 @@ const formatDateToDisplay = (date: Date) => {
               onPress={() => navigation.goBack()}
           >
             <Text className={`text-xs ${
-    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</Text>
+    theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</Text>
           </Button>
           <Button
              className={`flex-1 ml-2 ${
@@ -392,7 +395,7 @@ const formatDateToDisplay = (date: Date) => {
     onPress={handleSubmit(onSubmit)}
           >
             <Text className={`text-xs sm:text-sm ${
-    theme === "dark" ? "text-black" : "text-white"}`}>Next</Text>
+    theme === "dark" ? "text-black" : "text-white"}`}>{t('next')}</Text>
           </Button>
         </HStack>
        

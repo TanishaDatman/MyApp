@@ -12,7 +12,7 @@ import { config } from "@gluestack-ui/config";
 import OnboardingScreen from "./app/screens/OnboardingScreen";
 import Address from "./app/screens/Address";
 import DetailsScreen from "./app/screens/DetailsScreen";
-
+import './app/i18n';
 import { Image } from "@gluestack-ui/themed";
 import TransactionsScreen from "./app/screens/TransactionsScreen";
 import SettingsScreen from "./app/screens/SettingsScreen";
@@ -21,7 +21,6 @@ import { Provider } from "react-redux";
 import store, { persistor } from "./app/store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Contact from "./app/screens/Contact";
-import { HStack, Text, VStack } from "./components/ui";
 import DocumentsUpload from "./app/screens/DocumentsUpload";
 import Review from "./app/screens/Review";
 import BusinessDetailsScreen from "./app/screens/BusinessDetailsScreen";

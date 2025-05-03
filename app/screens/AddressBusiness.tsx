@@ -13,6 +13,7 @@ import { Input, InputField } from '@/components/ui/input';
 import { Select, SelectIcon } from '@/components/ui/select';
 import { Button, ButtonText } from '@/components/ui/button';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function AddressBusiness() {
   const navigation: any = useNavigation();
@@ -76,6 +77,8 @@ export default function AddressBusiness() {
     dispatch(setBusinessAddress(formData));
     navigation.navigate('DocumentsBusiness');
   };
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -156,7 +159,7 @@ export default function AddressBusiness() {
                onPress={() => navigation.goBack()}
              >
                <Text className={`text-xs ${
-         theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</Text>
+         theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</Text>
              </Button>
              <Button
                className={`flex-1 rounded-full cursor-pointer 
@@ -175,7 +178,7 @@ export default function AddressBusiness() {
              >
                <Text className={`font-medium text-xs sm:text-sm 
            ${theme === "dark" ? "text-black" : "text-white"} 
-           ${!isNextEnabled && "text-white"}`}>Next</Text>
+           ${!isNextEnabled && "text-white"}`}>{t('next')}</Text>
              </Button>
            </HStack>
     </Box>

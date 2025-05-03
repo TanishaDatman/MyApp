@@ -24,9 +24,9 @@ import {
 } from "@gluestack-ui/themed";
 import { useThemeToggle } from "@/ThemeContext";
 import { onboardingData } from "../utils/constants";
+import { useTranslation } from "react-i18next";
 
 type StatusType = "pending" | "inProgress" | "verified" | "rejected";
-
 
 export default function DetailsScreen() {
   const navigation: any = useNavigation();
@@ -35,12 +35,10 @@ export default function DetailsScreen() {
   const { getTradingDetails } = useTradingApi();
   const { getBankDetails } = useBankApi();
 
-  
-
   const [ownerStatus, setOwnerStatus] = useState<StatusType>("pending");
-const [companyStatus, setCompanyStatus] = useState<StatusType>("pending");
-const [tradingStatus, setTradingtatus] = useState<StatusType>("pending");
-const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
+  const [companyStatus, setCompanyStatus] = useState<StatusType>("pending");
+  const [tradingStatus, setTradingtatus] = useState<StatusType>("pending");
+  const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
 
   const [track, setTrack] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
@@ -57,7 +55,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
         return "pending";
     }
   };
-  
+
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -65,17 +63,17 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
         const ownerFlag = ownerData?.business?.flag;
         setOwnerStatus(mapFlagToStatus(ownerFlag));
         if (ownerFlag === 1) setTrack(1);
-  
+
         const companyData = await getCompanyDetails(companyId);
         const companyFlag = companyData?.companyDetails?.flag;
         setCompanyStatus(mapFlagToStatus(companyFlag));
         if (companyFlag === 1) setTrack(2);
-  
+
         const traddingData = await getTradingDetails(tradeID);
         const tradingFlag = traddingData?.tradingDetails?.flag;
         setTradingtatus(mapFlagToStatus(tradingFlag));
         if (tradingFlag === 1) setTrack(3);
-  
+
         const bankData = await getBankDetails(bankID);
         const bankFlag = bankData?.bankDetails?.flag;
         setBankingtatus(mapFlagToStatus(bankFlag));
@@ -84,10 +82,9 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
         console.error("Error fetching details:", error);
       }
     };
-  
+
     fetchDetails();
   }, []);
-  
 
   useFocusEffect(
     useCallback(() => {
@@ -112,7 +109,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
 
   const getStatusLabel = (stepKey: string): string => {
     let status: StatusType;
-  
+
     switch (stepKey) {
       case "owner":
         status = ownerStatus;
@@ -129,7 +126,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
       default:
         status = "pending";
     }
-  
+
     switch (status) {
       case "inProgress":
         return "Verification in progress";
@@ -142,8 +139,6 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
         return "Pending";
     }
   };
-  
-  
 
   const statusColorMap = {
     pending: "yellow",
@@ -151,17 +146,17 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
     verified: "green",
     rejected: "red",
   };
-  
+
   const statusBgMap = {
     pending: "lightyellow",
     inProgress: "lightgreen",
     verified: "lightgreen",
     rejected: "#fdd", // light red
   };
-  
+
   const getStatusColor = (stepKey: string): string => {
     let status: StatusType;
-  
+
     switch (stepKey) {
       case "owner":
         status = ownerStatus;
@@ -178,7 +173,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
       default:
         status = "pending";
     }
-  
+
     switch (status) {
       case "inProgress":
         return "green";
@@ -191,11 +186,10 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
         return "yellow";
     }
   };
-  
 
   const getStatusBg = (stepKey: string): string => {
     let status: StatusType;
-  
+
     switch (stepKey) {
       case "owner":
         status = ownerStatus;
@@ -212,7 +206,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
       default:
         status = "pending";
     }
-  
+
     switch (status) {
       case "inProgress":
         return "lightgreen";
@@ -225,7 +219,8 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
         return "lightyellow";
     }
   };
-  
+
+  const { t } = useTranslation();
 
   const { theme } = useThemeToggle();
 
@@ -277,13 +272,12 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
                   h="$1"
                   // bgColor="$coolGray300"
                   bgColor={theme === "dark" ? "$black" : "$coolGray300"}
-
                   rounded="$full"
                 >
                   <ProgressFilledTrack
                     h="$1.5"
                     bgColor={theme === "dark" ? "$white" : "$black"}
-                    />
+                  />
                 </Progress>
 
                 <Text
@@ -400,7 +394,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
                   theme === "dark" ? "text-green" : "text-black"
                 } sm:text-sm `}
               >
-                I’ll do this later
+                {t("do-later")}{" "}
               </ButtonText>
             </Button>
 
@@ -415,7 +409,7 @@ const [bankingStatus, setBankingtatus] = useState<StatusType>("pending");
                   theme === "dark" ? "text-black" : "text-white"
                 }`}
               >
-                Next
+                {t("next")}
               </ButtonText>
             </Button>
           </HStack>

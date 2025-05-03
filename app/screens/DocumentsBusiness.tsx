@@ -11,6 +11,7 @@ import {
 import { Center, ScrollView } from '@gluestack-ui/themed';
 import { setBusinessDocument } from '../store/features/business/businessSlice';
 import { useThemeToggle } from '@/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function DocumentsBusiness() {
   const navigation: any = useNavigation();
@@ -74,6 +75,8 @@ export default function DocumentsBusiness() {
   };
 
   const isNextEnabled = utility || rental || rates;
+
+  const {t}=useTranslation()
 
   const {theme}=useThemeToggle()
 
@@ -161,7 +164,7 @@ export default function DocumentsBusiness() {
                   onPress={() => navigation.goBack()}
                 >
                   <ButtonText className={`text-xs ${
-          theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>Later</ButtonText>
+          theme === "dark" ? "text-green" : "text-black"} sm:text-sm `}>{t('later')}</ButtonText>
                 </Button>
       
                 <Button
@@ -182,7 +185,7 @@ export default function DocumentsBusiness() {
       
                   <ButtonText className={`font-medium text-xs sm:text-sm 
             ${theme === "dark" ? "text-black" : "text-white"} 
-            ${!isNextEnabled && "text-white"}`}>Next</ButtonText>
+            ${!isNextEnabled && "text-white"}`}>{t('next')}</ButtonText>
                 </Button>
               </HStack>
       </Box>
@@ -229,7 +232,7 @@ export default function DocumentsBusiness() {
                 navigation.navigate('ReviewBusiness');
               }}
             >
-              <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-black"}`}>Review</ButtonText>
+              <ButtonText className={`text-sm  ${theme === "dark" ? "text-green" : "text-black"}`}>{t('review')}</ButtonText>
             </Button>
     
             <Button
@@ -240,7 +243,7 @@ export default function DocumentsBusiness() {
                 await handleNoDocumentClick();
               }}
             >
-              <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>No, I’m good</ButtonText>
+              <ButtonText className={`text-sm cursor-pointer ${theme === "dark" ? "text-black" : "text-white"}`}>{t('no-good')}</ButtonText>
             </Button>
           </HStack>
         </ModalFooter>
@@ -279,7 +282,7 @@ export default function DocumentsBusiness() {
      
                    }}
                  >
-                   <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>Continue</ButtonText>
+                   <ButtonText className={`${theme === "dark" ? "text-black" : "text-white"}`}>{t('continue')}</ButtonText>
                  </Button>
                </ModalFooter>
              </ModalContent>
