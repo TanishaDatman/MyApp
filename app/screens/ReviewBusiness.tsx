@@ -25,17 +25,17 @@ export default function ReviewBusiness() {
   const navigation: any = useNavigation();
   const [showModal, setShowModal] = useState(false);
 
-  const companyWhat = useSelector((state: any) => state.business.companywhat);
-  const orgType = useSelector((state: any) => state.business.businessType);
-  const company = useSelector((state: any) => state.business.company);
+  const companyWhat = useSelector((state: any) => state?.business?.companywhat);
+  const orgType = useSelector((state: any) => state?.business?.businessType);
+  const company = useSelector((state: any) => state?.business?.company);
   const companyNumber = company?.companyNumber;
   const legalName = company?.legalName;
-  const contact = useSelector((state: any) => state.business.contact);
+  const contact = useSelector((state: any) => state?.business?.contact);
   const email = contact?.email;
   const phone = contact?.phone;
   const url = contact?.url;
-  const address = useSelector((state: any) => state.business.address);
-  const document = useSelector((state: any) => state.business.document);
+  const address = useSelector((state: any) => state?.business?.address);
+  const document = useSelector((state: any) => state?.business?.document);
 
   const { postCompanyDetails } = useCompanyApi();
 
@@ -176,8 +176,8 @@ export default function ReviewBusiness() {
           {" "}
           <HStack className="justify-between items-start">
             <Text className="text-sm text-gray-500 flex-shrink">
-              {address.country} {address.postCode} {address.address1}{" "}
-              {address.address2} {address.town} {address.county}
+              {address?.country} {address?.postCode} {address?.address1}{" "}
+              {address?.address2} {address?.town} {address?.county}
             </Text>
             <Pressable
               onPress={() => navigation.navigate("EditAddress")}

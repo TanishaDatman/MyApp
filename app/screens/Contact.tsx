@@ -57,14 +57,14 @@ const Contact = () => {
     mode: "onTouched",
   });
 
-  useEffect(() => {
-    if (contact.email || contact.phone) {
-      reset({
-        email: contact.email || "",
-        phone: contact.phone || "",
-      });
-    }
-  }, [contact, reset]);
+  // useEffect(() => {
+  //   if (contact.email || contact.phone) {
+  //     reset({
+  //       email: contact.email || "",
+  //       phone: contact.phone || "",
+  //     });
+  //   }
+  // }, [contact, reset]);
 
   // Handle form submission
   const onSubmit = (data: any) => {

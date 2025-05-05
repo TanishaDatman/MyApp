@@ -12,10 +12,10 @@ export default function Review() {
   const [showModal, setShowModal] = useState(false);
   const { postOwnerDetails } = useOwnerApi();
 
-  const ownerDetails = useSelector((state: any) => state.owner.owner);
-  const ownerContact = useSelector((state: any) => state.owner.contact);
-  const ownerAddress = useSelector((state: any) => state.owner.address);
-  const document = useSelector((state: any) => state.owner.document);
+  const ownerDetails = useSelector((state: any) => state?.owner?.owner);
+  const ownerContact = useSelector((state: any) => state?.owner?.contact);
+  const ownerAddress = useSelector((state: any) => state?.owner?.address);
+  const document = useSelector((state: any) => state?.owner?.document);
 
   // const image = useSelector((state: any) => state.owner.image);
   // console.log("Image details from redux:", image);
@@ -126,9 +126,9 @@ export default function Review() {
         >
           <HStack className="justify-between " >
             <Text className={`text-md ${theme === "dark" ? "text-textgrey" : "text-black"}`} >
-              {ownerAddress.houseNo} {ownerAddress.street}{" "}
-              {ownerAddress.postCode} {ownerAddress.town} {ownerAddress.county}{" "}
-              {ownerAddress.country}
+              {ownerAddress?.houseNo} {ownerAddress?.street}{" "}
+              {ownerAddress?.postCode} {ownerAddress?.town} {ownerAddress?.county}{" "}
+              {ownerAddress?.country}
             </Text>
             <Pressable onPress={() => navigation.navigate("EditAddress")}>
               {/* <Text color="$green600" fontWeight="$semibold">Edit</Text> */}
